@@ -1,0 +1,1091 @@
+{
+  "users": [
+    {
+      "id": "user_001",
+      "username": "minhpilot",
+      "email": "minhpilothan@gmail.com",
+      "password": "123456",
+      "fullName": "Phan Hồng Minh",
+      "dateOfBirth": "02/06/2011",
+      "school": "THCS-THPT Trần Cao Vân",
+      "grade": "9D1",
+      "role": "user",
+      "studyingPoints": 1040,
+      "avatar": "ASSETS/images/avatars/Sebastian_Vettel_2013_Malaysia_FP2.jpg",
+      "completedContests": [
+        "contest_001"
+      ],
+      "progress": {
+        "grade-7": {
+          "completed": 15,
+          "total": 40,
+          "scores": [
+            8,
+            9,
+            7,
+            10,
+            8,
+            6,
+            9,
+            7
+          ]
+        },
+        "grade-8": {
+          "completed": 8,
+          "total": 45,
+          "scores": [
+            9,
+            8,
+            9,
+            7,
+            8
+          ]
+        }
+      },
+      "createdAt": "2024-01-15T10:30:00Z",
+      "lastLogin": "2026-01-10T08:45:00Z"
+    },
+    {
+      "id": "user_002",
+      "username": "testuser",
+      "email": "test@mathair.com",
+      "password": "test123",
+      "fullName": "Trần Văn Chung",
+      "dateOfBirth": "01/11/2010",
+      "school": "THPT Tô Ngọc Vân",
+      "grade": "10A1",
+      "role": "user",
+      "studyingPoints": 1000,
+      "avatar": "ASSETS/images/avatars/Meow_cat_-_Mdebona.jpg",
+      "completedContests": [],
+      "progress": {
+        "grade-7": {
+          "completed": 40,
+          "total": 40,
+          "scores": [
+            10,
+            9,
+            10,
+            10,
+            9,
+            10,
+            9,
+            10
+          ]
+        },
+        "grade-8": {
+          "completed": 20,
+          "total": 45,
+          "scores": [
+            8,
+            9,
+            9,
+            8,
+            9,
+            10
+          ]
+        }
+      },
+      "createdAt": "2024-02-10T14:20:00Z",
+      "lastLogin": "2026-01-09T16:30:00Z"
+    },
+    {
+      "id": "user_003",
+      "username": "nguyenviet",
+      "email": "viet.nguyen@mathair.com",
+      "password": "password123",
+      "fullName": "Nguyễn Việt Anh",
+      "dateOfBirth": "15/03/2010",
+      "school": "THCS Nguyễn Huệ",
+      "grade": "8A2",
+      "role": "user",
+      "studyingPoints": 1250,
+      "avatar": "ASSETS/images/avatars/avatar.jpg",
+      "completedContests": [
+        "contest_001",
+        "contest_002"
+      ],
+      "progress": {
+        "grade-7": {
+          "completed": 35,
+          "total": 40,
+          "scores": [
+            9,
+            9,
+            8,
+            9,
+            10,
+            8,
+            9
+          ]
+        },
+        "grade-8": {
+          "completed": 15,
+          "total": 45,
+          "scores": [
+            8,
+            8,
+            9,
+            7,
+            8
+          ]
+        }
+      },
+      "createdAt": "2024-03-05T09:15:00Z",
+      "lastLogin": "2026-01-08T14:20:00Z"
+    },
+    {
+      "id": "user_004",
+      "username": "linh.do",
+      "email": "linh.do@mathair.com",
+      "password": "secure456",
+      "fullName": "Đỗ Thanh Linh",
+      "dateOfBirth": "22/07/2011",
+      "school": "THCS Trường Chinh",
+      "grade": "7C1",
+      "role": "user",
+      "studyingPoints": 850,
+      "avatar": "ASSETS/images/avatars/avatar.jpg",
+      "completedContests": [],
+      "progress": {
+        "grade-7": {
+          "completed": 8,
+          "total": 40,
+          "scores": [
+            7,
+            6,
+            7
+          ]
+        }
+      },
+      "createdAt": "2024-04-12T11:30:00Z",
+      "lastLogin": "2026-01-07T10:15:00Z"
+    },
+    {
+      "id": "user_005",
+      "username": "huong.tran",
+      "email": "huong.tran@mathair.com",
+      "password": "123abc456",
+      "fullName": "Trần Thị Hương",
+      "dateOfBirth": "08/12/2010",
+      "school": "THCS Phan Bội Châu",
+      "grade": "8B3",
+      "role": "user",
+      "studyingPoints": 1100,
+      "avatar": "ASSETS/images/avatars/avatar.jpg",
+      "completedContests": [
+        "contest_001"
+      ],
+      "progress": {
+        "grade-7": {
+          "completed": 38,
+          "total": 40,
+          "scores": [
+            9,
+            10,
+            9,
+            8,
+            9,
+            9,
+            10
+          ]
+        },
+        "grade-8": {
+          "completed": 12,
+          "total": 45,
+          "scores": [
+            8,
+            7,
+            8,
+            9
+          ]
+        }
+      },
+      "createdAt": "2024-05-20T15:45:00Z",
+      "lastLogin": "2026-01-06T13:20:00Z"
+    },
+    {
+      "id": "user_006",
+      "username": "minh.tran",
+      "email": "minh.tran@mathair.com",
+      "password": "pass789abc",
+      "fullName": "Trần Quốc Minh",
+      "dateOfBirth": "14/09/2010",
+      "school": "THPT Hòa Bình",
+      "grade": "10B2",
+      "role": "user",
+      "studyingPoints": 950,
+      "avatar": "ASSETS/images/avatars/avatar.jpg",
+      "completedContests": [],
+      "progress": {
+        "grade-7": {
+          "completed": 25,
+          "total": 40,
+          "scores": [
+            8,
+            7,
+            8,
+            7,
+            7,
+            8,
+            6
+          ]
+        },
+        "grade-8": {
+          "completed": 10,
+          "total": 45,
+          "scores": [
+            7,
+            8,
+            7,
+            7
+          ]
+        }
+      },
+      "createdAt": "2024-06-08T10:00:00Z",
+      "lastLogin": "2026-01-05T09:45:00Z"
+    },
+    {
+      "id": "user_007",
+      "username": "phuong.le",
+      "email": "phuong.le@mathair.com",
+      "password": "abc123xyz",
+      "fullName": "Lê Phương Anh",
+      "dateOfBirth": "29/05/2011",
+      "school": "THCS Lý Thái Tổ",
+      "grade": "7D2",
+      "role": "user",
+      "studyingPoints": 920,
+      "avatar": "ASSETS/images/avatars/avatar.jpg",
+      "completedContests": [],
+      "progress": {
+        "grade-7": {
+          "completed": 12,
+          "total": 40,
+          "scores": [
+            7,
+            8,
+            6,
+            7
+          ]
+        }
+      },
+      "createdAt": "2024-07-14T12:30:00Z",
+      "lastLogin": "2026-01-04T15:30:00Z"
+    },
+    {
+      "id": "user_008",
+      "username": "hoang.vu",
+      "email": "hoang.vu@mathair.com",
+      "password": "secure123",
+      "fullName": "Vũ Chí Hoàng",
+      "dateOfBirth": "11/11/2009",
+      "school": "THPT Chu Văn An",
+      "grade": "11A1",
+      "role": "user",
+      "studyingPoints": 1450,
+      "avatar": "ASSETS/images/avatars/avatar.jpg",
+      "completedContests": [
+        "contest_001",
+        "contest_002"
+      ],
+      "progress": {
+        "grade-7": {
+          "completed": 40,
+          "total": 40,
+          "scores": [
+            10,
+            10,
+            9,
+            10,
+            10,
+            10,
+            9,
+            10
+          ]
+        },
+        "grade-8": {
+          "completed": 40,
+          "total": 45,
+          "scores": [
+            9,
+            10,
+            10,
+            9,
+            10,
+            9
+          ]
+        },
+        "grade-9": {
+          "completed": 20,
+          "total": 50,
+          "scores": [
+            9,
+            9,
+            8,
+            9,
+            10
+          ]
+        }
+      },
+      "createdAt": "2024-08-22T08:45:00Z",
+      "lastLogin": "2026-01-03T11:20:00Z"
+    },
+    {
+      "id": "user_009",
+      "username": "khoa.pham",
+      "email": "khoa.pham@mathair.com",
+      "password": "khoapass123",
+      "fullName": "Phạm Khoá Mạnh",
+      "dateOfBirth": "03/02/2010",
+      "school": "THCS Thái Phiên",
+      "grade": "8C4",
+      "role": "user",
+      "studyingPoints": 1180,
+      "avatar": "ASSETS/images/avatars/avatar.jpg",
+      "completedContests": [
+        "contest_001"
+      ],
+      "progress": {
+        "grade-7": {
+          "completed": 37,
+          "total": 40,
+          "scores": [
+            9,
+            8,
+            9,
+            9,
+            8,
+            9,
+            8
+          ]
+        },
+        "grade-8": {
+          "completed": 18,
+          "total": 45,
+          "scores": [
+            8,
+            8,
+            8,
+            8,
+            9
+          ]
+        }
+      },
+      "createdAt": "2024-09-10T14:15:00Z",
+      "lastLogin": "2026-01-02T16:45:00Z"
+    },
+    {
+      "id": "user_010",
+      "username": "hoa.nguyen",
+      "email": "hoa.nguyen@mathair.com",
+      "password": "hoanam2011",
+      "fullName": "Nguyễn Thùy Hoa",
+      "dateOfBirth": "17/06/2011",
+      "school": "THCS Nguyễn Tri Phương",
+      "grade": "7B1",
+      "role": "user",
+      "studyingPoints": 1050,
+      "avatar": "ASSETS/images/avatars/avatar.jpg",
+      "completedContests": [],
+      "progress": {
+        "grade-7": {
+          "completed": 20,
+          "total": 40,
+          "scores": [
+            8,
+            8,
+            7,
+            8,
+            8
+          ]
+        }
+      },
+      "createdAt": "2024-10-05T09:30:00Z",
+      "lastLogin": "2026-01-01T12:00:00Z"
+    },
+    {
+      "id": "user_011",
+      "username": "tuan.le",
+      "email": "tuan.le@mathair.com",
+      "password": "tuanle123456",
+      "fullName": "Lê Anh Tuấn",
+      "dateOfBirth": "25/08/2010",
+      "school": "THCS Bế Văn Đàn",
+      "grade": "8A1",
+      "role": "user",
+      "studyingPoints": 1320,
+      "avatar": "ASSETS/images/avatars/avatar.jpg",
+      "completedContests": [
+        "contest_001",
+        "contest_002"
+      ],
+      "progress": {
+        "grade-7": {
+          "completed": 40,
+          "total": 40,
+          "scores": [
+            10,
+            9,
+            10,
+            10,
+            9,
+            10,
+            9,
+            10
+          ]
+        },
+        "grade-8": {
+          "completed": 25,
+          "total": 45,
+          "scores": [
+            9,
+            9,
+            8,
+            9,
+            9,
+            10
+          ]
+        }
+      },
+      "createdAt": "2024-10-18T13:45:00Z",
+      "lastLogin": "2025-12-31T10:30:00Z"
+    },
+    {
+      "id": "user_012",
+      "username": "lan.nguyen",
+      "email": "lan.nguyen@mathair.com",
+      "password": "lanpass789",
+      "fullName": "Nguyễn Hương Lan",
+      "dateOfBirth": "07/04/2011",
+      "school": "THCS Việt Tân",
+      "grade": "7A3",
+      "role": "user",
+      "studyingPoints": 880,
+      "avatar": "ASSETS/images/avatars/avatar.jpg",
+      "completedContests": [],
+      "progress": {
+        "grade-7": {
+          "completed": 10,
+          "total": 40,
+          "scores": [
+            7,
+            6,
+            8
+          ]
+        }
+      },
+      "createdAt": "2024-11-02T11:15:00Z",
+      "lastLogin": "2025-12-30T14:50:00Z"
+    },
+    {
+      "id": "user_013",
+      "username": "thanh.dinh",
+      "email": "thanh.dinh@mathair.com",
+      "password": "dinh2010",
+      "fullName": "Đinh Hoàng Thành",
+      "dateOfBirth": "19/10/2010",
+      "school": "THCS Tân Kỳ",
+      "grade": "8B2",
+      "role": "user",
+      "studyingPoints": 1220,
+      "avatar": "ASSETS/images/avatars/avatar.jpg",
+      "completedContests": [
+        "contest_001"
+      ],
+      "progress": {
+        "grade-7": {
+          "completed": 38,
+          "total": 40,
+          "scores": [
+            9,
+            9,
+            8,
+            9,
+            9,
+            9,
+            8
+          ]
+        },
+        "grade-8": {
+          "completed": 22,
+          "total": 45,
+          "scores": [
+            8,
+            9,
+            8,
+            8,
+            9
+          ]
+        }
+      },
+      "createdAt": "2024-11-15T15:30:00Z",
+      "lastLogin": "2025-12-29T09:20:00Z"
+    },
+    {
+      "id": "user_014",
+      "username": "duong.tran",
+      "email": "duong.tran@mathair.com",
+      "password": "duongtr123",
+      "fullName": "Trần Thế Dương",
+      "dateOfBirth": "30/01/2010",
+      "school": "THPT Đông Hà",
+      "grade": "10C3",
+      "role": "user",
+      "studyingPoints": 1380,
+      "avatar": "ASSETS/images/avatars/avatar.jpg",
+      "completedContests": [
+        "contest_001",
+        "contest_002"
+      ],
+      "progress": {
+        "grade-7": {
+          "completed": 40,
+          "total": 40,
+          "scores": [
+            10,
+            9,
+            10,
+            10,
+            9,
+            10,
+            10,
+            9
+          ]
+        },
+        "grade-8": {
+          "completed": 43,
+          "total": 45,
+          "scores": [
+            9,
+            9,
+            9,
+            10,
+            9,
+            10
+          ]
+        },
+        "grade-9": {
+          "completed": 15,
+          "total": 50,
+          "scores": [
+            8,
+            9,
+            8,
+            9,
+            10
+          ]
+        }
+      },
+      "createdAt": "2024-12-01T10:45:00Z",
+      "lastLogin": "2025-12-28T13:15:00Z"
+    },
+    {
+      "id": "user_015",
+      "username": "nam.hoang",
+      "email": "nam.hoang@mathair.com",
+      "password": "namhoang456",
+      "fullName": "Hoàng Sỹ Nam",
+      "dateOfBirth": "12/05/2011",
+      "school": "THCS Kiến An",
+      "grade": "7C2",
+      "role": "user",
+      "studyingPoints": 900,
+      "avatar": "ASSETS/images/avatars/avatar.jpg",
+      "completedContests": [],
+      "progress": {
+        "grade-7": {
+          "completed": 14,
+          "total": 40,
+          "scores": [
+            7,
+            7,
+            8,
+            7
+          ]
+        }
+      },
+      "createdAt": "2024-12-10T08:30:00Z",
+      "lastLogin": "2025-12-27T11:45:00Z"
+    },
+    {
+      "id": "user_016",
+      "username": "hung.tran",
+      "email": "hung.tran@mathair.com",
+      "password": "hungtran789",
+      "fullName": "Trần Văn Hùng",
+      "dateOfBirth": "26/09/2010",
+      "school": "THCS Ngũ Hành Sơn",
+      "grade": "8D1",
+      "role": "user",
+      "studyingPoints": 1080,
+      "avatar": "ASSETS/images/avatars/avatar.jpg",
+      "completedContests": [
+        "contest_001"
+      ],
+      "progress": {
+        "grade-7": {
+          "completed": 35,
+          "total": 40,
+          "scores": [
+            8,
+            8,
+            8,
+            9,
+            8,
+            8,
+            9
+          ]
+        },
+        "grade-8": {
+          "completed": 14,
+          "total": 45,
+          "scores": [
+            7,
+            8,
+            8,
+            7
+          ]
+        }
+      },
+      "createdAt": "2025-01-05T12:00:00Z",
+      "lastLogin": "2025-12-26T15:30:00Z"
+    },
+    {
+      "id": "user_017",
+      "username": "thao.pham",
+      "email": "thao.pham@mathair.com",
+      "password": "thaopham123",
+      "fullName": "Phạm Thảo Anh",
+      "dateOfBirth": "18/07/2011",
+      "school": "THCS An Khánh",
+      "grade": "7B3",
+      "role": "user",
+      "studyingPoints": 850,
+      "avatar": "ASSETS/images/avatars/avatar.jpg",
+      "completedContests": [],
+      "progress": {
+        "grade-7": {
+          "completed": 9,
+          "total": 40,
+          "scores": [
+            6,
+            7,
+            6
+          ]
+        }
+      },
+      "createdAt": "2025-01-08T14:20:00Z",
+      "lastLogin": "2025-12-25T10:00:00Z"
+    },
+    {
+      "id": "user_018",
+      "username": "duc.tran",
+      "email": "duc.tran@mathair.com",
+      "password": "ductran456",
+      "fullName": "Trần Quý Đức",
+      "dateOfBirth": "04/03/2010",
+      "school": "THPT Yên Phong",
+      "grade": "11B1",
+      "role": "user",
+      "studyingPoints": 1500,
+      "avatar": "ASSETS/images/avatars/avatar.jpg",
+      "completedContests": [
+        "contest_001",
+        "contest_002"
+      ],
+      "progress": {
+        "grade-7": {
+          "completed": 40,
+          "total": 40,
+          "scores": [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10,
+            9,
+            10
+          ]
+        },
+        "grade-8": {
+          "completed": 45,
+          "total": 45,
+          "scores": [
+            10,
+            10,
+            10,
+            10,
+            10,
+            10
+          ]
+        },
+        "grade-9": {
+          "completed": 30,
+          "total": 50,
+          "scores": [
+            9,
+            10,
+            9,
+            10,
+            9,
+            10
+          ]
+        }
+      },
+      "createdAt": "2025-01-10T09:30:00Z",
+      "lastLogin": "2025-12-24T16:45:00Z"
+    },
+    {
+      "id": "user_019",
+      "username": "chi.ngo",
+      "email": "chi.ngo@mathair.com",
+      "password": "chingo789",
+      "fullName": "Ngô Thanh Chi",
+      "dateOfBirth": "21/11/2011",
+      "school": "THCS Nam Kỳ Khởi Nghĩa",
+      "grade": "7D3",
+      "role": "user",
+      "studyingPoints": 910,
+      "avatar": "ASSETS/images/avatars/avatar.jpg",
+      "completedContests": [],
+      "progress": {
+        "grade-7": {
+          "completed": 11,
+          "total": 40,
+          "scores": [
+            7,
+            8,
+            6,
+            8
+          ]
+        }
+      },
+      "createdAt": "2025-01-12T11:45:00Z",
+      "lastLogin": "2025-12-23T13:20:00Z"
+    },
+    {
+      "id": "user_020",
+      "username": "son.nguyen",
+      "email": "son.nguyen@mathair.com",
+      "password": "sonnguyen123",
+      "fullName": "Nguyễn Văn Sơn",
+      "dateOfBirth": "09/12/2010",
+      "school": "THCS Lê Quý Đôn",
+      "grade": "8A4",
+      "role": "user",
+      "studyingPoints": 1150,
+      "avatar": "ASSETS/images/avatars/avatar.jpg",
+      "completedContests": [
+        "contest_001"
+      ],
+      "progress": {
+        "grade-7": {
+          "completed": 36,
+          "total": 40,
+          "scores": [
+            8,
+            9,
+            8,
+            8,
+            9,
+            8,
+            8
+          ]
+        },
+        "grade-8": {
+          "completed": 19,
+          "total": 45,
+          "scores": [
+            8,
+            8,
+            9,
+            8,
+            8
+          ]
+        }
+      },
+      "createdAt": "2025-02-01T10:15:00Z",
+      "lastLogin": "2025-12-22T09:30:00Z"
+    },
+    {
+      "id": "user_021",
+      "username": "linh.hoang",
+      "email": "linh.hoang@mathair.com",
+      "password": "linhhoang456",
+      "fullName": "Hoàng Minh Linh",
+      "dateOfBirth": "13/08/2011",
+      "school": "THCS Hoàn Kiếm",
+      "grade": "7A1",
+      "role": "user",
+      "studyingPoints": 970,
+      "avatar": "ASSETS/images/avatars/avatar.jpg",
+      "completedContests": [],
+      "progress": {
+        "grade-7": {
+          "completed": 18,
+          "total": 40,
+          "scores": [
+            8,
+            7,
+            9,
+            7,
+            8
+          ]
+        }
+      },
+      "createdAt": "2025-02-05T13:50:00Z",
+      "lastLogin": "2025-12-21T14:15:00Z"
+    },
+    {
+      "id": "user_022",
+      "username": "truong.nguyen",
+      "email": "truong.nguyen@mathair.com",
+      "password": "truongnguyen123",
+      "fullName": "Nguyễn Công Trường",
+      "dateOfBirth": "28/06/2010",
+      "school": "THPT Gia Lâm",
+      "grade": "10A2",
+      "role": "user",
+      "studyingPoints": 1280,
+      "avatar": "ASSETS/images/avatars/avatar.jpg",
+      "completedContests": [
+        "contest_001",
+        "contest_002"
+      ],
+      "progress": {
+        "grade-7": {
+          "completed": 40,
+          "total": 40,
+          "scores": [
+            9,
+            10,
+            9,
+            9,
+            10,
+            10,
+            9,
+            9
+          ]
+        },
+        "grade-8": {
+          "completed": 41,
+          "total": 45,
+          "scores": [
+            9,
+            8,
+            9,
+            9,
+            9,
+            10
+          ]
+        },
+        "grade-9": {
+          "completed": 12,
+          "total": 50,
+          "scores": [
+            8,
+            8,
+            8,
+            9
+          ]
+        }
+      },
+      "createdAt": "2025-02-10T15:30:00Z",
+      "lastLogin": "2025-12-20T11:45:00Z"
+    },
+    {
+      "id": "user_023",
+      "username": "quang.tran",
+      "email": "quang.tran@mathair.com",
+      "password": "quangtran456",
+      "fullName": "Trần Quang Huy",
+      "dateOfBirth": "16/10/2010",
+      "school": "THCS Tiên Phong",
+      "grade": "8C1",
+      "role": "user",
+      "studyingPoints": 1190,
+      "avatar": "ASSETS/images/avatars/avatar.jpg",
+      "completedContests": [
+        "contest_001"
+      ],
+      "progress": {
+        "grade-7": {
+          "completed": 37,
+          "total": 40,
+          "scores": [
+            9,
+            8,
+            9,
+            8,
+            9,
+            8,
+            9
+          ]
+        },
+        "grade-8": {
+          "completed": 20,
+          "total": 45,
+          "scores": [
+            8,
+            8,
+            8,
+            9,
+            8
+          ]
+        }
+      },
+      "createdAt": "2025-02-15T10:20:00Z",
+      "lastLogin": "2025-12-19T16:20:00Z"
+    },
+    {
+      "id": "user_024",
+      "username": "mai.tran",
+      "email": "mai.tran@mathair.com",
+      "password": "maitran789",
+      "fullName": "Trần Anh Mai",
+      "dateOfBirth": "05/02/2011",
+      "school": "THCS Thăng Long",
+      "grade": "7C3",
+      "role": "user",
+      "studyingPoints": 830,
+      "avatar": "ASSETS/images/avatars/avatar.jpg",
+      "completedContests": [],
+      "progress": {
+        "grade-7": {
+          "completed": 7,
+          "total": 40,
+          "scores": [
+            6,
+            7,
+            5
+          ]
+        }
+      },
+      "createdAt": "2025-02-20T12:40:00Z",
+      "lastLogin": "2025-12-18T10:30:00Z"
+    },
+    {
+      "id": "user_025",
+      "username": "long.tran",
+      "email": "long.tran@mathair.com",
+      "password": "longtran123",
+      "fullName": "Trần Bảo Long",
+      "dateOfBirth": "22/04/2010",
+      "school": "THPT Nam Định",
+      "grade": "10B1",
+      "role": "user",
+      "studyingPoints": 1360,
+      "avatar": "ASSETS/images/avatars/avatar.jpg",
+      "completedContests": [
+        "contest_001",
+        "contest_002"
+      ],
+      "progress": {
+        "grade-7": {
+          "completed": 40,
+          "total": 40,
+          "scores": [
+            10,
+            9,
+            10,
+            9,
+            9,
+            10,
+            9,
+            10
+          ]
+        },
+        "grade-8": {
+          "completed": 44,
+          "total": 45,
+          "scores": [
+            9,
+            9,
+            10,
+            9,
+            9,
+            10
+          ]
+        },
+        "grade-9": {
+          "completed": 18,
+          "total": 50,
+          "scores": [
+            8,
+            9,
+            8,
+            9,
+            10
+          ]
+        }
+      },
+      "createdAt": "2025-02-25T14:15:00Z",
+      "lastLogin": "2025-12-17T15:45:00Z"
+    },
+    {
+      "id": "user_026",
+      "username": "thuy.hoang",
+      "email": "thuy.hoang@mathair.com",
+      "password": "thuyhoang456",
+      "fullName": "Hoàng Thanh Thuỷ",
+      "dateOfBirth": "31/05/2011",
+      "school": "THCS Cầu Giấy",
+      "grade": "7B2",
+      "role": "user",
+      "studyingPoints": 920,
+      "avatar": "ASSETS/images/avatars/avatar.jpg",
+      "completedContests": [],
+      "progress": {
+        "grade-7": {
+          "completed": 16,
+          "total": 40,
+          "scores": [
+            8,
+            7,
+            8,
+            7,
+            8
+          ]
+        }
+      },
+      "createdAt": "2025-03-01T11:30:00Z",
+      "lastLogin": "2025-12-16T12:00:00Z"
+    },
+    {
+      "id": "admin_001",
+      "username": "admin",
+      "email": "admin@mathair.com",
+      "password": "admin123",
+      "fullName": "Quản Trị Viên",
+      "dateOfBirth": "01/01/2000",
+      "school": "MathAir Team",
+      "grade": "Admin",
+      "role": "admin",
+      "studyingPoints": 1500,
+      "avatar": "ASSETS/images/avatars/admin.jpg",
+      "completedContests": [],
+      "progress": {},
+      "createdAt": "2024-01-01T00:00:00Z",
+      "lastLogin": "2026-01-10T08:00:00Z"
+    },
+    {
+      "id": "reviewer_001",
+      "username": "reviewer",
+      "email": "reviewer@mathair.com",
+      "password": "reviewer123",
+      "fullName": "Người Kiểm Duyệt",
+      "dateOfBirth": "01/01/2000",
+      "school": "MathAir Team",
+      "grade": "Reviewer",
+      "role": "reviewer",
+      "studyingPoints": 1300,
+      "avatar": "ASSETS/images/avatars/reviewer.jpg",
+      "completedContests": [],
+      "progress": {},
+      "createdAt": "2024-01-01T00:00:00Z",
+      "lastLogin": "2026-01-09T10:00:00Z"
+    }
+  ]
+}

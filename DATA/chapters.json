@@ -1,0 +1,193 @@
+{
+  "chapters": [
+    {
+      "id": "chapter-7-1",
+      "name": "Số hữu tỉ",
+      "description": "Khái niệm và tính chất của số hữu tỉ",
+      "exerciseCount": 8,
+      "gradeId": "grade-7"
+    },
+    {
+      "id": "chapter-7-2",
+      "name": "Số thực",
+      "description": "Tập hợp số thực và các tính chất",
+      "exerciseCount": 7,
+      "gradeId": "grade-7"
+    },
+    {
+      "id": "chapter-7-3",
+      "name": "Các hình khối trong thực tiễn",
+      "description": "Nhận biết và tính toán các hình khối cơ bản",
+      "exerciseCount": 6,
+      "gradeId": "grade-7"
+    },
+    {
+      "id": "chapter-7-4",
+      "name": "Góc và đường thẳng song song",
+      "description": "Tính chất góc và đường thẳng song song",
+      "exerciseCount": 8,
+      "gradeId": "grade-7"
+    },
+    {
+      "id": "chapter-7-5",
+      "name": "Một số yếu tố thống kê",
+      "description": "Thống kê dữ liệu và biểu đồ cơ bản",
+      "exerciseCount": 6,
+      "gradeId": "grade-7"
+    },
+    {
+      "id": "chapter-7-6",
+      "name": "Các đại lượng tỷ lệ",
+      "description": "Tỷ lệ thuận, tỷ lệ nghịch và ứng dụng",
+      "exerciseCount": 7,
+      "gradeId": "grade-7"
+    },
+    {
+      "id": "chapter-7-7",
+      "name": "Biểu thức đại số",
+      "description": "Biểu thức đại số, đơn thức và đa thức",
+      "exerciseCount": 8,
+      "gradeId": "grade-7"
+    },
+    {
+      "id": "chapter-7-8",
+      "name": "Tam giác",
+      "description": "Tính chất, dấu hiệu nhận biết tam giác",
+      "exerciseCount": 8,
+      "gradeId": "grade-7"
+    },
+    {
+      "id": "chapter-7-9",
+      "name": "Một số yếu tố xác suất",
+      "description": "Xác suất cơ bản và tính toán xác suất",
+      "exerciseCount": 6,
+      "gradeId": "grade-7"
+    },
+    {
+      "id": "chapter-8-1",
+      "name": "Đa thức",
+      "description": "Khái niệm, phép toán với đa thức một biến",
+      "exerciseCount": 8,
+      "gradeId": "grade-8"
+    },
+    {
+      "id": "chapter-8-2",
+      "name": "Hằng đẳng thức đáng nhớ và ứng dụng",
+      "description": "Các hằng đẳng thức quan trọng và phân tích đa thức",
+      "exerciseCount": 9,
+      "gradeId": "grade-8"
+    },
+    {
+      "id": "chapter-8-3",
+      "name": "Tứ giác",
+      "description": "Các loại tứ giác và tính chất",
+      "exerciseCount": 8,
+      "gradeId": "grade-8"
+    },
+    {
+      "id": "chapter-8-4",
+      "name": "Định lí Thalès",
+      "description": "Định lý Thalès và ứng dụng",
+      "exerciseCount": 7,
+      "gradeId": "grade-8"
+    },
+    {
+      "id": "chapter-8-5",
+      "name": "Dữ liệu và biểu đồ",
+      "description": "Phân tích dữ liệu và biểu đồ thống kê",
+      "exerciseCount": 6,
+      "gradeId": "grade-8"
+    },
+    {
+      "id": "chapter-8-6",
+      "name": "Phân thức đại số",
+      "description": "Định nghĩa, tính chất và phép toán với phân thức",
+      "exerciseCount": 8,
+      "gradeId": "grade-8"
+    },
+    {
+      "id": "chapter-8-7",
+      "name": "Phương trình bậc nhất và hàm số bậc nhất",
+      "description": "Giải phương trình bậc nhất và hàm số bậc nhất",
+      "exerciseCount": 9,
+      "gradeId": "grade-8"
+    },
+    {
+      "id": "chapter-8-8",
+      "name": "Mở đầu về tính xác suất của biến cố",
+      "description": "Xác suất của biến cố và các phép tính xác suất",
+      "exerciseCount": 7,
+      "gradeId": "grade-8"
+    },
+    {
+      "id": "chapter-8-9",
+      "name": "Tam giác đồng dạng",
+      "description": "Tính chất và dấu hiệu nhận biết tam giác đồng dạng",
+      "exerciseCount": 8,
+      "gradeId": "grade-8"
+    },
+    {
+      "id": "chapter-8-10",
+      "name": "Một số hình khối trong thực tiễn",
+      "description": "Hình trụ, hình nón và tính toán liên quan",
+      "exerciseCount": 7,
+      "gradeId": "grade-8"
+    },
+    {
+      "id": "chapter-9-1",
+      "name": "Căn Bậc Hai. Căn Bậc Ba",
+      "description": "Căn bậc hai, căn bậc ba và ứng dụng",
+      "exerciseCount": 9,
+      "gradeId": "grade-9"
+    },
+    {
+      "id": "chapter-9-2",
+      "name": "Hàm Số Bậc Nhất",
+      "description": "Khái niệm, tính chất hàm số bậc nhất",
+      "exerciseCount": 8,
+      "gradeId": "grade-9"
+    },
+    {
+      "id": "chapter-9-3",
+      "name": "Hệ Hai Phương Trình Bậc Nhất Hai Ẩn",
+      "description": "Giải hệ phương trình bậc nhất hai ẩn",
+      "exerciseCount": 8,
+      "gradeId": "grade-9"
+    },
+    {
+      "id": "chapter-9-4",
+      "name": "Phương Trình Bậc Hai Một Ẩn",
+      "description": "Giải phương trình bậc hai và ứng dụng",
+      "exerciseCount": 9,
+      "gradeId": "grade-9"
+    },
+    {
+      "id": "chapter-9-5",
+      "name": "Hệ Thức Lượng Trong Tam Giác Vuông",
+      "description": "Tỉ số lượng giác và hệ thức lượng tam giác vuông",
+      "exerciseCount": 8,
+      "gradeId": "grade-9"
+    },
+    {
+      "id": "chapter-9-6",
+      "name": "Đường Tròn",
+      "description": "Tính chất đường tròn và vị trí tương đối",
+      "exerciseCount": 8,
+      "gradeId": "grade-9"
+    },
+    {
+      "id": "chapter-9-7",
+      "name": "Góc Với Đường Tròn",
+      "description": "Góc ở tâm, góc nội tiếp và ứng dụng",
+      "exerciseCount": 9,
+      "gradeId": "grade-9"
+    },
+    {
+      "id": "chapter-9-8",
+      "name": "Hình Trụ - Hình Nón - Hình Cầu",
+      "description": "Tính toán diện tích và thể tích các hình khối",
+      "exerciseCount": 8,
+      "gradeId": "grade-9"
+    }
+  ]
+}

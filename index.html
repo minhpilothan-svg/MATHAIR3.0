@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MathAir - Học Toán Thông Minh</title>
+    
+    <link rel="stylesheet" href="CSS/main.css">
+    <link rel="stylesheet" href="CSS/components.css">
+    <link rel="stylesheet" href="CSS/calculator.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.12.0/math.min.js"></script>
+    
+    <!-- Chart.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header" id="app-header">
+    </header>
+
+    <main class="main" id="main-content">
+        <div class="loading">
+            <p>Đang tải...</p>
+        </div>
+    </main> 
+
+    <footer class="footer" id="app-footer">
+        <p>&copy; 2026 MathAir. All rights reserved.</p>
+    </footer>
+
+    <div id="calculator-modal" class="calculator-modal" style="display: none;">
+    </div>
+
+    <!-- User Profile Modal -->
+    <div id="user-profile-modal" class="modal" style="display: none;">
+        <div class="modal-content modal-lg">
+            <div class="modal-header">
+                <h3>Hồ Sơ Của Tôi</h3>
+                <button class="modal-close" id="user-profile-modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="user-profile-body">
+                <div class="profile-container">
+                    <!-- User Info Section -->
+                    <div class="profile-info">
+                        <div class="profile-header">
+                            <img id="my-profile-avatar" src="" alt="Avatar" class="profile-avatar">
+                            <div class="profile-details">
+                                <h4 id="my-profile-fullname"></h4>
+                                <p id="my-profile-email"></p>
+                                <p id="my-profile-school"></p>
+                                <p id="my-profile-points" class="profile-points"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Charts Section -->
+                    <div class="profile-charts">
+                        <!-- Line Chart -->
+                        <div class="chart-container">
+                            <h5>Biểu Đồ Tiến Độ Học Tập</h5>
+                            <canvas id="myProgressChart"></canvas>
+                        </div>
+
+                        <!-- Bar Chart -->
+                        <div class="chart-container">
+                            <h5>Biểu Đồ Điểm Số Theo Chương</h5>
+                            <canvas id="myScoresChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="JS/auth.js"></script>
+    <script src="JS/contests.js"></script>
+    <script src="JS/calculator.js"></script>
+    <script src="JS/quiz.js"></script>
+    <script src="JS/app.js"></script>
+    <script src="JS/router.js"></script>   
+</body>
+</html>

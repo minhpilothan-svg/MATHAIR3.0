@@ -1,0 +1,43 @@
+{
+  "grades": [
+    {
+      "id": "grade-7",
+      "name": "Khối 7",
+      "totalExercises": 40,
+      "description": "Toán học lớp 7 - Số hữu tỉ, hình học cơ bản",
+      "chapters": [
+        "chapter-7-1",
+        "chapter-7-2",
+        "chapter-7-3",
+        "chapter-7-4",
+        "chapter-7-5",
+        "chapter-7-6",
+        "chapter-7-7"
+      ]
+    },
+    {
+      "id": "grade-8",
+      "name": "Khối 8",
+      "totalExercises": 45,
+      "description": "Toán học lớp 8 - Phương trình, hình học nâng cao",
+      "chapters": [
+        "chapter-8-1",
+        "chapter-8-2",
+        "chapter-8-3",
+        "chapter-8-4",
+        "chapter-8-5",
+        "chapter-8-6",
+        "chapter-8-7",
+        "chapter-8-8",
+        "chapter-8-9"
+      ]
+    },
+    {
+      "id": "grade-9",
+      "name": "Khối 9",
+      "totalExercises": 50,
+      "description": "Toán học lớp 9 - Ôn thi vào 10",
+      "chapters": []
+    }
+  ]
+}

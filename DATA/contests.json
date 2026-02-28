@@ -1,0 +1,52 @@
+{
+  "contests": [
+    {
+      "id": "contest_001",
+      "title": "Cuộc Thi Toán Lớp 7 - Chương 1",
+      "description": "Một cuộc thi thử thách về số hữu tỉ và các phép toán cơ bản. Kiểm tra kiến thức của bạn qua 20 câu hỏi trắc nghiệm.",
+      "createdBy": "admin_001",
+      "startTime": "2026-01-15T10:00:00Z",
+      "endTime": "2026-01-15T11:00:00Z",
+      "duration": 60,
+      "totalQuestions": 10,
+      "questions": ["q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8", "q9", "q10"],
+      "maxParticipants": 100,
+      "participants": [],
+      "results": [],
+      "status": "upcoming",
+      "createdAt": "2026-01-19T09:00:00Z"
+    },
+    {
+      "id": "contest_002",
+      "title": "Cuộc Thi Toán Lớp 8 - Chương 1",
+      "description": "Thử thách với các bài toán về đa thức và phân thức. Gồm 15 câu hỏi đa dạng từ cơ bản đến nâng cao.",
+      "createdBy": "admin_001",
+      "startTime": "2026-01-18T14:00:00Z",
+      "endTime": "2026-01-18T15:30:00Z",
+      "duration": 20,
+      "totalQuestions": 15,
+      "questions": ["q11", "q12", "q13", "q14", "q15", "q16", "q17", "q18", "q19", "q20", "q21", "q22", "q23", "q24", "q25"],
+      "maxParticipants": 150,
+      "participants": [],
+      "results": [],
+      "status": "upcoming",
+      "createdAt": "2025-12-27T09:30:00Z"
+    },
+    {
+      "id": "contest_003",
+      "title": "Cuộc Thi Nhanh - 10 Phút",
+      "description": "Một cuộc thi nhanh 10 phút với 5 câu hỏi khó. Phù hợp để rèn luyện phản xạ toán học.",
+      "createdBy": "admin_001",
+      "startTime": "2026-01-18T15:00:00Z",
+      "endTime": "2026-01-19T15:10:00Z",
+      "duration": 10,
+      "totalQuestions": 5,
+      "questions": ["q1", "q3", "q5", "q7", "q9"],
+      "maxParticipants": 50,
+      "participants": [],
+      "results": [],
+      "status": "upcoming",
+      "createdAt": "2025-01-19T09:00:00Z"
+    }
+  ]
+}

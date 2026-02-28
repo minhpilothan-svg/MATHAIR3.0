@@ -1,0 +1,2191 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "chapterId": "chapter-7-1",
+      "type": "multiple-choice",
+      "question": "Số hữu tỉ là gì?",
+      "options": [
+        "Số có thể biểu diễn dưới dạng phân số a/b, trong đó a và b là các số nguyên và b khác 0.",
+        "Số không thể biểu diễn dưới dạng phân số a/b.",
+        "Số thập phân vô hạn không tuần hoàn.",
+        "Số nguyên dương."
+      ],
+      "correctAnswer": 0,
+      "explanation": "Số hữu tỉ là số có thể viết dưới dạng a/b với b ≠ 0"
+    },
+    {
+      "id": "q2",
+      "chapterId": "chapter-7-1",
+      "type": "multiple-choice",
+      "question": "Số nào sau đây là số hữu tỉ?",
+      "options": [
+        "0.5",
+        "π",
+        "√2",
+        "e"
+      ],
+      "correctAnswer": 0,
+      "explanation": "0.5 = 1/2 là phân số, nên là số hữu tỉ. π, √2, e là các số vô tỉ."
+    },
+    {
+      "id": "q3",
+      "chapterId": "chapter-7-1",
+      "type": "multiple-choice",
+      "question": "Phân số nào biểu diễn số hữu tỉ -0.75?",
+      "options": [
+        "-3/4",
+        "3/4",
+        "-4/3",
+        "4/3"
+      ],
+      "correctAnswer": 0,
+      "explanation": "-0.75 = -75/100 = -3/4"
+    },
+    {
+      "id": "q4",
+      "chapterId": "chapter-7-1",
+      "type": "multiple-choice",
+      "question": "Hai phân số nào biểu diễn cùng một số hữu tỉ?",
+      "options": [
+        "2/3 và 4/6",
+        "1/2 và 2/3",
+        "3/5 và 5/3",
+        "1/4 và 1/5"
+      ],
+      "correctAnswer": 0,
+      "explanation": "2/3 = 4/6 (nhân cả tử và mẫu với 2). Hai phân số bằng nhau biểu diễn cùng một số hữu tỉ."
+    },
+    {
+      "id": "q5",
+      "chapterId": "chapter-7-1",
+      "type": "multiple-choice",
+      "question": "Số nguyên 5 có phải là số hữu tỉ không?",
+      "options": [
+        "Có, vì 5 = 5/1",
+        "Không, vì 5 không phải phân số",
+        "Có, nhưng chỉ khi 5 > 0",
+        "Không thể xác định"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Mọi số nguyên đều là số hữu tỉ vì có thể viết dưới dạng a/1."
+    },
+    {
+      "id": "q6",
+      "chapterId": "chapter-7-1",
+      "type": "calculation",
+      "question": "Sắp xếp các số sau theo thứ tự tăng dần: -2/3, 1/2, -1/4, 0",
+      "options": [
+        "-2/3, -1/4, 0, 1/2",
+        "-1/4, -2/3, 0, 1/2",
+        "0, -1/4, -2/3, 1/2",
+        "1/2, 0, -1/4, -2/3"
+      ],
+      "correctAnswer": 0,
+      "explanation": "-2/3 ≈ -0.67, -1/4 = -0.25, 0 = 0, 1/2 = 0.5. Thứ tự: -0.67 < -0.25 < 0 < 0.5"
+    },
+    {
+      "id": "q7",
+      "chapterId": "chapter-7-1",
+      "type": "text-input",
+      "question": "Viết số thập phân 0.125 dưới dạng phân số tối giản.",
+      "correctAnswer": "1/8",
+      "acceptedAnswers": ["1/8", "0.125"],
+      "allowCalculator": false
+    },
+    {
+      "id": "q8",
+      "chapterId": "chapter-7-1",
+      "type": "multiple-choice",
+      "question": "Số thập phân 0.333... (vô hạn tuần hoàn) có phải là số hữu tỉ không?",
+      "options": [
+        "Có, vì 0.333... = 1/3",
+        "Không, vì nó là số thập phân vô hạn",
+        "Chỉ là số hữu tỉ khi làm tròn",
+        "Không thể xác định"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Số thập phân vô hạn tuần hoàn luôn là số hữu tỉ, có thể viết dưới dạng phân số."
+    },
+    {
+      "id": "q9",
+      "chapterId": "chapter-7-1",
+      "type": "multiple-choice",
+      "question": "Số nào sau đây KHÔNG phải là số hữu tỉ?",
+      "options": [
+        "√3",
+        "0",
+        "-7",
+        "2.5"
+      ],
+      "correctAnswer": 0,
+      "explanation": "√3 là số vô tỉ vì không thể viết dưới dạng phân số a/b."
+    },
+    {
+      "id": "q10",
+      "chapterId": "chapter-7-1",
+      "type": "text-input",
+      "question": "Viết số -3.6 dưới dạng phân số tối giản.",
+      "correctAnswer": "-18/5",
+      "acceptedAnswers": ["-18/5", "-36/10"],
+      "allowCalculator": false
+    },
+    {
+      "id": "q11",
+      "chapterId": "chapter-7-2",
+      "type": "calculation",
+      "question": "Kết quả của phép tính 1/3 + 5/4 là gì?",
+      "options": [
+        "19/12",
+        "6/7",
+        "-7/12",
+        "-1/12"
+      ],
+      "correctAnswer": 0,
+      "allowCalculator": false,
+      "fractionDisplay": true,
+      "explanation": "1/3 + 5/4 = 4/12 + 15/12 = 19/12"
+    },
+    {
+      "id": "q12",
+      "chapterId": "chapter-7-2",
+      "type": "multiple-choice",
+      "question": "Tính: 2/5 - 1/3 = ?",
+      "options": [
+        "1/15",
+        "1/2",
+        "3/8",
+        "-1/15"
+      ],
+      "correctAnswer": 0,
+      "explanation": "2/5 - 1/3 = 6/15 - 5/15 = 1/15"
+    },
+    {
+      "id": "q13",
+      "chapterId": "chapter-7-2",
+      "type": "multiple-choice",
+      "question": "Kết quả của (-3/4) + (5/6) là:",
+      "options": [
+        "1/12",
+        "-1/12",
+        "2/10",
+        "8/10"
+      ],
+      "correctAnswer": 0,
+      "explanation": "(-3/4) + (5/6) = (-9/12) + (10/12) = 1/12"
+    },
+    {
+      "id": "q14",
+      "chapterId": "chapter-7-2",
+      "type": "text-input",
+      "question": "Tính giá trị của biểu thức: -2/3 + 3/4 - 1/6",
+      "correctAnswer": "-1/12",
+      "acceptedAnswers": ["-1/12", "-0.0833"],
+      "allowCalculator": true
+    },
+    {
+      "id": "q15",
+      "chapterId": "chapter-7-2",
+      "type": "multiple-choice",
+      "question": "Phép cộng số hữu tỉ có tính chất giao hoán không?",
+      "options": [
+        "Có, a + b = b + a với mọi số hữu tỉ a, b",
+        "Không, vì phụ thuộc vào dấu của số",
+        "Chỉ đúng với số dương",
+        "Chỉ đúng khi a = b"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Phép cộng số hữu tỉ có tính giao hoán: a + b = b + a"
+    },
+    {
+      "id": "q16",
+      "chapterId": "chapter-7-2",
+      "type": "multiple-choice",
+      "question": "Số đối của -5/7 là:",
+      "options": [
+        "5/7",
+        "-5/7",
+        "7/5",
+        "-7/5"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Số đối của a là -a. Số đối của -5/7 là -(-5/7) = 5/7"
+    },
+    {
+      "id": "q17",
+      "chapterId": "chapter-7-2",
+      "type": "text-input",
+      "question": "Một cửa hàng bán vải có 3/4 mét vải đỏ và 5/6 mét vải xanh. Hỏi cửa hàng có tất cả bao nhiêu mét vải? (Đáp án dạng phân số)",
+      "correctAnswer": "19/12",
+      "acceptedAnswers": ["19/12", "1.583", "1 7/12"],
+      "allowCalculator": true
+    },
+    {
+      "id": "q18",
+      "chapterId": "chapter-7-2",
+      "type": "multiple-choice",
+      "question": "Tính: 7/8 - (-3/8) = ?",
+      "options": [
+        "10/8 = 5/4",
+        "4/8 = 1/2",
+        "1",
+        "-4/8"
+      ],
+      "correctAnswer": 0,
+      "explanation": "7/8 - (-3/8) = 7/8 + 3/8 = 10/8 = 5/4"
+    },
+    {
+      "id": "q19",
+      "chapterId": "chapter-7-2",
+      "type": "calculation",
+      "question": "Kết quả của (-2/3) + (-4/5) là:",
+      "options": [
+        "-22/15",
+        "2/15",
+        "-6/8",
+        "22/15"
+      ],
+      "correctAnswer": 0,
+      "explanation": "(-2/3) + (-4/5) = (-10/15) + (-12/15) = -22/15"
+    },
+    {
+      "id": "q20",
+      "chapterId": "chapter-7-2",
+      "type": "text-input",
+      "question": "Tìm x biết: x + 2/5 = 3/4",
+      "correctAnswer": "7/20",
+      "acceptedAnswers": ["7/20", "0.35"],
+      "allowCalculator": true
+    },
+    {
+      "id": "q21",
+      "chapterId": "chapter-7-3",
+      "type": "multiple-choice",
+      "question": "Tính: 2/3 × 5/7 = ?",
+      "options": [
+        "10/21",
+        "7/10",
+        "10/10",
+        "15/21"
+      ],
+      "correctAnswer": 0,
+      "explanation": "2/3 × 5/7 = (2×5)/(3×7) = 10/21"
+    },
+    {
+      "id": "q22",
+      "chapterId": "chapter-7-3",
+      "type": "multiple-choice",
+      "question": "Tính: (-3/4) × (8/9) = ?",
+      "options": [
+        "-2/3",
+        "2/3",
+        "-24/36",
+        "24/13"
+      ],
+      "correctAnswer": 0,
+      "explanation": "(-3/4) × (8/9) = (-3×8)/(4×9) = -24/36 = -2/3"
+    },
+    {
+      "id": "q23",
+      "chapterId": "chapter-7-3",
+      "type": "multiple-choice",
+      "question": "Số nghịch đảo của -5/6 là:",
+      "options": [
+        "-6/5",
+        "6/5",
+        "5/6",
+        "-5/6"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Số nghịch đảo của a/b là b/a. Số nghịch đảo của -5/6 là -6/5"
+    },
+    {
+      "id": "q24",
+      "chapterId": "chapter-7-3",
+      "type": "calculation",
+      "question": "Tính: (2/5) : (3/4) = ?",
+      "options": [
+        "8/15",
+        "6/20",
+        "15/8",
+        "5/12"
+      ],
+      "correctAnswer": 0,
+      "explanation": "(2/5) : (3/4) = (2/5) × (4/3) = 8/15"
+    },
+    {
+      "id": "q25",
+      "chapterId": "chapter-7-3",
+      "type": "text-input",
+      "question": "Tính: (-4/7) × (-14/8). Cho đáp án dưới dạng phân số tối giản.",
+      "correctAnswer": "1",
+      "acceptedAnswers": ["1", "1/1"],
+      "allowCalculator": true
+    },
+    {
+      "id": "q26",
+      "chapterId": "chapter-7-3",
+      "type": "multiple-choice",
+      "question": "Phép nhân số hữu tỉ có tính chất nào sau đây?",
+      "options": [
+        "Giao hoán và kết hợp",
+        "Chỉ có tính giao hoán",
+        "Chỉ có tính kết hợp",
+        "Không có tính chất đặc biệt"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Phép nhân số hữu tỉ có cả tính giao hoán (a×b = b×a) và kết hợp ((a×b)×c = a×(b×c))"
+    },
+    {
+      "id": "q27",
+      "chapterId": "chapter-7-3",
+      "type": "multiple-choice",
+      "question": "Tính: 0 × (-5/8) = ?",
+      "options": [
+        "0",
+        "-5/8",
+        "5/8",
+        "Không xác định"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Mọi số nhân với 0 đều bằng 0"
+    },
+    {
+      "id": "q28",
+      "chapterId": "chapter-7-3",
+      "type": "text-input",
+      "question": "Một mảnh đất hình chữ nhật có chiều dài 5/4 m và chiều rộng 3/2 m. Tính diện tích mảnh đất (đơn vị: m²).",
+      "correctAnswer": "15/8",
+      "acceptedAnswers": ["15/8", "1.875", "1 7/8"],
+      "allowCalculator": true
+    },
+    {
+      "id": "q29",
+      "chapterId": "chapter-7-3",
+      "type": "calculation",
+      "question": "Tính: (3/5) × (10/9) × (15/6) = ?",
+      "options": [
+        "1",
+        "3/2",
+        "2",
+        "450/270"
+      ],
+      "correctAnswer": 0,
+      "explanation": "(3/5) × (10/9) × (15/6) = (3×10×15)/(5×9×6) = 450/270 = 1"
+    },
+    {
+      "id": "q30",
+      "chapterId": "chapter-7-3",
+      "type": "text-input",
+      "question": "Tìm x biết: (2/3) × x = 4/9",
+      "correctAnswer": "2/3",
+      "acceptedAnswers": ["2/3", "0.6667"],
+      "allowCalculator": true
+    },
+    {
+      "id": "q31",
+      "chapterId": "chapter-7-4",
+      "type": "multiple-choice",
+      "question": "Tính: (2/3)² = ?",
+      "options": [
+        "4/9",
+        "2/6",
+        "4/6",
+        "2/9"
+      ],
+      "correctAnswer": 0,
+      "explanation": "(2/3)² = (2/3) × (2/3) = 4/9"
+    },
+    {
+      "id": "q32",
+      "chapterId": "chapter-7-4",
+      "type": "multiple-choice",
+      "question": "Tính: (-1/2)³ = ?",
+      "options": [
+        "-1/8",
+        "1/8",
+        "-1/6",
+        "1/6"
+      ],
+      "correctAnswer": 0,
+      "explanation": "(-1/2)³ = (-1/2) × (-1/2) × (-1/2) = -1/8"
+    },
+    {
+      "id": "q33",
+      "chapterId": "chapter-7-4",
+      "type": "multiple-choice",
+      "question": "Công thức nào sau đây là đúng?",
+      "options": [
+        "aᵐ × aⁿ = aᵐ⁺ⁿ",
+        "aᵐ × aⁿ = aᵐ⁻ⁿ",
+        "aᵐ × aⁿ = aᵐⁿ",
+        "aᵐ × aⁿ = a²ᵐⁿ"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Khi nhân hai lũy thừa cùng cơ số, ta cộng số mũ: aᵐ × aⁿ = aᵐ⁺ⁿ"
+    },
+    {
+      "id": "q34",
+      "chapterId": "chapter-7-4",
+      "type": "calculation",
+      "question": "Tính: (1/4)² × (1/4)³ = ?",
+      "options": [
+        "(1/4)⁵",
+        "(1/4)⁶",
+        "1/16",
+        "1/64"
+      ],
+      "correctAnswer": 0,
+      "explanation": "(1/4)² × (1/4)³ = (1/4)²⁺³ = (1/4)⁵"
+    },
+    {
+      "id": "q35",
+      "chapterId": "chapter-7-4",
+      "type": "multiple-choice",
+      "question": "Tính: (3/5)⁰ = ?",
+      "options": [
+        "1",
+        "0",
+        "3/5",
+        "5/3"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Mọi số khác 0 mũ 0 đều bằng 1: a⁰ = 1 (a ≠ 0)"
+    },
+    {
+      "id": "q36",
+      "chapterId": "chapter-7-4",
+      "type": "text-input",
+      "question": "Tính giá trị của (2/3)³. Cho đáp án dưới dạng phân số.",
+      "correctAnswer": "8/27",
+      "acceptedAnswers": ["8/27", "0.296"],
+      "allowCalculator": true
+    },
+    {
+      "id": "q37",
+      "chapterId": "chapter-7-4",
+      "type": "multiple-choice",
+      "question": "Tính: (2³)² = ?",
+      "options": [
+        "2⁶",
+        "2⁵",
+        "4⁵",
+        "4⁶"
+      ],
+      "correctAnswer": 0,
+      "explanation": "(aᵐ)ⁿ = aᵐⁿ, nên (2³)² = 2³ˣ² = 2⁶"
+    },
+    {
+      "id": "q38",
+      "chapterId": "chapter-7-4",
+      "type": "calculation",
+      "question": "Tính: 2⁵ : 2³ = ?",
+      "options": [
+        "2²",
+        "2⁸",
+        "2¹⁵",
+        "4"
+      ],
+      "correctAnswer": 0,
+      "explanation": "aᵐ : aⁿ = aᵐ⁻ⁿ, nên 2⁵ : 2³ = 2⁵⁻³ = 2²"
+    },
+    {
+      "id": "q39",
+      "chapterId": "chapter-7-4",
+      "type": "text-input",
+      "question": "Tính: (-2)⁴ = ?",
+      "correctAnswer": "16",
+      "acceptedAnswers": ["16"],
+      "allowCalculator": false
+    },
+    {
+      "id": "q40",
+      "chapterId": "chapter-7-4",
+      "type": "multiple-choice",
+      "question": "So sánh: (1/2)³ và (1/3)³",
+      "options": [
+        "(1/2)³ > (1/3)³",
+        "(1/2)³ < (1/3)³",
+        "(1/2)³ = (1/3)³",
+        "Không so sánh được"
+      ],
+      "correctAnswer": 0,
+      "explanation": "(1/2)³ = 1/8 và (1/3)³ = 1/27. Vì 1/8 > 1/27 nên (1/2)³ > (1/3)³"
+    },
+    {
+      "id": "q41",
+      "chapterId": "chapter-7-5",
+      "type": "multiple-choice",
+      "question": "So sánh: -2/3 và -3/4",
+      "options": [
+        "-2/3 > -3/4",
+        "-2/3 < -3/4",
+        "-2/3 = -3/4",
+        "Không so sánh được"
+      ],
+      "correctAnswer": 0,
+      "explanation": "-2/3 ≈ -0.667 và -3/4 = -0.75. Vì -0.667 > -0.75 nên -2/3 > -3/4"
+    },
+    {
+      "id": "q42",
+      "chapterId": "chapter-7-5",
+      "type": "multiple-choice",
+      "question": "Số hữu tỉ nào nằm giữa 1/3 và 1/2?",
+      "options": [
+        "2/5",
+        "1/4",
+        "3/5",
+        "2/3"
+      ],
+      "correctAnswer": 0,
+      "explanation": "1/3 ≈ 0.333, 1/2 = 0.5, 2/5 = 0.4. Vậy 1/3 < 2/5 < 1/2"
+    },
+    {
+      "id": "q43",
+      "chapterId": "chapter-7-5",
+      "type": "calculation",
+      "question": "Sắp xếp các số sau theo thứ tự giảm dần: 3/4, 2/3, 5/6",
+      "options": [
+        "5/6, 3/4, 2/3",
+        "2/3, 3/4, 5/6",
+        "3/4, 5/6, 2/3",
+        "5/6, 2/3, 3/4"
+      ],
+      "correctAnswer": 0,
+      "explanation": "5/6 ≈ 0.833, 3/4 = 0.75, 2/3 ≈ 0.667. Thứ tự giảm dần: 5/6 > 3/4 > 2/3"
+    },
+    {
+      "id": "q44",
+      "chapterId": "chapter-7-5",
+      "type": "text-input",
+      "question": "Tìm số hữu tỉ x biết: -1/2 < x < 0 và x có mẫu số là 4. Viết một giá trị của x.",
+      "correctAnswer": "-1/4",
+      "acceptedAnswers": ["-1/4"],
+      "allowCalculator": false
+    },
+    {
+      "id": "q45",
+      "chapterId": "chapter-7-5",
+      "type": "multiple-choice",
+      "question": "Nếu a < b và c < 0 thì:",
+      "options": [
+        "a×c > b×c",
+        "a×c < b×c",
+        "a×c = b×c",
+        "Không xác định được"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Khi nhân cả hai vế của bất đẳng thức với số âm, chiều bất đẳng thức đổi chiều."
+    },
+    {
+      "id": "q46",
+      "chapterId": "chapter-7-6",
+      "type": "multiple-choice",
+      "question": "Giá trị tuyệt đối của -5/7 là:",
+      "options": [
+        "5/7",
+        "-5/7",
+        "7/5",
+        "0"
+      ],
+      "correctAnswer": 0,
+      "explanation": "|−5/7| = 5/7. Giá trị tuyệt đối của số âm là số dương đối lập với nó."
+    },
+    {
+      "id": "q47",
+      "chapterId": "chapter-7-6",
+      "type": "multiple-choice",
+      "question": "Tính: |-3/4| + |2/3| = ?",
+      "options": [
+        "17/12",
+        "1/12",
+        "-17/12",
+        "5/7"
+      ],
+      "correctAnswer": 0,
+      "explanation": "|-3/4| + |2/3| = 3/4 + 2/3 = 9/12 + 8/12 = 17/12"
+    },
+    {
+      "id": "q48",
+      "chapterId": "chapter-7-6",
+      "type": "text-input",
+      "question": "Tìm x biết: |x| = 3/5",
+      "correctAnswer": "3/5",
+      "acceptedAnswers": ["3/5", "-3/5", "±3/5"],
+      "allowCalculator": false
+    },
+    {
+      "id": "q49",
+      "chapterId": "chapter-7-6",
+      "type": "multiple-choice",
+      "question": "Tính: |-2/3| × |-4/5| = ?",
+      "options": [
+        "8/15",
+        "-8/15",
+        "6/8",
+        "-6/8"
+      ],
+      "correctAnswer": 0,
+      "explanation": "|-2/3| × |-4/5| = (2/3) × (4/5) = 8/15"
+    },
+    {
+      "id": "q50",
+      "chapterId": "chapter-7-6",
+      "type": "multiple-choice",
+      "question": "Khoảng cách từ điểm biểu diễn số -3/4 đến gốc 0 trên trục số là:",
+      "options": [
+        "3/4",
+        "-3/4",
+        "4/3",
+        "0"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Khoảng cách từ điểm biểu diễn số a đến gốc 0 là |a|. Vậy khoảng cách là |-3/4| = 3/4"
+    },
+    {
+      "id": "q51",
+      "chapterId": "chapter-7-7",
+      "type": "multiple-choice",
+      "question": "Số nào sau đây là số vô tỉ?",
+      "options": [
+        "√5",
+        "√4",
+        "√9",
+        "0.25"
+      ],
+      "correctAnswer": 0,
+      "explanation": "√5 không thể viết dưới dạng phân số nên là số vô tỉ. √4 = 2 và √9 = 3 là số hữu tỉ."
+    },
+    {
+      "id": "q52",
+      "chapterId": "chapter-7-7",
+      "type": "multiple-choice",
+      "question": "Căn bậc hai số học của 16 là:",
+      "options": [
+        "4",
+        "±4",
+        "8",
+        "256"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Căn bậc hai số học của 16 là số dương x sao cho x² = 16, tức là 4."
+    },
+    {
+      "id": "q53",
+      "chapterId": "chapter-7-7",
+      "type": "calculation",
+      "question": "Tính: √49 + √25 = ?",
+      "options": [
+        "12",
+        "√74",
+        "8",
+        "10"
+      ],
+      "correctAnswer": 0,
+      "explanation": "√49 + √25 = 7 + 5 = 12"
+    },
+    {
+      "id": "q54",
+      "chapterId": "chapter-7-7",
+      "type": "text-input",
+      "question": "Tính: √64 - √36",
+      "correctAnswer": "2",
+      "acceptedAnswers": ["2"],
+      "allowCalculator": false
+    },
+    {
+      "id": "q55",
+      "chapterId": "chapter-7-7",
+      "type": "multiple-choice",
+      "question": "So sánh: √10 và 3",
+      "options": [
+        "√10 > 3",
+        "√10 < 3",
+        "√10 = 3",
+        "Không so sánh được"
+      ],
+      "correctAnswer": 0,
+      "explanation": "√10 ≈ 3.162 > 3, hoặc so sánh: (√10)² = 10 > 9 = 3²"
+    },
+    {
+      "id": "q56",
+      "chapterId": "chapter-7-7",
+      "type": "multiple-choice",
+      "question": "Số π (pi) là:",
+      "options": [
+        "Số vô tỉ",
+        "Số hữu tỉ",
+        "Số nguyên",
+        "Số tự nhiên"
+      ],
+      "correctAnswer": 0,
+      "explanation": "π là số vô tỉ, không thể viết dưới dạng phân số a/b."
+    },
+    {
+      "id": "q57",
+      "chapterId": "chapter-7-7",
+      "type": "text-input",
+      "question": "Tìm x biết: x² = 81 và x > 0",
+      "correctAnswer": "9",
+      "acceptedAnswers": ["9"],
+      "allowCalculator": false
+    },
+    {
+      "id": "q58",
+      "chapterId": "chapter-7-7",
+      "type": "multiple-choice",
+      "question": "Tính: √(1/4) = ?",
+      "options": [
+        "1/2",
+        "1/16",
+        "2",
+        "1/8"
+      ],
+      "correctAnswer": 0,
+      "explanation": "√(1/4) = 1/2 vì (1/2)² = 1/4"
+    },
+    {
+      "id": "q59",
+      "chapterId": "chapter-7-7",
+      "type": "calculation",
+      "question": "Tính: √100 × √4 = ?",
+      "options": [
+        "20",
+        "√104",
+        "40",
+        "200"
+      ],
+      "correctAnswer": 0,
+      "explanation": "√100 × √4 = 10 × 2 = 20"
+    },
+    {
+      "id": "q60",
+      "chapterId": "chapter-7-7",
+      "type": "multiple-choice",
+      "question": "Điều kiện để √a có nghĩa là:",
+      "options": [
+        "a ≥ 0",
+        "a > 0",
+        "a < 0",
+        "a ≠ 0"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Căn bậc hai chỉ có nghĩa khi a ≥ 0 (a không âm)."
+    },
+    {
+      "id": "q61",
+      "chapterId": "chapter-8-1",
+      "type": "multiple-choice",
+      "question": "Đa thức P(x) = 3x² - 2x + 5 có bậc là:",
+      "options": [
+        "2",
+        "3",
+        "5",
+        "1"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Bậc của đa thức là số mũ cao nhất của biến, ở đây là 2."
+    },
+    {
+      "id": "q62",
+      "chapterId": "chapter-8-1",
+      "type": "multiple-choice",
+      "question": "Hệ số cao nhất của đa thức Q(x) = -5x³ + 2x² - x + 7 là:",
+      "options": [
+        "-5",
+        "3",
+        "2",
+        "7"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Hệ số cao nhất là hệ số của hạng tử có bậc cao nhất, ở đây là -5."
+    },
+    {
+      "id": "q63",
+      "chapterId": "chapter-8-1",
+      "type": "calculation",
+      "question": "Cho P(x) = x² - 3x + 2. Tính P(1) = ?",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "-2"
+      ],
+      "correctAnswer": 0,
+      "explanation": "P(1) = 1² - 3(1) + 2 = 1 - 3 + 2 = 0"
+    },
+    {
+      "id": "q64",
+      "chapterId": "chapter-8-1",
+      "type": "text-input",
+      "question": "Cho P(x) = 2x² + 5x - 3. Tính P(2).",
+      "correctAnswer": "15",
+      "acceptedAnswers": ["15"],
+      "allowCalculator": true
+    },
+    {
+      "id": "q65",
+      "chapterId": "chapter-8-1",
+      "type": "multiple-choice",
+      "question": "Tổng hai đa thức P(x) = 3x + 2 và Q(x) = 2x - 5 là:",
+      "options": [
+        "5x - 3",
+        "5x + 7",
+        "x - 3",
+        "5x + 3"
+      ],
+      "correctAnswer": 0,
+      "explanation": "P(x) + Q(x) = (3x + 2) + (2x - 5) = 5x - 3"
+    },
+    {
+      "id": "q66",
+      "chapterId": "chapter-8-1",
+      "type": "multiple-choice",
+      "question": "Hiệu hai đa thức A(x) = x² + 3x và B(x) = x² - 2x là:",
+      "options": [
+        "5x",
+        "x",
+        "2x² + x",
+        "3x"
+      ],
+      "correctAnswer": 0,
+      "explanation": "A(x) - B(x) = (x² + 3x) - (x² - 2x) = x² + 3x - x² + 2x = 5x"
+    },
+    {
+      "id": "q67",
+      "chapterId": "chapter-8-2",
+      "type": "multiple-choice",
+      "question": "Phân tích đa thức 2x + 6 thành nhân tử:",
+      "options": [
+        "2(x + 3)",
+        "2x + 6",
+        "(2 + x)(1 + 3)",
+        "x(2 + 6)"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Đặt nhân tử chung: 2x + 6 = 2(x + 3)"
+    },
+    {
+      "id": "q68",
+      "chapterId": "chapter-8-2",
+      "type": "multiple-choice",
+      "question": "Phân tích x² - 4 thành nhân tử:",
+      "options": [
+        "(x - 2)(x + 2)",
+        "(x - 4)(x + 1)",
+        "x(x - 4)",
+        "(x - 2)²"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Sử dụng hằng đẳng thức: x² - 4 = x² - 2² = (x - 2)(x + 2)"
+    },
+    {
+      "id": "q69",
+      "chapterId": "chapter-8-2",
+      "type": "calculation",
+      "question": "Phân tích x² + 6x + 9 thành nhân tử:",
+      "options": [
+        "(x + 3)²",
+        "(x + 9)(x + 1)",
+        "(x - 3)²",
+        "x(x + 6) + 9"
+      ],
+      "correctAnswer": 0,
+      "explanation": "x² + 6x + 9 = (x + 3)² (hằng đẳng thức bình phương của một tổng)"
+    },
+    {
+      "id": "q70",
+      "chapterId": "chapter-8-2",
+      "type": "text-input",
+      "question": "Phân tích 3x² - 12 thành nhân tử. Viết dạng a(x-b)(x+b) với a, b là số.",
+      "correctAnswer": "3(x-2)(x+2)",
+      "acceptedAnswers": ["3(x-2)(x+2)", "3(x+2)(x-2)"],
+      "allowCalculator": false
+    },
+    {
+      "id": "q71",
+      "chapterId": "chapter-8-2",
+      "type": "multiple-choice",
+      "question": "Hằng đẳng thức (a + b)² bằng:",
+      "options": [
+        "a² + 2ab + b²",
+        "a² + b²",
+        "a² - 2ab + b²",
+        "(a - b)²"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Hằng đẳng thức: (a + b)² = a² + 2ab + b²"
+    },
+    {
+      "id": "q72",
+      "chapterId": "chapter-8-2",
+      "type": "multiple-choice",
+      "question": "Phân tích x² - 2xy + y² thành nhân tử:",
+      "options": [
+        "(x - y)²",
+        "(x + y)²",
+        "(x - y)(x + y)",
+        "x² - y²"
+      ],
+      "correctAnswer": 0,
+      "explanation": "x² - 2xy + y² = (x - y)² (hằng đẳng thức bình phương của một hiệu)"
+    },
+    {
+      "id": "q73",
+      "chapterId": "chapter-8-2",
+      "type": "calculation",
+      "question": "Tính nhanh: 101² - 1 = ?",
+      "options": [
+        "10200",
+        "10201",
+        "10199",
+        "10100"
+      ],
+      "correctAnswer": 0,
+      "explanation": "101² - 1 = 101² - 1² = (101 - 1)(101 + 1) = 100 × 102 = 10200"
+    },
+    {
+      "id": "q74",
+      "chapterId": "chapter-8-3",
+      "type": "multiple-choice",
+      "question": "Điều kiện xác định của phân thức 3/(x - 2) là:",
+      "options": [
+        "x ≠ 2",
+        "x ≠ 0",
+        "x ≠ 3",
+        "x ≠ -2"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Phân thức xác định khi mẫu thức khác 0, tức x - 2 ≠ 0 hay x ≠ 2."
+    },
+    {
+      "id": "q75",
+      "chapterId": "chapter-8-3",
+      "type": "multiple-choice",
+      "question": "Rút gọn phân thức (2x + 4)/(x + 2):",
+      "options": [
+        "2",
+        "x + 2",
+        "2x",
+        "4"
+      ],
+      "correctAnswer": 0,
+      "explanation": "(2x + 4)/(x + 2) = 2(x + 2)/(x + 2) = 2 (với x ≠ -2)"
+    },
+    {
+      "id": "q76",
+      "chapterId": "chapter-8-3",
+      "type": "calculation",
+      "question": "Tính: 1/x + 2/x = ?",
+      "options": [
+        "3/x",
+        "3/(2x)",
+        "3/x²",
+        "2/(3x)"
+      ],
+      "correctAnswer": 0,
+      "explanation": "1/x + 2/x = (1 + 2)/x = 3/x"
+    },
+    {
+      "id": "q77",
+      "chapterId": "chapter-8-3",
+      "type": "text-input",
+      "question": "Rút gọn: (x² - 9)/(x - 3) với x ≠ 3. Viết kết quả dạng đơn giản nhất.",
+      "correctAnswer": "x+3",
+      "acceptedAnswers": ["x+3", "x + 3"],
+      "allowCalculator": false
+    },
+    {
+      "id": "q78",
+      "chapterId": "chapter-8-3",
+      "type": "multiple-choice",
+      "question": "Mẫu thức chung của 1/x và 1/(x+1) là:",
+      "options": [
+        "x(x+1)",
+        "x + 1",
+        "x",
+        "2x + 1"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Mẫu thức chung nhỏ nhất của x và (x+1) là x(x+1)."
+    },
+    {
+      "id": "q79",
+      "chapterId": "chapter-8-3",
+      "type": "multiple-choice",
+      "question": "Tính: (x/y) × (y/x) = ? (với x, y ≠ 0)",
+      "options": [
+        "1",
+        "x/y",
+        "y/x",
+        "xy"
+      ],
+      "correctAnswer": 0,
+      "explanation": "(x/y) × (y/x) = (x×y)/(y×x) = 1"
+    },
+    {
+      "id": "q80",
+      "chapterId": "chapter-8-4",
+      "type": "multiple-choice",
+      "question": "Phương trình nào sau đây là phương trình bậc nhất một ẩn?",
+      "options": [
+        "2x + 3 = 0",
+        "x² + 1 = 0",
+        "1/x = 2",
+        "x³ - x = 0"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Phương trình bậc nhất một ẩn có dạng ax + b = 0 với a ≠ 0."
+    },
+    {
+      "id": "q81",
+      "chapterId": "chapter-8-4",
+      "type": "calculation",
+      "question": "Giải phương trình: 2x - 6 = 0",
+      "options": [
+        "x = 3",
+        "x = -3",
+        "x = 6",
+        "x = 2"
+      ],
+      "correctAnswer": 0,
+      "explanation": "2x - 6 = 0 ⟹ 2x = 6 ⟹ x = 3"
+    },
+    {
+      "id": "q82",
+      "chapterId": "chapter-8-4",
+      "type": "text-input",
+      "question": "Giải phương trình: 3x + 9 = 0",
+      "correctAnswer": "-3",
+      "acceptedAnswers": ["-3", "x=-3"],
+      "allowCalculator": false
+    },
+    {
+      "id": "q83",
+      "chapterId": "chapter-8-4",
+      "type": "multiple-choice",
+      "question": "Giải phương trình: x + 5 = 2x - 1",
+      "options": [
+        "x = 6",
+        "x = 4",
+        "x = -6",
+        "x = 1"
+      ],
+      "correctAnswer": 0,
+      "explanation": "x + 5 = 2x - 1 ⟹ 5 + 1 = 2x - x ⟹ x = 6"
+    },
+    {
+      "id": "q84",
+      "chapterId": "chapter-8-4",
+      "type": "calculation",
+      "question": "Giải phương trình: 5(x - 2) = 3(x + 2)",
+      "options": [
+        "x = 8",
+        "x = 4",
+        "x = 2",
+        "x = 0"
+      ],
+      "correctAnswer": 0,
+      "explanation": "5(x - 2) = 3(x + 2) ⟹ 5x - 10 = 3x + 6 ⟹ 2x = 16 ⟹ x = 8"
+    },
+    {
+      "id": "q85",
+      "chapterId": "chapter-8-4",
+      "type": "text-input",
+      "question": "Một số cộng với 15 bằng 3 lần số đó trừ 5. Tìm số đó.",
+      "correctAnswer": "10",
+      "acceptedAnswers": ["10"],
+      "allowCalculator": true
+    },
+    {
+      "id": "q86",
+      "chapterId": "chapter-8-5",
+      "type": "multiple-choice",
+      "question": "Giải bất phương trình: 2x + 3 > 7",
+      "options": [
+        "x > 2",
+        "x < 2",
+        "x > 5",
+        "x < 5"
+      ],
+      "correctAnswer": 0,
+      "explanation": "2x + 3 > 7 ⟹ 2x > 4 ⟹ x > 2"
+    },
+    {
+      "id": "q87",
+      "chapterId": "chapter-8-5",
+      "type": "multiple-choice",
+      "question": "Giải bất phương trình: -3x ≥ 9",
+      "options": [
+        "x ≤ -3",
+        "x ≥ -3",
+        "x ≤ 3",
+        "x ≥ 3"
+      ],
+      "correctAnswer": 0,
+      "explanation": "-3x ≥ 9 ⟹ x ≤ -3 (chia cả hai vế cho -3, đổi chiều bất phương trình)"
+    },
+    {
+      "id": "q88",
+      "chapterId": "chapter-8-5",
+      "type": "text-input",
+      "question": "Giải bất phương trình: x - 5 < 10. Viết nghiệm dạng x < a hoặc x > a.",
+      "correctAnswer": "x<15",
+      "acceptedAnswers": ["x<15", "x < 15"],
+      "allowCalculator": false
+    },
+    {
+      "id": "q89",
+      "chapterId": "chapter-8-5",
+      "type": "multiple-choice",
+      "question": "Khi nhân hoặc chia cả hai vế của bất phương trình với cùng một số âm thì:",
+      "options": [
+        "Phải đổi chiều bất phương trình",
+        "Giữ nguyên chiều bất phương trình",
+        "Bất phương trình vô nghiệm",
+        "Bất phương trình có vô số nghiệm"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Khi nhân/chia với số âm, chiều bất phương trình đổi chiều."
+    },
+    {
+      "id": "q90",
+      "chapterId": "chapter-8-5",
+      "type": "calculation",
+      "question": "Giải bất phương trình: 4x - 8 ≤ 2x + 6",
+      "options": [
+        "x ≤ 7",
+        "x ≥ 7",
+        "x ≤ -7",
+        "x ≥ -7"
+      ],
+      "correctAnswer": 0,
+      "explanation": "4x - 8 ≤ 2x + 6 ⟹ 2x ≤ 14 ⟹ x ≤ 7"
+    },
+    {
+      "id": "q91",
+      "chapterId": "chapter-8-6",
+      "type": "multiple-choice",
+      "question": "Hình lập phương có bao nhiêu mặt?",
+      "options": [
+        "6",
+        "4",
+        "8",
+        "12"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Hình lập phương có 6 mặt bằng nhau là hình vuông."
+    },
+    {
+      "id": "q92",
+      "chapterId": "chapter-8-6",
+      "type": "calculation",
+      "question": "Thể tích hình lập phương cạnh 3cm là:",
+      "options": [
+        "27 cm³",
+        "9 cm³",
+        "18 cm³",
+        "54 cm³"
+      ],
+      "correctAnswer": 0,
+      "explanation": "V = a³ = 3³ = 27 cm³"
+    },
+    {
+      "id": "q93",
+      "chapterId": "chapter-8-6",
+      "type": "text-input",
+      "question": "Tính diện tích toàn phần hình lập phương cạnh 5cm (đơn vị: cm²).",
+      "correctAnswer": "150",
+      "acceptedAnswers": ["150"],
+      "allowCalculator": true
+    },
+    {
+      "id": "q94",
+      "chapterId": "chapter-8-6",
+      "type": "multiple-choice",
+      "question": "Hình hộp chữ nhật có kích thước 3cm × 4cm × 5cm. Thể tích là:",
+      "options": [
+        "60 cm³",
+        "47 cm³",
+        "94 cm³",
+        "12 cm³"
+      ],
+      "correctAnswer": 0,
+      "explanation": "V = dài × rộng × cao = 3 × 4 × 5 = 60 cm³"
+    },
+    {
+      "id": "q95",
+      "chapterId": "chapter-8-6",
+      "type": "multiple-choice",
+      "question": "Diện tích xung quanh hình hộp chữ nhật có chu vi đáy 12cm và chiều cao 5cm là:",
+      "options": [
+        "60 cm²",
+        "120 cm²",
+        "17 cm²",
+        "72 cm²"
+      ],
+      "correctAnswer": 0,
+      "explanation": "S_xq = chu vi đáy × chiều cao = 12 × 5 = 60 cm²"
+    },
+    {
+      "id": "q96",
+      "chapterId": "chapter-8-7",
+      "type": "multiple-choice",
+      "question": "Hình lăng trụ đứng tam giác có bao nhiêu mặt?",
+      "options": [
+        "5",
+        "3",
+        "6",
+        "4"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Hình lăng trụ đứng tam giác có 2 đáy tam giác và 3 mặt bên hình chữ nhật, tổng 5 mặt."
+    },
+    {
+      "id": "q97",
+      "chapterId": "chapter-8-7",
+      "type": "calculation",
+      "question": "Thể tích hình lăng trụ đứng có diện tích đáy 20cm² và chiều cao 8cm là:",
+      "options": [
+        "160 cm³",
+        "28 cm³",
+        "40 cm³",
+        "200 cm³"
+      ],
+      "correctAnswer": 0,
+      "explanation": "V = S_đáy × chiều cao = 20 × 8 = 160 cm³"
+    },
+    {
+      "id": "q98",
+      "chapterId": "chapter-8-7",
+      "type": "text-input",
+      "question": "Hình lăng trụ đứng có đáy là tam giác vuông với hai cạnh góc vuông 3cm và 4cm, chiều cao lăng trụ 10cm. Tính thể tích (cm³).",
+      "correctAnswer": "60",
+      "acceptedAnswers": ["60"],
+      "allowCalculator": true
+    },
+    {
+      "id": "q99",
+      "chapterId": "chapter-8-7",
+      "type": "multiple-choice",
+      "question": "Diện tích xung quanh hình lăng trụ đứng bằng:",
+      "options": [
+        "Chu vi đáy × chiều cao",
+        "Diện tích đáy × chiều cao",
+        "2 × Diện tích đáy",
+        "Chu vi đáy + chiều cao"
+      ],
+      "correctAnswer": 0,
+      "explanation": "S_xq = Chu vi đáy × chiều cao"
+    },
+    {
+      "id": "q100",
+      "chapterId": "chapter-8-8",
+      "type": "multiple-choice",
+      "question": "Hình chóp tứ giác đều có bao nhiêu mặt?",
+      "options": [
+        "5",
+        "4",
+        "6",
+        "8"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Hình chóp tứ giác đều có 1 đáy hình vuông và 4 mặt bên là tam giác cân, tổng 5 mặt."
+    },
+    {
+      "id": "q101",
+      "chapterId": "chapter-8-8",
+      "type": "calculation",
+      "question": "Thể tích hình chóp có diện tích đáy 30cm² và chiều cao 9cm là:",
+      "options": [
+        "90 cm³",
+        "270 cm³",
+        "39 cm³",
+        "135 cm³"
+      ],
+      "correctAnswer": 0,
+      "explanation": "V = (1/3) × S_đáy × chiều cao = (1/3) × 30 × 9 = 90 cm³"
+    },
+    {
+      "id": "q102",
+      "chapterId": "chapter-8-8",
+      "type": "text-input",
+      "question": "Hình chóp tam giác đều có diện tích đáy 12cm² và chiều cao 6cm. Tính thể tích (cm³).",
+      "correctAnswer": "24",
+      "acceptedAnswers": ["24"],
+      "allowCalculator": true
+    },
+    {
+      "id": "q103",
+      "chapterId": "chapter-9-1",
+      "type": "multiple-choice",
+      "question": "Phương trình nào sau đây là phương trình bậc hai một ẩn?",
+      "options": [
+        "x² - 3x + 2 = 0",
+        "2x + 5 = 0",
+        "x³ - 1 = 0",
+        "1/x = 3"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Phương trình bậc hai một ẩn có dạng ax² + bx + c = 0 với a ≠ 0."
+    },
+    {
+      "id": "q104",
+      "chapterId": "chapter-9-1",
+      "type": "calculation",
+      "question": "Tính delta (Δ) của phương trình x² - 4x + 3 = 0:",
+      "options": [
+        "4",
+        "16",
+        "-4",
+        "0"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Δ = b² - 4ac = (-4)² - 4(1)(3) = 16 - 12 = 4"
+    },
+    {
+      "id": "q105",
+      "chapterId": "chapter-9-1",
+      "type": "multiple-choice",
+      "question": "Phương trình x² - 5x + 6 = 0 có nghiệm là:",
+      "options": [
+        "x₁ = 2, x₂ = 3",
+        "x₁ = 1, x₂ = 6",
+        "x₁ = -2, x₂ = -3",
+        "Vô nghiệm"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Phân tích: x² - 5x + 6 = (x - 2)(x - 3) = 0 ⟹ x = 2 hoặc x = 3"
+    },
+    {
+      "id": "q106",
+      "chapterId": "chapter-9-1",
+      "type": "text-input",
+      "question": "Giải phương trình x² - 9 = 0. Viết nghiệm lớn hơn.",
+      "correctAnswer": "3",
+      "acceptedAnswers": ["3"],
+      "allowCalculator": false
+    },
+    {
+      "id": "q107",
+      "chapterId": "chapter-9-1",
+      "type": "multiple-choice",
+      "question": "Phương trình x² + 1 = 0 có:",
+      "options": [
+        "Vô nghiệm",
+        "Một nghiệm",
+        "Hai nghiệm",
+        "Vô số nghiệm"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Δ = 0² - 4(1)(1) = -4 < 0, nên phương trình vô nghiệm."
+    },
+    {
+      "id": "q108",
+      "chapterId": "chapter-9-1",
+      "type": "multiple-choice",
+      "question": "Với phương trình ax² + bx + c = 0 (a ≠ 0), nếu Δ = 0 thì phương trình có:",
+      "options": [
+        "Nghiệm kép x = -b/(2a)",
+        "Hai nghiệm phân biệt",
+        "Vô nghiệm",
+        "Vô số nghiệm"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Khi Δ = 0, phương trình có nghiệm kép x = -b/(2a)"
+    },
+    {
+      "id": "q109",
+      "chapterId": "chapter-9-1",
+      "type": "calculation",
+      "question": "Tổng hai nghiệm của phương trình x² - 7x + 10 = 0 là:",
+      "options": [
+        "7",
+        "-7",
+        "10",
+        "3"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Theo định lý Vi-et: x₁ + x₂ = -b/a = -(-7)/1 = 7"
+    },
+    {
+      "id": "q110",
+      "chapterId": "chapter-9-1",
+      "type": "text-input",
+      "question": "Tích hai nghiệm của phương trình 2x² + 3x - 5 = 0 là bao nhiêu?",
+      "correctAnswer": "-2.5",
+      "acceptedAnswers": ["-2.5", "-5/2"],
+      "allowCalculator": true
+    },
+    {
+      "id": "q111",
+      "chapterId": "chapter-9-2",
+      "type": "multiple-choice",
+      "question": "Hệ phương trình nào sau đây là hệ phương trình bậc nhất hai ẩn?",
+      "options": [
+        "{ x + y = 5; 2x - y = 1 }",
+        "{ x² + y = 3; x - y = 1 }",
+        "{ xy = 6; x + y = 5 }",
+        "{ 1/x + 1/y = 2; x - y = 0 }"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Hệ phương trình bậc nhất hai ẩn có dạng { ax + by = c; dx + ey = f }"
+    },
+    {
+      "id": "q112",
+      "chapterId": "chapter-9-2",
+      "type": "calculation",
+      "question": "Giải hệ phương trình: { x + y = 7; x - y = 1 }",
+      "options": [
+        "x = 4, y = 3",
+        "x = 3, y = 4",
+        "x = 5, y = 2",
+        "x = 6, y = 1"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Cộng hai phương trình: 2x = 8 ⟹ x = 4. Thay vào: 4 + y = 7 ⟹ y = 3"
+    },
+    {
+      "id": "q113",
+      "chapterId": "chapter-9-2",
+      "type": "text-input",
+      "question": "Giải hệ: { 2x + y = 8; x - y = 1 }. Tìm x.",
+      "correctAnswer": "3",
+      "acceptedAnswers": ["3"],
+      "allowCalculator": true
+    },
+    {
+      "id": "q114",
+      "chapterId": "chapter-9-2",
+      "type": "multiple-choice",
+      "question": "Phương pháp thế là:",
+      "options": [
+        "Từ một phương trình, biểu diễn ẩn này theo ẩn kia rồi thế vào phương trình còn lại",
+        "Cộng hoặc trừ hai phương trình để khử một ẩn",
+        "Nhân cả hai vế với cùng một số",
+        "Chia cả hai vế cho cùng một số"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Phương pháp thế: biểu diễn một ẩn theo ẩn kia từ một phương trình, rồi thế vào phương trình còn lại."
+    },
+    {
+      "id": "q115",
+      "chapterId": "chapter-9-2",
+      "type": "calculation",
+      "question": "Giải hệ: { 3x + 2y = 12; x + 2y = 8 }",
+      "options": [
+        "x = 2, y = 3",
+        "x = 4, y = 2",
+        "x = 3, y = 2",
+        "x = 1, y = 4"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Trừ hai phương trình: (3x + 2y) - (x + 2y) = 12 - 8 ⟹ 2x = 4 ⟹ x = 2. Thay vào: 2 + 2y = 8 ⟹ y = 3"
+    },
+    {
+      "id": "q116",
+      "chapterId": "chapter-7-2",
+      "type": "multiple-choice",
+      "question": "Cho biểu thức A = 1/2 + 1/4 + 1/8. Giá trị của A là:",
+      "options": [
+        "7/8",
+        "3/14",
+        "1",
+        "13/24"
+      ],
+      "correctAnswer": 0,
+      "explanation": "A = 4/8 + 2/8 + 1/8 = 7/8"
+    },
+    {
+      "id": "q117",
+      "chapterId": "chapter-7-3",
+      "type": "multiple-choice",
+      "question": "Kết quả của (-1/2) × (-1/3) × (-1/4) là:",
+      "options": [
+        "-1/24",
+        "1/24",
+        "-1/9",
+        "1/9"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Ba số âm nhân với nhau cho kết quả âm: (-1/2) × (-1/3) × (-1/4) = -1/24"
+    },
+    {
+      "id": "q118",
+      "chapterId": "chapter-7-4",
+      "type": "calculation",
+      "question": "Tính: 2³ + 3² = ?",
+      "options": [
+        "17",
+        "72",
+        "13",
+        "35"
+      ],
+      "correctAnswer": 0,
+      "explanation": "2³ + 3² = 8 + 9 = 17"
+    },
+    {
+      "id": "q119",
+      "chapterId": "chapter-7-5",
+      "type": "text-input",
+      "question": "Số hữu tỉ nào lớn nhất trong các số: -1/2, -2/3, -1/4, 0? Viết số đó.",
+      "correctAnswer": "0",
+      "acceptedAnswers": ["0"],
+      "allowCalculator": false
+    },
+    {
+      "id": "q120",
+      "chapterId": "chapter-7-6",
+      "type": "multiple-choice",
+      "question": "Giải phương trình |x - 2| = 5:",
+      "options": [
+        "x = 7 hoặc x = -3",
+        "x = 3 hoặc x = -7",
+        "x = 7",
+        "x = -3"
+      ],
+      "correctAnswer": 0,
+      "explanation": "|x - 2| = 5 ⟹ x - 2 = 5 hoặc x - 2 = -5 ⟹ x = 7 hoặc x = -3"
+    },
+    {
+      "id": "q121",
+      "chapterId": "chapter-7-7",
+      "type": "multiple-choice",
+      "question": "√144 = ?",
+      "options": [
+        "12",
+        "72",
+        "14",
+        "24"
+      ],
+      "correctAnswer": 0,
+      "explanation": "√144 = 12 vì 12² = 144"
+    },
+    {
+      "id": "q122",
+      "chapterId": "chapter-7-7",
+      "type": "calculation",
+      "question": "So sánh √50 và 7:",
+      "options": [
+        "√50 > 7",
+        "√50 < 7",
+        "√50 = 7",
+        "Không so sánh được"
+      ],
+      "correctAnswer": 0,
+      "explanation": "√50 ≈ 7.07 > 7, hoặc so sánh: 50 > 49 = 7²"
+    },
+    {
+      "id": "q123",
+      "chapterId": "chapter-7-7",
+      "type": "text-input",
+      "question": "Tính: √81 - √16",
+      "correctAnswer": "5",
+      "acceptedAnswers": ["5"],
+      "allowCalculator": false
+    },
+    {
+      "id": "q124",
+      "chapterId": "chapter-8-1",
+      "type": "multiple-choice",
+      "question": "Cho P(x) = 2x³ - 5x + 1. Hệ số tự do là:",
+      "options": [
+        "1",
+        "2",
+        "-5",
+        "3"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Hệ số tự do là số hạng không chứa biến, ở đây là 1."
+    },
+    {
+      "id": "q125",
+      "chapterId": "chapter-8-1",
+      "type": "calculation",
+      "question": "Cho P(x) = x³ - 2x² + x - 1. Tính P(-1):",
+      "options": [
+        "-5",
+        "-1",
+        "1",
+        "3"
+      ],
+      "correctAnswer": 0,
+      "explanation": "P(-1) = (-1)³ - 2(-1)² + (-1) - 1 = -1 - 2 - 1 - 1 = -5"
+    },
+    {
+      "id": "q126",
+      "chapterId": "chapter-8-2",
+      "type": "multiple-choice",
+      "question": "Phân tích x² - 10x + 25 thành nhân tử:",
+      "options": [
+        "(x - 5)²",
+        "(x + 5)²",
+        "(x - 5)(x + 5)",
+        "(x - 10)(x + 2.5)"
+      ],
+      "correctAnswer": 0,
+      "explanation": "x² - 10x + 25 = (x - 5)² (hằng đẳng thức)"
+    },
+    {
+      "id": "q127",
+      "chapterId": "chapter-8-2",
+      "type": "text-input",
+      "question": "Tính nhanh: 99² - 1. Viết kết quả.",
+      "correctAnswer": "9800",
+      "acceptedAnswers": ["9800"],
+      "allowCalculator": true
+    },
+    {
+      "id": "q128",
+      "chapterId": "chapter-8-3",
+      "type": "multiple-choice",
+      "question": "Rút gọn: (3x - 6)/(x - 2) với x ≠ 2:",
+      "options": [
+        "3",
+        "x - 2",
+        "3x",
+        "6"
+      ],
+      "correctAnswer": 0,
+      "explanation": "(3x - 6)/(x - 2) = 3(x - 2)/(x - 2) = 3"
+    },
+    {
+      "id": "q129",
+      "chapterId": "chapter-8-4",
+      "type": "calculation",
+      "question": "Giải phương trình: 4(x - 1) = 2(x + 3):",
+      "options": [
+        "x = 5",
+        "x = 3",
+        "x = 1",
+        "x = 7"
+      ],
+      "correctAnswer": 0,
+      "explanation": "4x - 4 = 2x + 6 ⟹ 2x = 10 ⟹ x = 5"
+    },
+    {
+      "id": "q130",
+      "chapterId": "chapter-8-5",
+      "type": "text-input",
+      "question": "Giải bất phương trình: 3x - 6 > 9. Viết nghiệm dạng x > a.",
+      "correctAnswer": "x>5",
+      "acceptedAnswers": ["x>5", "x > 5"],
+      "allowCalculator": false
+    },
+    {
+      "id": "q131",
+      "chapterId": "chapter-8-6",
+      "type": "multiple-choice",
+      "question": "Hình lập phương cạnh a có diện tích toàn phần là:",
+      "options": [
+        "6a²",
+        "a³",
+        "4a²",
+        "12a"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Diện tích toàn phần = 6 × a² = 6a²"
+    },
+    {
+      "id": "q132",
+      "chapterId": "chapter-9-1",
+      "type": "multiple-choice",
+      "question": "Với phương trình ax² + bx + c = 0, tích hai nghiệm bằng:",
+      "options": [
+        "c/a",
+        "-b/a",
+        "b/a",
+        "-c/a"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Theo định lý Vi-et: x₁ × x₂ = c/a"
+    },
+    {
+      "id": "q133",
+      "chapterId": "chapter-9-2",
+      "type": "calculation",
+      "question": "Giải hệ: { x + 2y = 10; 2x + y = 11 }. Tìm x:",
+      "options": [
+        "x = 4",
+        "x = 3",
+        "x = 5",
+        "x = 6"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Nhân phương trình 1 với 2: 2x + 4y = 20. Trừ đi phương trình 2: 3y = 9 ⟹ y = 3. Thay vào: x = 4"
+    },
+    {
+      "id": "q134",
+      "chapterId": "chapter-7-1",
+      "type": "multiple-choice",
+      "question": "Số nào sau đây KHÔNG phải là phân số biểu diễn số hữu tỉ 0.6?",
+      "options": [
+        "6/9",
+        "3/5",
+        "6/10",
+        "12/20"
+      ],
+      "correctAnswer": 0,
+      "explanation": "6/9 = 2/3 ≈ 0.667 ≠ 0.6. Các phân số còn lại đều bằng 0.6 = 3/5."
+    },
+    {
+      "id": "q135",
+      "chapterId": "chapter-7-2",
+      "type": "text-input",
+      "question": "Tính: 1 - 1/3 - 1/6. Viết kết quả dưới dạng phân số tối giản.",
+      "correctAnswer": "1/2",
+      "acceptedAnswers": ["1/2", "0.5"],
+      "allowCalculator": true
+    },
+    {
+      "id": "q136",
+      "chapterId": "chapter-7-3",
+      "type": "multiple-choice",
+      "question": "Một hình chữ nhật có chiều dài 5/2 m và chiều rộng 2/3 m. Chu vi hình chữ nhật là:",
+      "options": [
+        "19/3 m",
+        "5/3 m",
+        "10/3 m",
+        "8 m"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Chu vi = 2 × (dài + rộng) = 2 × (5/2 + 2/3) = 2 × 19/6 = 19/3 m"
+    },
+    {
+      "id": "q137",
+      "chapterId": "chapter-7-4",
+      "type": "multiple-choice",
+      "question": "Biểu thức nào sau đây SAI?",
+      "options": [
+        "(ab)ⁿ = aⁿ + bⁿ",
+        "(ab)ⁿ = aⁿ × bⁿ",
+        "aᵐ × aⁿ = aᵐ⁺ⁿ",
+        "(aᵐ)ⁿ = aᵐⁿ"
+      ],
+      "correctAnswer": 0,
+      "explanation": "(ab)ⁿ = aⁿ × bⁿ, không phải aⁿ + bⁿ"
+    },
+    {
+      "id": "q138",
+      "chapterId": "chapter-7-5",
+      "type": "calculation",
+      "question": "Nếu 0 < a < b thì:",
+      "options": [
+        "a² < b²",
+        "a² > b²",
+        "a² = b²",
+        "Không xác định"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Khi 0 < a < b, nhân cả hai vế với a và b (cùng dương) ta có a² < b²"
+    },
+    {
+      "id": "q139",
+      "chapterId": "chapter-7-6",
+      "type": "text-input",
+      "question": "Tính: ||−2/5| - |3/5||. Viết kết quả dạng phân số.",
+      "correctAnswer": "1/5",
+      "acceptedAnswers": ["1/5", "0.2"],
+      "allowCalculator": true
+    },
+    {
+      "id": "q140",
+      "chapterId": "chapter-7-7",
+      "type": "multiple-choice",
+      "question": "Giá trị nào sau đây là số vô tỉ?",
+      "options": [
+        "√7",
+        "√16",
+        "√(1/4)",
+        "√0.25"
+      ],
+      "correctAnswer": 0,
+      "explanation": "√7 là số vô tỉ. √16 = 4, √(1/4) = 1/2, √0.25 = 0.5 đều là số hữu tỉ."
+    },
+    {
+      "id": "q141",
+      "chapterId": "chapter-8-1",
+      "type": "multiple-choice",
+      "question": "Nghiệm của đa thức P(x) = x - 5 là:",
+      "options": [
+        "x = 5",
+        "x = -5",
+        "x = 0",
+        "x = 1"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Nghiệm là giá trị x làm P(x) = 0, tức x - 5 = 0 ⟹ x = 5"
+    },
+    {
+      "id": "q142",
+      "chapterId": "chapter-8-2",
+      "type": "calculation",
+      "question": "Phân tích x³ - x thành nhân tử:",
+      "options": [
+        "x(x - 1)(x + 1)",
+        "x(x² - 1)",
+        "(x - 1)(x² + 1)",
+        "x³ - x"
+      ],
+      "correctAnswer": 0,
+      "explanation": "x³ - x = x(x² - 1) = x(x - 1)(x + 1)"
+    },
+    {
+      "id": "q143",
+      "chapterId": "chapter-8-3",
+      "type": "text-input",
+      "question": "Tính: 1/(x+1) + 2/(x+1). Viết kết quả rút gọn (không có dấu ngoặc).",
+      "correctAnswer": "3/(x+1)",
+      "acceptedAnswers": ["3/(x+1)"],
+      "allowCalculator": false
+    },
+    {
+      "id": "q144",
+      "chapterId": "chapter-8-4",
+      "type": "multiple-choice",
+      "question": "Phương trình 0x + 5 = 0 có:",
+      "options": [
+        "Vô nghiệm",
+        "Một nghiệm",
+        "Hai nghiệm",
+        "Vô số nghiệm"
+      ],
+      "correctAnswer": 0,
+      "explanation": "0x + 5 = 0 ⟹ 0 = -5 (vô lý), nên phương trình vô nghiệm."
+    },
+    {
+      "id": "q145",
+      "chapterId": "chapter-8-5",
+      "type": "multiple-choice",
+      "question": "Giải bất phương trình: -2x + 6 < 0:",
+      "options": [
+        "x > 3",
+        "x < 3",
+        "x > -3",
+        "x < -3"
+      ],
+      "correctAnswer": 0,
+      "explanation": "-2x + 6 < 0 ⟹ -2x < -6 ⟹ x > 3 (chia cho -2, đổi chiều)"
+    },
+    {
+      "id": "q146",
+      "chapterId": "chapter-8-6",
+      "type": "calculation",
+      "question": "Một hình hộp chữ nhật có thể tích 120cm³, diện tích đáy 30cm². Chiều cao là:",
+      "options": [
+        "4 cm",
+        "90 cm",
+        "3600 cm",
+        "150 cm"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Chiều cao = V / S_đáy = 120 / 30 = 4 cm"
+    },
+    {
+      "id": "q147",
+      "chapterId": "chapter-8-7",
+      "type": "text-input",
+      "question": "Hình lăng trụ đứng có đáy là hình vuông cạnh 4cm, chiều cao 10cm. Tính thể tích (cm³).",
+      "correctAnswer": "160",
+      "acceptedAnswers": ["160"],
+      "allowCalculator": true
+    },
+    {
+      "id": "q148",
+      "chapterId": "chapter-9-1",
+      "type": "multiple-choice",
+      "question": "Phương trình 2x² - 8 = 0 có nghiệm là:",
+      "options": [
+        "x = ±2",
+        "x = ±4",
+        "x = 2",
+        "x = 4"
+      ],
+      "correctAnswer": 0,
+      "explanation": "2x² - 8 = 0 ⟹ x² = 4 ⟹ x = ±2"
+    },
+    {
+      "id": "q149",
+      "chapterId": "chapter-9-2",
+      "type": "calculation",
+      "question": "Giải hệ: { 3x - 2y = 1; x + 2y = 7 }. Tìm y:",
+      "options": [
+        "y = 2",
+        "y = 1",
+        "y = 3",
+        "y = 4"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Cộng hai phương trình: 4x = 8 ⟹ x = 2. Thay vào: 2 + 2y = 7 ⟹ y = 2.5"
+    },
+    {
+      "id": "q150",
+      "chapterId": "chapter-7-1",
+      "type": "multiple-choice",
+      "question": "Trong các số sau, số nào là số hữu tỉ âm?",
+      "options": [
+        "-5/3",
+        "0",
+        "4/7",
+        "2"
+      ],
+      "correctAnswer": 0,
+      "explanation": "-5/3 là số hữu tỉ âm vì tử và mẫu trái dấu."
+    },
+    {
+      "id": "q151",
+      "chapterId": "chapter-7-2",
+      "type": "calculation",
+      "question": "Kết quả của (-5/6) - (-2/3) là:",
+      "options": [
+        "-1/6",
+        "1/6",
+        "-3/3",
+        "7/6"
+      ],
+      "correctAnswer": 0,
+      "explanation": "(-5/6) - (-2/3) = (-5/6) + (2/3) = (-5/6) + (4/6) = -1/6"
+    },
+    {
+      "id": "q152",
+      "chapterId": "chapter-7-3",
+      "type": "multiple-choice",
+      "question": "Tính: (5/8) : (5/4) = ?",
+      "options": [
+        "1/2",
+        "2",
+        "25/32",
+        "5/2"
+      ],
+      "correctAnswer": 0,
+      "explanation": "(5/8) : (5/4) = (5/8) × (4/5) = 20/40 = 1/2"
+    },
+    {
+      "id": "q153",
+      "chapterId": "chapter-7-4",
+      "type": "text-input",
+      "question": "Tính: 5² - 3²",
+      "correctAnswer": "16",
+      "acceptedAnswers": ["16"],
+      "allowCalculator": false
+    },
+    {
+      "id": "q154",
+      "chapterId": "chapter-7-5",
+      "type": "multiple-choice",
+      "question": "Nếu x < y và y < z thì:",
+      "options": [
+        "x < z",
+        "x > z",
+        "x = z",
+        "Không xác định"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Tính chất bắc cầu: nếu x < y và y < z thì x < z"
+    },
+    {
+      "id": "q155",
+      "chapterId": "chapter-7-6",
+      "type": "calculation",
+      "question": "Tính: |5 - 8| = ?",
+      "options": [
+        "3",
+        "-3",
+        "13",
+        "|−3|"
+      ],
+      "correctAnswer": 0,
+      "explanation": "|5 - 8| = |−3| = 3"
+    },
+    {
+      "id": "q156",
+      "chapterId": "chapter-7-7",
+      "type": "multiple-choice",
+      "question": "Số nào sau đây là căn bậc hai của 169?",
+      "options": [
+        "13 và -13",
+        "Chỉ có 13",
+        "84.5",
+        "Không có"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Căn bậc hai của 169 là ±13 vì (±13)² = 169"
+    },
+    {
+      "id": "q157",
+      "chapterId": "chapter-7-7",
+      "type": "text-input",
+      "question": "Tính: √225",
+      "correctAnswer": "15",
+      "acceptedAnswers": ["15"],
+      "allowCalculator": false
+    },
+    {
+      "id": "q158",
+      "chapterId": "chapter-8-1",
+      "type": "multiple-choice",
+      "question": "Cho P(x) = -x² + 4x - 3. Giá trị P(0) là:",
+      "options": [
+        "-3",
+        "0",
+        "4",
+        "3"
+      ],
+      "correctAnswer": 0,
+      "explanation": "P(0) = -(0)² + 4(0) - 3 = -3"
+    },
+    {
+      "id": "q159",
+      "chapterId": "chapter-8-1",
+      "type": "calculation",
+      "question": "Tích hai đa thức (x + 2)(x - 3) là:",
+      "options": [
+        "x² - x - 6",
+        "x² + x - 6",
+        "x² - x + 6",
+        "x² - 5x - 6"
+      ],
+      "correctAnswer": 0,
+      "explanation": "(x + 2)(x - 3) = x² - 3x + 2x - 6 = x² - x - 6"
+    },
+    {
+      "id": "q160",
+      "chapterId": "chapter-8-2",
+      "type": "multiple-choice",
+      "question": "Hằng đẳng thức a² - b² bằng:",
+      "options": [
+        "(a - b)(a + b)",
+        "(a - b)²",
+        "(a + b)²",
+        "a² + b²"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Hằng đẳng thức hiệu hai bình phương: a² - b² = (a - b)(a + b)"
+    },
+    {
+      "id": "q161",
+      "chapterId": "chapter-8-2",
+      "type": "text-input",
+      "question": "Phân tích 5x² - 20 thành nhân tử. Viết dạng a(x-b)(x+b).",
+      "correctAnswer": "5(x-2)(x+2)",
+      "acceptedAnswers": ["5(x-2)(x+2)", "5(x+2)(x-2)"],
+      "allowCalculator": false
+    },
+    {
+      "id": "q162",
+      "chapterId": "chapter-8-3",
+      "type": "multiple-choice",
+      "question": "Điều kiện xác định của phân thức 1/(x² - 4) là:",
+      "options": [
+        "x ≠ 2 và x ≠ -2",
+        "x ≠ 4",
+        "x ≠ 0",
+        "x ≠ 2"
+      ],
+      "correctAnswer": 0,
+      "explanation": "x² - 4 ≠ 0 ⟹ x² ≠ 4 ⟹ x ≠ ±2"
+    },
+    {
+      "id": "q163",
+      "chapterId": "chapter-8-3",
+      "type": "calculation",
+      "question": "Rút gọn: (x² - 1)/(x - 1) với x ≠ 1:",
+      "options": [
+        "x + 1",
+        "x - 1",
+        "x",
+        "1"
+      ],
+      "correctAnswer": 0,
+      "explanation": "(x² - 1)/(x - 1) = (x - 1)(x + 1)/(x - 1) = x + 1"
+    },
+    {
+      "id": "q164",
+      "chapterId": "chapter-8-4",
+      "type": "multiple-choice",
+      "question": "Giải phương trình: 7x - 21 = 0",
+      "options": [
+        "x = 3",
+        "x = 7",
+        "x = 21",
+        "x = -3"
+      ],
+      "correctAnswer": 0,
+      "explanation": "7x - 21 = 0 ⟹ 7x = 21 ⟹ x = 3"
+    },
+    {
+      "id": "q165",
+      "chapterId": "chapter-8-4",
+      "type": "text-input",
+      "question": "Tuổi con hiện nay là x. Sau 5 năm nữa, tuổi con là bao nhiêu? Viết biểu thức.",
+      "correctAnswer": "x+5",
+      "acceptedAnswers": ["x+5", "x + 5"],
+      "allowCalculator": false
+    },
+    {
+      "id": "q166",
+      "chapterId": "chapter-8-5",
+      "type": "multiple-choice",
+      "question": "Nghiệm của bất phương trình 5x - 10 ≤ 0 là:",
+      "options": [
+        "x ≤ 2",
+        "x ≥ 2",
+        "x < 2",
+        "x > 2"
+      ],
+      "correctAnswer": 0,
+      "explanation": "5x - 10 ≤ 0 ⟹ 5x ≤ 10 ⟹ x ≤ 2"
+    },
+    {
+      "id": "q167",
+      "chapterId": "chapter-8-6",
+      "type": "calculation",
+      "question": "Hình lập phương có thể tích 64cm³. Cạnh của hình lập phương là:",
+      "options": [
+        "4 cm",
+        "8 cm",
+        "16 cm",
+        "21.33 cm"
+      ],
+      "correctAnswer": 0,
+      "explanation": "V = a³ = 64 ⟹ a = ³√64 = 4 cm"
+    },
+    {
+      "id": "q168",
+      "chapterId": "chapter-8-7",
+      "type": "multiple-choice",
+      "question": "Diện tích toàn phần của hình lăng trụ đứng bằng:",
+      "options": [
+        "Diện tích xung quanh + 2 × Diện tích đáy",
+        "Chu vi đáy × chiều cao",
+        "Diện tích đáy × chiều cao",
+        "2 × Chu vi đáy"
+      ],
+      "correctAnswer": 0,
+      "explanation": "S_tp = S_xq + 2 × S_đáy"
+    },
+    {
+      "id": "q169",
+      "chapterId": "chapter-9-1",
+      "type": "text-input",
+      "question": "Phương trình x² - 6x + 9 = 0 có nghiệm kép. Tìm nghiệm đó.",
+      "correctAnswer": "3",
+      "acceptedAnswers": ["3"],
+      "allowCalculator": false
+    },
+    {
+      "id": "q170",
+      "chapterId": "chapter-9-2",
+      "type": "multiple-choice",
+      "question": "Hệ phương trình { x + y = 10; x - y = 4 } có nghiệm là:",
+      "options": [
+        "x = 7, y = 3",
+        "x = 6, y = 4",
+        "x = 8, y = 2",
+        "x = 5, y = 5"
+      ],
+      "correctAnswer": 0,
+      "explanation": "Cộng hai phương trình: 2x = 14 ⟹ x = 7. Thay vào: 7 + y = 10 ⟹ y = 3"
+    }
+  ]
+}
