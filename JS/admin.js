@@ -1232,11 +1232,11 @@ const AdminApp = (() => {
         dropdown.classList.toggle('active');
     }
 
-    function logout() {
+    async function logout() {
         if (confirm('Bạn có chắc chắn muốn đăng xuất?')) {
             // Call logout from parent window (main tab)
             if (window.opener && !window.opener.closed) {
-                window.opener.Auth.logout();
+                await window.opener.Auth.logout();
             }
             // Close admin tab
             window.close();

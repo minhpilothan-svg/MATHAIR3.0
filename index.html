@@ -15,6 +15,11 @@
     
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Firebase SDK from CDN (Compat version for global usage) -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 </head>
 <body>
     <header class="header" id="app-header">
@@ -24,7 +29,7 @@
         <div class="loading">
             <p>Đang tải...</p>
         </div>
-    </main> 
+    </main>     
 
     <footer class="footer" id="app-footer">
         <p>&copy; 2026 MathAir. All rights reserved.</p>
@@ -76,6 +81,7 @@
         </div>
     </div>
 
+    <script src="JS/firebase-config.js"></script>
     <script src="JS/auth.js"></script>
     <script src="JS/contests.js"></script>
     <script src="JS/calculator.js"></script>

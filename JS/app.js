@@ -39,8 +39,18 @@ async function initializeData() {
 
 function renderHeader() {
     const header = document.getElementById('app-header');
+    const appFooter = document.getElementById('app-footer');
     const isLoggedIn = Auth.isLoggedIn();
     const currentUser = Auth.getCurrentUser();
+    
+    // Show header and footer if logged in
+    if (isLoggedIn) {
+        header.style.display = 'flex';
+        if (appFooter) appFooter.style.display = 'block';
+    } else {
+        header.style.display = 'none';
+        if (appFooter) appFooter.style.display = 'none';
+    }
     
     header.innerHTML = `
         <div class="header-l">
@@ -82,9 +92,9 @@ function renderHeader() {
 
 
 // Handle logout
-function handleLogout() {
+async function handleLogout() {
     if (confirm('Bạn có chắc muốn đăng xuất?')) {
-        Auth.logout();
+        await Auth.logout();
         // Auth.logout() already navigates to login, no need to call it again
     }
 }
@@ -168,8 +178,9 @@ async function renderHomePage() {
                         
                         return createContestCardHTML(contest, isCompleted, isActive);
                     }).join('') : `
-                        <div style="grid-column: 1/-1; text-align: center; padding: 3rem; color: var(--text-light);">
-                            <p style="font-size: 1.6rem;">Hiện chưa có cuộc thi nào</p>
+                        <div class="empty-contests-container" id="empty-contests-state" style="grid-column: 1/-1; display: flex; align-items: center; justify-content: center; gap: 2rem; padding: 4rem 3rem; color: var(--text-light);">
+                            <p style="font-size: 1.6rem; font-weight: 500; color: var(--text-dark); margin: 0; white-space: nowrap;">Hiện chưa có cuộc thi nào</p>
+                            <img src="ASSETS/images/icons/cat-sleeping.png" alt="Chủ thỏ" style="width: 75px; height: 75px; object-fit: contain; opacity: 0.8; flex-shrink: 0;">
                         </div>
                     `}
                 </div>
@@ -1003,6 +1014,276 @@ function renderMyScoresChart(user) {
 
 function closeMyProfileModal() {
     document.getElementById('user-profile-modal').style.display = 'none';
+}
+
+// ==================== LOGIN & SIGNUP PAGES ====================
+
+function renderLoginPage() {
+    const mainContent = document.getElementById('main-content');
+    const appHeader = document.getElementById('app-header');
+    const appFooter = document.getElementById('app-footer');
+    
+    // Hide header and footer
+    appHeader.style.display = 'none';
+    appFooter.style.display = 'none';
+    
+    mainContent.innerHTML = `
+        <div class="auth-container">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <h2>Đăng Nhập</h2>
+                    <p>Chào mừng trở lại! Vui lòng nhập email và mật khẩu.</p>
+                </div>
+                
+                <form id="login-form" class="auth-form">
+                    <div class="form-group">
+                        <label for="login-email">Email</label>
+                        <input 
+                            type="email" 
+                            id="login-email" 
+                            name="email" 
+                            placeholder="Nhập email của bạn"
+                            required
+                        >
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="login-password">Mật khẩu</label>
+                        <div class="password-input-wrapper">
+                            <input 
+                                type="password" 
+                                id="login-password" 
+                                name="password" 
+                                placeholder="Nhập mật khẩu"
+                                required
+                            >
+                            <button 
+                                type="button" 
+                                class="toggle-password-btn"
+                                onclick="togglePasswordVisibility('login-password')"
+                            >
+                                <span class="eye-icon">👁️</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="auth-submit-btn">ĐĂNG NHẬP</button>
+                    
+                    <div class="auth-footer">
+                        <p>Chưa có tài khoản? <a href="#" onclick="navigateTo('signup'); return false;">Đăng ký ngay</a></p>
+                    </div>
+                </form>
+                
+                <div id="login-message" class="auth-message" style="display: none;"></div>
+            </div>
+        </div>
+    `;
+    
+    // Attach login form listener
+    document.getElementById('login-form').addEventListener('submit', handleLoginSubmit);
+}
+
+function renderSignupPage() {
+    const mainContent = document.getElementById('main-content');
+    const appHeader = document.getElementById('app-header');
+    const appFooter = document.getElementById('app-footer');
+    
+    // Hide header and footer
+    appHeader.style.display = 'none';
+    appFooter.style.display = 'none';
+    
+    mainContent.innerHTML = `
+        <div class="auth-container">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <h2>Đăng Ký</h2>
+                    <p>Tạo tài khoản mới để bắt đầu học tập.</p>
+                </div>
+                
+                <form id="signup-form" class="auth-form">
+                    <div class="form-group">
+                        <label for="signup-email">Email</label>
+                        <input 
+                            type="email" 
+                            id="signup-email" 
+                            name="email" 
+                            placeholder="Nhập email của bạn"
+                            required
+                        >
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="signup-password">Mật khẩu</label>
+                        <div class="password-input-wrapper">
+                            <input 
+                                type="password" 
+                                id="signup-password" 
+                                name="password" 
+                                placeholder="Nhập mật khẩu (tối thiểu 6 ký tự)"
+                                required
+                            >
+                            <button 
+                                type="button" 
+                                class="toggle-password-btn"
+                                onclick="togglePasswordVisibility('signup-password')"
+                            >
+                                <span class="eye-icon">👁️</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="signup-confirm-password">Xác Nhận Mật Khẩu</label>
+                        <div class="password-input-wrapper">
+                            <input 
+                                type="password" 
+                                id="signup-confirm-password" 
+                                name="confirmPassword" 
+                                placeholder="Nhập lại mật khẩu"
+                                required
+                            >
+                            <button 
+                                type="button" 
+                                class="toggle-password-btn"
+                                onclick="togglePasswordVisibility('signup-confirm-password')"
+                            >
+                                <span class="eye-icon">👁️</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="auth-submit-btn">ĐĂNG KÝ</button>
+                    
+                    <div class="auth-footer">
+                        <p>Đã có tài khoản? <a href="#" onclick="navigateTo('login'); return false;">Đăng nhập</a></p>
+                    </div>
+                </form>
+                
+                <div id="signup-message" class="auth-message" style="display: none;"></div>
+            </div>
+        </div>
+    `;
+    
+    // Attach signup form listener
+    document.getElementById('signup-form').addEventListener('submit', handleSignupSubmit);
+}
+
+async function handleLoginSubmit(e) {
+    e.preventDefault();
+    
+    const email = document.getElementById('login-email').value;
+    const password = document.getElementById('login-password').value;
+    const messageDiv = document.getElementById('login-message');
+    
+    // Show loading
+    messageDiv.textContent = 'Đang đăng nhập...';
+    messageDiv.style.display = 'block';
+    messageDiv.className = 'auth-message auth-message-loading';
+    
+    // Call Auth.login
+    const result = await Auth.login(email, password);
+    
+    if (result.success) {
+        messageDiv.textContent = 'Đăng nhập thành công!';
+        messageDiv.className = 'auth-message auth-message-success';
+        
+        setTimeout(() => {
+            // Render header for authenticated user
+            renderHeader();
+            
+            // Handle different user roles
+            const user = Auth.getCurrentUser();
+            if (user && user.role === 'admin') {
+                // Admin: Open admin.html in new tab
+                const adminWindow = window.open('admin.html', '_blank', 'width=1400,height=900');
+                if (adminWindow) {
+                    window.adminTabWindow = adminWindow;
+                }
+            } else if (user && user.role === 'reviewer') {
+                // Reviewer: Open admin.html in new tab
+                const reviewerWindow = window.open('admin.html', '_blank', 'width=1400,height=900');
+                if (reviewerWindow) {
+                    window.reviewerTabWindow = reviewerWindow;
+                }
+            }
+            
+            // Navigate to home
+            navigateTo('home');
+        }, 800);
+    } else {
+        messageDiv.textContent = result.message;
+        messageDiv.className = 'auth-message auth-message-error';
+    }
+}
+
+async function handleSignupSubmit(e) {
+    e.preventDefault();
+    
+    const email = document.getElementById('signup-email').value;
+    const password = document.getElementById('signup-password').value;
+    const confirmPassword = document.getElementById('signup-confirm-password').value;
+    const messageDiv = document.getElementById('signup-message');
+    
+    // Client-side validation
+    if (!email || !password || !confirmPassword) {
+        messageDiv.textContent = 'Vui lòng nhập đầy đủ thông tin!';
+        messageDiv.className = 'auth-message auth-message-error';
+        messageDiv.style.display = 'block';
+        return;
+    }
+    
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        messageDiv.textContent = 'Email không hợp lệ!';
+        messageDiv.className = 'auth-message auth-message-error';
+        messageDiv.style.display = 'block';
+        return;
+    }
+    
+    if (password.length < 6) {
+        messageDiv.textContent = 'Mật khẩu phải có ít nhất 6 ký tự!';
+        messageDiv.className = 'auth-message auth-message-error';
+        messageDiv.style.display = 'block';
+        return;
+    }
+    
+    if (password !== confirmPassword) {
+        messageDiv.textContent = 'Mật khẩu xác nhận không khớp!';
+        messageDiv.className = 'auth-message auth-message-error';
+        messageDiv.style.display = 'block';
+        return;
+    }
+    
+    // Show loading
+    messageDiv.textContent = 'Đang đăng ký...';
+    messageDiv.style.display = 'block';
+    messageDiv.className = 'auth-message auth-message-loading';
+    
+    // Create username from email (part before @)
+    const username = email.split('@')[0];
+    
+    // Call Auth.signup
+    const result = await Auth.signup({
+        username,
+        email,
+        password,
+        confirmPassword,
+        fullName: username
+    });
+    
+    if (result.success) {
+        messageDiv.textContent = 'Đăng ký thành công! Đang chuyển hướng...';
+        messageDiv.className = 'auth-message auth-message-success';
+        setTimeout(() => {
+            // Render header for authenticated user
+            renderHeader();
+            // Navigate to home
+            navigateTo('home');
+        }, 800);
+    } else {
+        messageDiv.textContent = result.message;
+        messageDiv.className = 'auth-message auth-message-error';
+    }
 }
 
 // ==================== INITIALIZATION ====================
