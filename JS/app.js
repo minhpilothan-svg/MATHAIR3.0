@@ -193,16 +193,23 @@ async function renderHomePage() {
 }
 
 function createGradeCardHTML(grade) {
-    return `
-        <div class="grade-card">
-            <h3>${grade.name}</h3>
-            <p>${grade.description}</p>
-            <p class="exercise-count">Số bài thực hành: ${grade.totalExercises}</p>
-            <button class="btn" onclick="navigateTo('grade', '${grade.id}')">
-                Bắt đầu học
-            </button>
-        </div>
-    `;
+  const colorMap = {
+    'grade-7': 'green',
+    'grade-8': 'amber',
+    'grade-9': 'red',
+  };
+  const colorClass = colorMap[grade.id] || '';
+ 
+  return `
+    <div class="grade-card${colorClass ? ` grade-card--${colorClass}` : ''}">
+      <h3>${grade.name}</h3>
+      <p>${grade.description}</p>
+      <p class="exercise-count">Số bài thực hành: ${grade.totalExercises}</p>
+      <button class="btn" onclick="navigateTo('grade', '${grade.id}')">
+        Bắt đầu học
+      </button>
+    </div>
+  `;
 }
 
 // Render Grade Page
@@ -1019,153 +1026,155 @@ function closeMyProfileModal() {
 // ==================== LOGIN & SIGNUP PAGES ====================
 
 function renderLoginPage() {
-    const mainContent = document.getElementById('main-content');
-    const appHeader = document.getElementById('app-header');
-    const appFooter = document.getElementById('app-footer');
-    
-    // Hide header and footer
-    appHeader.style.display = 'none';
-    appFooter.style.display = 'none';
-    
-    mainContent.innerHTML = `
-        <div class="auth-container">
-            <div class="auth-card">
-                <div class="auth-header">
-                    <h2>Đăng Nhập</h2>
-                    <p>Chào mừng trở lại! Vui lòng nhập email và mật khẩu.</p>
-                </div>
-                
-                <form id="login-form" class="auth-form">
-                    <div class="form-group">
-                        <label for="login-email">Email</label>
-                        <input 
-                            type="email" 
-                            id="login-email" 
-                            name="email" 
-                            placeholder="Nhập email của bạn"
-                            required
-                        >
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="login-password">Mật khẩu</label>
-                        <div class="password-input-wrapper">
-                            <input 
-                                type="password" 
-                                id="login-password" 
-                                name="password" 
-                                placeholder="Nhập mật khẩu"
-                                required
-                            >
-                            <button 
-                                type="button" 
-                                class="toggle-password-btn"
-                                onclick="togglePasswordVisibility('login-password')"
-                            >
-                                <span class="eye-icon">👁️</span>
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <button type="submit" class="auth-submit-btn">ĐĂNG NHẬP</button>
-                    
-                    <div class="auth-footer">
-                        <p>Chưa có tài khoản? <a href="#" onclick="navigateTo('signup'); return false;">Đăng ký ngay</a></p>
-                    </div>
-                </form>
-                
-                <div id="login-message" class="auth-message" style="display: none;"></div>
-            </div>
-        </div>
-    `;
-    
-    // Attach login form listener
-    document.getElementById('login-form').addEventListener('submit', handleLoginSubmit);
-}
+  const mainContent = document.getElementById('main-content');
+  const appHeader   = document.getElementById('app-header');
+  const appFooter   = document.getElementById('app-footer');
+ 
+  appHeader.style.display = 'none';
+  if (appFooter) appFooter.style.display = 'none';
 
-function renderSignupPage() {
-    const mainContent = document.getElementById('main-content');
-    const appHeader = document.getElementById('app-header');
-    const appFooter = document.getElementById('app-footer');
-    
-    // Hide header and footer
-    appHeader.style.display = 'none';
-    appFooter.style.display = 'none';
-    
-    mainContent.innerHTML = `
-        <div class="auth-container">
-            <div class="auth-card">
-                <div class="auth-header">
-                    <h2>Đăng Ký</h2>
-                    <p>Tạo tài khoản mới để bắt đầu học tập.</p>
-                </div>
-                
-                <form id="signup-form" class="auth-form">
-                    <div class="form-group">
-                        <label for="signup-email">Email</label>
-                        <input 
-                            type="email" 
-                            id="signup-email" 
-                            name="email" 
-                            placeholder="Nhập email của bạn"
-                            required
-                        >
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="signup-password">Mật khẩu</label>
-                        <div class="password-input-wrapper">
-                            <input 
-                                type="password" 
-                                id="signup-password" 
-                                name="password" 
-                                placeholder="Nhập mật khẩu (tối thiểu 6 ký tự)"
-                                required
-                            >
-                            <button 
-                                type="button" 
-                                class="toggle-password-btn"
-                                onclick="togglePasswordVisibility('signup-password')"
-                            >
-                                <span class="eye-icon">👁️</span>
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="signup-confirm-password">Xác Nhận Mật Khẩu</label>
-                        <div class="password-input-wrapper">
-                            <input 
-                                type="password" 
-                                id="signup-confirm-password" 
-                                name="confirmPassword" 
-                                placeholder="Nhập lại mật khẩu"
-                                required
-                            >
-                            <button 
-                                type="button" 
-                                class="toggle-password-btn"
-                                onclick="togglePasswordVisibility('signup-confirm-password')"
-                            >
-                                <span class="eye-icon">👁️</span>
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <button type="submit" class="auth-submit-btn">ĐĂNG KÝ</button>
-                    
-                    <div class="auth-footer">
-                        <p>Đã có tài khoản? <a href="#" onclick="navigateTo('login'); return false;">Đăng nhập</a></p>
-                    </div>
-                </form>
-                
-                <div id="signup-message" class="auth-message" style="display: none;"></div>
-            </div>
+  mainContent.classList.add('main--auth');
+ 
+  mainContent.innerHTML = `
+    <div class="auth-container">
+      <div class="auth-card">
+        <div class="auth-header">
+          <h2>Đăng Nhập</h2>
+          <p>Chào mừng trở lại! Vui lòng nhập email và mật khẩu.</p>
         </div>
-    `;
-    
-    // Attach signup form listener
-    document.getElementById('signup-form').addEventListener('submit', handleSignupSubmit);
+ 
+        <form id="login-form" class="auth-form">
+          <div class="form-group">
+            <label for="login-email">Email</label>
+            <input
+              type="email"
+              id="login-email"
+              name="email"
+              placeholder="Nhập email của bạn"
+              required
+            >
+          </div>
+ 
+          <div class="form-group">
+            <label for="login-password">Mật khẩu</label>
+            <div class="password-input-wrapper">
+              <input
+                type="password"
+                id="login-password"
+                name="password"
+                placeholder="Nhập mật khẩu"
+                required
+              >
+              <button
+                type="button"
+                class="toggle-password-btn"
+                onclick="togglePasswordVisibility('login-password')"
+              >
+                <span class="eye-icon">👁️</span>
+              </button>
+            </div>
+          </div>
+ 
+          <button type="submit" class="auth-submit-btn">ĐĂNG NHẬP</button>
+ 
+          <div class="auth-footer">
+            <p>Chưa có tài khoản? <a href="#" onclick="navigateTo('signup'); return false;">Đăng ký ngay</a></p>
+          </div>
+        </form>
+ 
+        <div id="login-message" class="auth-message" style="display: none;"></div>
+      </div>
+    </div>
+  `;
+ 
+  document.getElementById('login-form').addEventListener('submit', handleLoginSubmit);
+}
+ 
+ 
+function renderSignupPage() {
+  const mainContent = document.getElementById('main-content');
+  const appHeader   = document.getElementById('app-header');
+  const appFooter   = document.getElementById('app-footer');
+ 
+  appHeader.style.display = 'none';
+  if (appFooter) appFooter.style.display = 'none';
+ 
+  // Fix khoảng trống
+  mainContent.classList.add('main--auth');
+ 
+  mainContent.innerHTML = `
+    <div class="auth-container">
+      <div class="auth-card">
+        <div class="auth-header">
+          <h2>Đăng Ký</h2>
+          <p>Tạo tài khoản mới để bắt đầu học tập.</p>
+        </div>
+ 
+        <form id="signup-form" class="auth-form">
+          <div class="form-group">
+            <label for="signup-email">Email</label>
+            <input
+              type="email"
+              id="signup-email"
+              name="email"
+              placeholder="Nhập email của bạn"
+              required
+            >
+          </div>
+ 
+          <div class="form-group">
+            <label for="signup-password">Mật khẩu</label>
+            <div class="password-input-wrapper">
+              <input
+                type="password"
+                id="signup-password"
+                name="password"
+                placeholder="Nhập mật khẩu (tối thiểu 6 ký tự)"
+                required
+              >
+              <button
+                type="button"
+                class="toggle-password-btn"
+                onclick="togglePasswordVisibility('signup-password')"
+              >
+                <span class="eye-icon">👁️</span>
+              </button>
+            </div>
+          </div>
+ 
+          <div class="form-group">
+            <label for="signup-confirm-password">Xác nhận mật khẩu</label>
+            <div class="password-input-wrapper">
+              <input
+                type="password"
+                id="signup-confirm-password"
+                name="confirmPassword"
+                placeholder="Nhập lại mật khẩu"
+                required
+              >
+              <button
+                type="button"
+                class="toggle-password-btn"
+                onclick="togglePasswordVisibility('signup-confirm-password')"
+              >
+                <span class="eye-icon">👁️</span>
+              </button>
+            </div>
+          </div>
+ 
+          <button type="submit" class="auth-submit-btn">ĐĂNG KÝ</button>
+ 
+          <div class="auth-footer">
+            <p>Đã có tài khoản? <a href="#" onclick="navigateTo('login'); return false;">Đăng nhập</a></p>
+          </div>
+        </form>
+ 
+        <div id="signup-message" class="auth-message" style="display: none;"></div>
+      </div>
+    </div>
+  `;
+ 
+  document.getElementById('signup-form').addEventListener('submit', handleSignupSubmit);
 }
 
 async function handleLoginSubmit(e) {

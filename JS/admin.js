@@ -1,7 +1,549 @@
-const AdminApp = (() => {
-    
-    // State Management
-    const state = {
+// MathAir Admin Page - Main Logic
+// ===========================================================
+
+const AdminPageUI = {
+    currentUser: null,
+    selectedUserId: null,
+    allUsers: [],
+
+    /**
+     * Initialize admin page
+     */
+    async init() {
+        // Check if user is authenticated and has admin access
+        await this.checkAuthorization();
+        
+        // Load user data
+        await this.loadAdminData();
+        
+        // Render admin info
+        this.renderAdminInfo();
+        
+        // Attach event listeners
+        this.attachEventListeners();
+        
+        // Load dashboard by default
+        await this.loadTab('dashboard');
+    },
+
+    /**
+     * Check if user is authorized to view admin page
+     */
+    async checkAuthorization() {
+        return new Promise((resolve) => {
+            const checkAuth = setInterval(() => {
+                if (window.RoleManager && window.firebaseAuth) {
+                    clearInterval(checkAuth);
+                    
+                    window.firebaseAuth.onAuthStateChanged(async (firebaseUser) => {
+                        if (!firebaseUser || !window.RoleManager.canAccessAdmin()) {
+                            alert('Bạn không có quyền truy cập trang này!');
+                            window.location.href = 'index.html';
+                            return;
+                        }
+                        this.currentUser = window.Auth?.getCurrentUser() || {};
+                        resolve(true);
+                    });
+                }
+            }, 100);
+        });
+    },
+
+    /**
+     * Load admin data from Firestore
+     */
+    async loadAdminData() {
+        try {
+            const usersSnap = await window.firebaseDb.collection('users').get();
+            this.allUsers = [];
+            
+            usersSnap.forEach(doc => {
+                this.allUsers.push({
+                    id: doc.id,
+                    ...doc.data()
+                });
+            });
+        } catch (error) {
+            console.error('Error loading admin data:', error);
+        }
+    },
+
+    /**
+     * Render admin info in sidebar
+     */
+    renderAdminInfo() {
+        const user = this.currentUser;
+        
+        document.getElementById('admin-name').textContent = user.username || 'Admin';
+        document.getElementById('admin-role').textContent = window.RoleManager.ROLES[user.role]?.name || 'User';
+        
+        const avatar = document.getElementById('admin-avatar');
+        if (user.avatar) {
+            avatar.src = user.avatar;
+        } else {
+            avatar.src = 'https://via.placeholder.com/150';
+        }
+    },
+
+    /**
+     * Load tab content
+     */
+    async loadTab(tabName) {
+        const contentArea = document.getElementById('admin-content');
+        const pageTitle = document.getElementById('page-title');
+        
+        // Update page title
+        const titleMap = {
+            'dashboard': 'Dashboard',
+            'users': 'Quản Lý Người Dùng',
+            'roles': 'Quản Lý Vai Trò',
+            'analytics': 'Thống Kê',
+            'settings': 'Cài Đặt'
+        };
+        pageTitle.textContent = titleMap[tabName] || 'Dashboard';
+        
+        // Clear content
+        contentArea.innerHTML = '<div class="loading"><p>Đang tải...</p></div>';
+        
+        switch (tabName) {
+            case 'dashboard':
+                await this.loadDashboard(contentArea);
+                break;
+            case 'users':
+                await this.loadUsersTab(contentArea);
+                break;
+            case 'roles':
+                await this.loadRolesTab(contentArea);
+                break;
+            case 'analytics':
+                await this.loadAnalyticsTab(contentArea);
+                break;
+            case 'settings':
+                await this.loadSettingsTab(contentArea);
+                break;
+            default:
+                contentArea.innerHTML = '<p>Tab không tồn tại</p>';
+        }
+        
+        // Update active sidebar link
+        document.querySelectorAll('.sidebar-link').forEach(link => {
+            link.classList.remove('active');
+        });
+        document.querySelector(`[data-tab="${tabName}"]`)?.classList.add('active');
+    },
+
+    /**
+     * Load dashboard
+     */
+    async loadDashboard(contentArea) {
+        try {
+            let adminCount = 0, reviewerCount = 0, userCount = 0;
+            
+            this.allUsers.forEach(user => {
+                const role = user.role || 'user';
+                if (role === 'admin') adminCount++;
+                else if (role === 'reviewer') reviewerCount++;
+                else userCount++;
+            });
+
+            contentArea.innerHTML = `
+                <div class="admin-section">
+                    <h2>Tổng Quan Hệ Thống</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-content">
+                                <p class="stat-label">Tổng Người Dùng</p>
+                                <p class="stat-value">${this.allUsers.length}</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon admin-icon">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                            <div class="stat-content">
+                                <p class="stat-label">Quản Trị Viên</p>
+                                <p class="stat-value">${adminCount}</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon reviewer-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="stat-content">
+                                <p class="stat-label">Người Chấm Chữa</p>
+                                <p class="stat-value">${reviewerCount}</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon user-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="stat-content">
+                                <p class="stat-label">Người Dùng Thường</p>
+                                <p class="stat-value">${userCount}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-actions">
+                        <h3>Hành Động Nhanh</h3>
+                        <div class="action-buttons">
+                            <button class="btn btn-primary" onclick="AdminPageUI.loadTab('users')">
+                                <i class="fas fa-user-edit"></i> Quản Lý Người Dùng
+                            </button>
+                            <button class="btn btn-primary" onclick="AdminPageUI.loadTab('roles')">
+                                <i class="fas fa-shield-alt"></i> Quản Lý Vai Trò
+                            </button>
+                            <button class="btn btn-primary" onclick="AdminPageUI.loadTab('analytics')">
+                                <i class="fas fa-chart-pie"></i> Xem Thống Kê
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="recent-users">
+                        <h3>10 Người Dùng Mới Nhất</h3>
+                        <div class="users-list-compact">
+                            ${this.allUsers
+                                .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+                                .slice(0, 10)
+                                .map(user => `
+                                    <div class="user-list-item">
+                                        <img src="${user.avatar || 'https://via.placeholder.com/40'}" alt="Avatar" class="user-avatar-sm">
+                                        <div class="user-info-compact">
+                                            <p class="user-name">${user.username || user.email}</p>
+                                            <p class="user-email">${user.email}</p>
+                                        </div>
+                                        <span class="role-badge role-${user.role || 'user'}">
+                                            ${window.RoleManager.ROLES[user.role || 'user']?.name || 'User'}
+                                        </span>
+                                    </div>
+                                `)
+                                .join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+        } catch (error) {
+            console.error('Error loading dashboard:', error);
+            contentArea.innerHTML = `<p class="error-message">Lỗi: ${error.message}</p>`;
+        }
+    },
+
+    /**
+     * Load users management tab
+     */
+    async loadUsersTab(contentArea) {
+        try {
+            let tableHTML = `
+                <div class="admin-section">
+                    <h2>Quản Lý Người Dùng</h2>
+                    <div class="users-table-wrapper">
+                        <table class="users-table">
+                            <thead>
+                                <tr>
+                                    <th>Username</th>
+                                    <th>Email</th>
+                                    <th>Vai Trò</th>
+                                    <th>Ngày Tạo</th>
+                                    <th>Hành Động</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+            `;
+
+            this.allUsers.forEach(user => {
+                const role = user.role || 'user';
+                const createdAt = user.createdAt ? new Date(user.createdAt).toLocaleDateString('vi-VN') : 'N/A';
+                
+                tableHTML += `
+                    <tr>
+                        <td><strong>${user.username || user.email}</strong></td>
+                        <td>${user.email}</td>
+                        <td>
+                            <span class="role-badge role-${role}">
+                                ${window.RoleManager.ROLES[role]?.name || 'Unknown'}
+                            </span>
+                        </td>
+                        <td>${createdAt}</td>
+                        <td>
+                            <button class="btn btn-sm btn-secondary" onclick="AdminPageUI.openRoleDialog('${user.id}', '${user.email}')">
+                                <i class="fas fa-edit"></i> Đổi Role
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            });
+
+            tableHTML += `
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            `;
+
+            contentArea.innerHTML = tableHTML;
+        } catch (error) {
+            console.error('Error loading users tab:', error);
+            contentArea.innerHTML = `<p class="error-message">Lỗi: ${error.message}</p>`;
+        }
+    },
+
+    /**
+     * Load roles management tab
+     */
+    async loadRolesTab(contentArea) {
+        const roles = window.RoleManager.getAllRoles();
+        
+        let rolesHTML = `
+            <div class="admin-section">
+                <h2>Quản Lý Vai Trò</h2>
+                <div class="roles-grid">
+        `;
+
+        Object.entries(roles).forEach(([roleId, roleConfig]) => {
+            rolesHTML += `
+                <div class="role-card">
+                    <div class="role-card-header">
+                        <h3>${roleConfig.name}</h3>
+                        <span class="role-id">(${roleId})</span>
+                    </div>
+                    <div class="role-card-body">
+                        <p><strong>Quyền Hạn:</strong></p>
+                        <ul class="permissions-list">
+            `;
+            
+            if (roleConfig.permissions.includes('*')) {
+                rolesHTML += `<li>✓ Tất cả quyền</li>`;
+            } else {
+                roleConfig.permissions.forEach(perm => {
+                    rolesHTML += `<li>✓ ${perm}</li>`;
+                });
+            }
+            
+            rolesHTML += `
+                        </ul>
+                        <div class="role-access">
+                            <p>
+                                <strong>Truy Cập Admin:</strong> 
+                                ${roleConfig.canAccessAdmin ? '<span style="color: #22C55E;">✓ Có</span>' : '<span style="color: #E33535;">✗ Không</span>'}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+
+        rolesHTML += `
+                </div>
+            </div>
+        `;
+
+        contentArea.innerHTML = rolesHTML;
+    },
+
+    /**
+     * Load analytics tab
+     */
+    async loadAnalyticsTab(contentArea) {
+        contentArea.innerHTML = `
+            <div class="admin-section">
+                <h2>Thống Kê Hệ Thống</h2>
+                <div class="analytics-placeholder">
+                    <i class="fas fa-chart-bar"></i>
+                    <p>Chức năng thống kê sẽ được cập nhật</p>
+                    <ul>
+                        <li>📊 Biểu đồ hoạt động người dùng</li>
+                        <li>📈 Tiến độ học tập theo khối lớp</li>
+                        <li>🏆 Xếp hạng cuộc thi</li>
+                        <li>⚠️ Cảnh báo hệ thống</li>
+                    </ul>
+                </div>
+            </div>
+        `;
+    },
+
+    /**
+     * Load settings tab
+     */
+    async loadSettingsTab(contentArea) {
+        contentArea.innerHTML = `
+            <div class="admin-section">
+                <h2>Cài Đặt Hệ Thống</h2>
+                <div class="settings-content">
+                    <h3>Cài Đặt Chung</h3>
+                    <div class="settings-group">
+                        <label>Tên Ứng Dụng</label>
+                        <input type="text" value="MathAir" readonly class="settings-input">
+                    </div>
+                    <div class="settings-group">
+                        <label>Phiên Bản</label>
+                        <input type="text" value="1.0.0" readonly class="settings-input">
+                    </div>
+                    <div class="settings-group">
+                        <label>Ngôn Ngữ</label>
+                        <select class="settings-input">
+                            <option selected>Tiếng Việt</option>
+                            <option>English</option>
+                            <option>中文</option>
+                        </select>
+                    </div>
+
+                    <h3 style="margin-top: 30px;">Cài Đặt Nâng Cao</h3>
+                    <div class="settings-group">
+                        <label>
+                            <input type="checkbox" checked> Bảo vệ dữ liệu người dùng
+                        </label>
+                    </div>
+                    <div class="settings-group">
+                        <label>
+                            <input type="checkbox" checked> Ghi nhật ký hoạt động admin
+                        </label>
+                    </div>
+
+                    <div class="settings-actions">
+                        <button class="btn btn-primary">Lưu Cài Đặt</button>
+                        <button class="btn btn-secondary">Đặt Lại Mặc Định</button>
+                    </div>
+                </div>
+            </div>
+        `;
+    },
+
+    /**
+     * Open role change dialog
+     */
+    openRoleDialog(userId, userEmail) {
+        this.selectedUserId = userId;
+        
+        const dialog = document.getElementById('role-dialog');
+        const infoText = document.getElementById('role-dialog-user-info');
+        
+        infoText.textContent = `Thay đổi vai trò cho: ${userEmail}`;
+        dialog.style.display = 'block';
+    },
+
+    /**
+     * Close role dialog
+     */
+    closeRoleDialog() {
+        document.getElementById('role-dialog').style.display = 'none';
+        this.selectedUserId = null;
+    },
+
+    /**
+     * Confirm and execute role change
+     */
+    async confirmChangeRole() {
+        if (!this.selectedUserId) return;
+        
+        const newRole = document.getElementById('role-select').value;
+        
+        try {
+            const result = await window.RoleManager.updateUserRole(this.selectedUserId, newRole);
+            
+            alert(result.message);
+            
+            if (result.success) {
+                // Reload users tab
+                await this.loadAdminData();
+                await this.loadTab('users');
+                this.closeRoleDialog();
+            }
+        } catch (error) {
+            console.error('Error changing role:', error);
+            alert('Lỗi: ' + error.message);
+        }
+    },
+
+    /**
+     * Attach event listeners
+     */
+    attachEventListeners() {
+        // Sidebar tab switching
+        document.querySelectorAll('.sidebar-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const tabName = e.currentTarget.getAttribute('data-tab');
+                this.loadTab(tabName);
+                this.closeSidebar();
+            });
+        });
+
+        // Hamburger menu
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        if (hamburgerBtn) {
+            hamburgerBtn.addEventListener('click', () => {
+                this.toggleSidebar();
+            });
+        }
+
+        // Mobile sidebar close
+        const sidebarToggleMobile = document.getElementById('sidebar-toggle-mobile');
+        if (sidebarToggleMobile) {
+            sidebarToggleMobile.addEventListener('click', () => {
+                this.closeSidebar();
+            });
+        }
+
+        // Back button
+        const backBtn = document.getElementById('back-btn');
+        if (backBtn) {
+            backBtn.addEventListener('click', () => {
+                window.location.href = 'index.html';
+            });
+        }
+
+        // Logout button
+        const logoutBtn = document.getElementById('logout-admin-btn');
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', async () => {
+                if (confirm('Bạn có chắc muốn đăng xuất?')) {
+                    await window.Auth.logout();
+                }
+            });
+        }
+
+        // Role dialog overlay click
+        const roleDialog = document.getElementById('role-dialog');
+        const dialogOverlay = document.querySelector('.dialog-overlay');
+        if (dialogOverlay) {
+            dialogOverlay.addEventListener('click', () => {
+                this.closeRoleDialog();
+            });
+        }
+    },
+
+    /**
+     * Toggle sidebar visibility
+     */
+    toggleSidebar() {
+        const sidebar = document.getElementById('admin-sidebar');
+        sidebar.classList.toggle('open');
+    },
+
+    /**
+     * Close sidebar
+     */
+    closeSidebar() {
+        const sidebar = document.getElementById('admin-sidebar');
+        sidebar.classList.remove('open');
+    }
+};
+
+// Initialize admin page when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    AdminPageUI.init();
+});
+
+// Make available globally
+window.AdminPageUI = AdminPageUI;
+
+// ============= LEGACY CODE (KEEP FOR BACKWARD COMPATIBILITY) =============
+const AdminApp = {
+    state: {
         currentSection: 'dashboard',
         isDarkMode: localStorage.getItem('adminDarkMode') === 'true' || false,
         contests: [],

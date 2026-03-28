@@ -241,6 +241,14 @@ const Auth = {
             localStorage.setItem('mathair_user', JSON.stringify(this.currentUser));
             this.firebaseUser = userCredential.user;
             
+            // Check if user is admin or reviewer and navigate to admin page
+            setTimeout(() => {
+                if (window.RoleManager && window.RoleManager.canAccessAdmin()) {
+                    console.log('Navigating to admin page for role:', this.currentUser.role);
+                    window.location.href = 'admin.html';
+                }
+            }, 500);
+            
             return {
                 success: true,
                 message: 'Đăng nhập thành công!',
