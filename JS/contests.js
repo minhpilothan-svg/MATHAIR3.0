@@ -30,7 +30,7 @@ const ContestSystem = {
     },
     
     createContest(contestData) {
-        const { title, description, duration, totalQuestions, questionSource, startTime, endTime } = contestData;
+        const { title, description, duration, totalQuestions, questionSource, startTime, endTime, reward70, reward80, reward90 } = contestData;
         
         if (!title || !description || !duration || !totalQuestions || !startTime || !endTime) {
             return {
@@ -62,13 +62,16 @@ const ContestSystem = {
             id: `contest_${Date.now()}`,
             title,
             description,
-            createdBy: Auth.getCurrentUser()?.id || 'admin_001',
+            createdBy: window.Auth?.getCurrentUser()?.id || 'admin_001',
             startTime: new Date(startTime).toISOString(),
             endTime: new Date(endTime).toISOString(),
             duration: parseInt(duration),
             totalQuestions: parseInt(totalQuestions),
             questions: selectedQuestions.map(q => q.id),
             questionSource: questionSource || 'random',
+            reward70: reward70 || 5,
+            reward80: reward80 || 7,
+            reward90: reward90 || 10,
             maxParticipants: 100,
             participants: [],
             results: [],
@@ -89,7 +92,7 @@ const ContestSystem = {
     },
     
     updateContest(contestId, contestData) {
-        const { title, description, duration, totalQuestions, questionSource, startTime, endTime } = contestData;
+        const { title, description, duration, totalQuestions, questionSource, startTime, endTime, reward70, reward80, reward90 } = contestData;
         
         const contest = this.contests.find(c => c.id === contestId);
         if (!contest) {
@@ -148,6 +151,9 @@ const ContestSystem = {
         contest.totalQuestions = parseInt(totalQuestions);
         contest.questions = selectedQuestions.map(q => q.id);
         contest.questionSource = questionSource || 'random';
+        contest.reward70 = reward70 || 5;
+        contest.reward80 = reward80 || 7;
+        contest.reward90 = reward90 || 10;
         
         this.saveContests();
         
@@ -216,7 +222,7 @@ const ContestSystem = {
         };
     },
     
-    submitContest(contestId, answers) {
+    submitContest(contestId, answers, timeTaken = 0) {
         const contest = this.contests.find(c => c.id === contestId);
         if (!contest) {
             return {
@@ -225,7 +231,7 @@ const ContestSystem = {
             };
         }
         
-        const user = Auth.getCurrentUser();
+        const user = window.Auth?.getCurrentUser();
         if (!user) {
             return {
                 success: false,
@@ -255,12 +261,16 @@ const ContestSystem = {
             }
         });
         
-        // Calculate Studying Points (10 points for perfect score)
+        score = Math.round(score);
+        
+        // Calculate Studying Points based on score tiers
         let pointsGained = 0;
-        if (correctAnswers === contest.totalQuestions) {
-            pointsGained = 10;
-        } else if (correctAnswers > 0) {
-            pointsGained = Math.round((correctAnswers / contest.totalQuestions) * 10);
+        if (score >= 90) {
+            pointsGained = contest.reward90 || 10;
+        } else if (score >= 80) {
+            pointsGained = contest.reward80 || 7;
+        } else if (score >= 70) {
+            pointsGained = contest.reward70 || 5;
         }
         
         const oldPoints = user.studyingPoints || 1000;
@@ -268,12 +278,13 @@ const ContestSystem = {
         
         const result = {
             userId: user.id,
-            score: Math.round(score),
+            score: score,
             correctAnswers: correctAnswers,
             totalQuestions: contest.totalQuestions,
             pointsGained: pointsGained,
             oldPoints: oldPoints,
             finalPoints: newPoints,
+            timeTaken: timeTaken,
             completedAt: new Date().toISOString()
         };
         
@@ -287,7 +298,9 @@ const ContestSystem = {
         user.completedContests.push(contestId);
         localStorage.setItem('mathair_user', JSON.stringify(user));
         
-        Auth.currentUser = user;
+        if (window.Auth) {
+            window.Auth.currentUser = user;
+        }
         
         this.saveContests();
         
@@ -447,7 +460,8 @@ const ContestSystem = {
         }
     },
 };
-
+// Expose ContestSystem globally
+window.ContestSystem = ContestSystem;
 document.addEventListener('DOMContentLoaded', async () => {
     await ContestSystem.init();
 });

@@ -43,6 +43,12 @@
                         </a>
                     </li>
                     <li class="sidebar-item">
+                        <a href="#" class="sidebar-link" data-tab="contests">
+                            <i class="fas fa-pencil-alt"></i>
+                            <span>Quản Lý Cuộc Thi</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
                         <a href="#" class="sidebar-link" data-tab="users">
                             <i class="fas fa-users"></i>
                             <span>Quản Lý Người Dùng</span>
@@ -114,6 +120,165 @@
         </main>
     </div>
 
+    <!-- Contest Modal -->
+    <div id="contest-modal" class="contest-modal" style="display: none;">
+        <div class="modal-overlay" onclick="AdminPageUI.closeContestModal()"></div>
+        <div class="modal-content modal-lg">
+            <div class="modal-header">
+                <div>
+                    <h2 id="contest-modal-title">
+                        <i class="fas fa-trophy" style="margin-right: 10px; color: #3d7ef0;"></i>
+                        Tạo Cuộc Thi Mới
+                    </h2>
+                    <p style="margin: 5px 0 0 0; color: var(--admin-text-secondary); font-size: 0.9rem;">
+                        Cấu hình thông tin cuộc thi và hệ thống điểm thưởng
+                    </p>
+                </div>
+                <button class="modal-close" onclick="AdminPageUI.closeContestModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="contest-form" class="contest-form-container">
+                    <!-- Section 1: Thông Tin Cơ Bản -->
+                    <div class="form-section">
+                        <div class="section-header">
+                            <i class="fas fa-info-circle"></i>
+                            <h3>Thông Tin Cơ Bản</h3>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="contest-title">
+                                    <i class="fas fa-heading"></i> Tên Cuộc Thi *
+                                </label>
+                                <input type="text" id="contest-title" placeholder="VD: Cuộc Thi Toán Lớp 9 Tháng 3" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="contest-description">
+                                    <i class="fas fa-align-left"></i> Mô Tả Chi Tiết *
+                                </label>
+                                <textarea id="contest-description" placeholder="Mô tả chi tiết về cuộc thi, đối tượng tham gia, yêu cầu..." rows="4" required></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 2: Lịch Thi -->
+                    <div class="form-section">
+                        <div class="section-header">
+                            <i class="fas fa-calendar-alt"></i>
+                            <h3>Lịch Thi</h3>
+                        </div>
+                        <div class="form-row two-col">
+                            <div class="form-group">
+                                <label for="contest-start-time">
+                                    <i class="fas fa-play-circle"></i> Thời Điểm Bắt Đầu *
+                                </label>
+                                <input type="datetime-local" id="contest-start-time" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contest-end-time">
+                                    <i class="fas fa-stop-circle"></i> Thời Điểm Kết Thúc *
+                                </label>
+                                <input type="datetime-local" id="contest-end-time" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="contest-duration">
+                                    <i class="fas fa-hourglass-end"></i> Thời Gian Làm Bài (Phút) *
+                                </label>
+                                <input type="number" id="contest-duration" placeholder="60" min="1" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 3: Cấu Hình Câu Hỏi -->
+                    <div class="form-section">
+                        <div class="section-header">
+                            <i class="fas fa-question-circle"></i>
+                            <h3>Cấu Hình Câu Hỏi</h3>
+                        </div>
+                        <div class="form-row two-col">
+                            <div class="form-group">
+                                <label for="contest-total-questions">
+                                    <i class="fas fa-list-ol"></i> Số Lượng Câu Hỏi *
+                                </label>
+                                <input type="number" id="contest-total-questions" placeholder="20" min="1" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contest-question-source">
+                                    <i class="fas fa-database"></i> Nguồn Câu Hỏi
+                                </label>
+                                <select id="contest-question-source">
+                                    <option value="random">📚 Ngẫu Nhiên</option>
+                                    <option value="ch1">📖 Chương 1</option>
+                                    <option value="ch2">📖 Chương 2</option>
+                                    <option value="ch3">📖 Chương 3</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 4: Hệ Thống Điểm Thưởng -->
+                    <div class="form-section">
+                        <div class="section-header">
+                            <i class="fas fa-star"></i>
+                            <h3>Hệ Thống Điểm Thưởng</h3>
+                        </div>
+                        <p style="color: var(--admin-text-secondary); font-size: 0.9rem; margin-bottom: 1.5rem;">
+                            Cấu hình điểm thưởng dựa trên mức độ hoàn thành của học sinh
+                        </p>
+                        <div class="rewards-grid">
+                            <div class="reward-card reward-bronze">
+                                <div class="reward-badge">
+                                    <i class="fas fa-code-branch"></i>
+                                </div>
+                                <h4>70% - 79%</h4>
+                                <p>Trung Bình Khá</p>
+                                <div class="form-group">
+                                    <label for="contest-reward-70">Điểm Thưởng *</label>
+                                    <input type="number" id="contest-reward-70" placeholder="5" min="0" required>
+                                </div>
+                            </div>
+                            <div class="reward-card reward-silver">
+                                <div class="reward-badge">
+                                    <i class="fas fa-level-up-alt"></i>
+                                </div>
+                                <h4>80% - 89%</h4>
+                                <p>Khá</p>
+                                <div class="form-group">
+                                    <label for="contest-reward-80">Điểm Thưởng *</label>
+                                    <input type="number" id="contest-reward-80" placeholder="7" min="0" required>
+                                </div>
+                            </div>
+                            <div class="reward-card reward-gold">
+                                <div class="reward-badge">
+                                    <i class="fas fa-crown"></i>
+                                </div>
+                                <h4>90% - 100%</h4>
+                                <p>Xuất Sắc</p>
+                                <div class="form-group">
+                                    <label for="contest-reward-90">Điểm Thưởng *</label>
+                                    <input type="number" id="contest-reward-90" placeholder="10" min="0" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="AdminPageUI.closeContestModal()">
+                    <i class="fas fa-times"></i> Hủy
+                </button>
+                <button class="btn btn-primary" onclick="AdminPageUI.saveContest()">
+                    <i class="fas fa-check"></i> Lưu Cuộc Thi
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Role Change Dialog -->
     <div id="role-dialog" class="role-dialog" style="display: none;">
         <div class="dialog-overlay"></div>
@@ -138,5 +303,7 @@
     <!-- Scripts -->
     <script src="JS/firebase-config.js"></script>
     <script src="JS/role-management.js"></script>
+    <script src="JS/auth.js"></script>
+    <script src="JS/contests.js"></script>
     <script src="JS/admin.js"></script>
 </body>

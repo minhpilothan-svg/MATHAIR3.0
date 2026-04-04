@@ -387,4 +387,7 @@ const Auth = {
     }
 };
 
+// Expose Auth globally
+window.Auth = Auth;
+
 // Render Login & Signup pages moved to app.js

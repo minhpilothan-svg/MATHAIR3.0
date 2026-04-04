@@ -10,38 +10,85 @@ const AdminPageUI = {
      * Initialize admin page
      */
     async init() {
-        // Check if user is authenticated and has admin access
-        await this.checkAuthorization();
-        
-        // Load user data
-        await this.loadAdminData();
-        
-        // Render admin info
-        this.renderAdminInfo();
-        
-        // Attach event listeners
-        this.attachEventListeners();
-        
-        // Load dashboard by default
-        await this.loadTab('dashboard');
+        try {
+            console.log('AdminPageUI: Initializing...');
+            
+            // Check if user is authenticated and has admin access
+            await this.checkAuthorization();
+            console.log('AdminPageUI: Authorization passed');
+            
+            // Load user data
+            await this.loadAdminData();
+            console.log('AdminPageUI: Data loaded, users count:', this.allUsers.length);
+            
+            // Render admin info
+            this.renderAdminInfo();
+            console.log('AdminPageUI: Admin info rendered');
+            
+            // Attach event listeners
+            this.attachEventListeners();
+            console.log('AdminPageUI: Event listeners attached');
+            
+            // Load dashboard by default
+            await this.loadTab('dashboard');
+            console.log('AdminPageUI: Dashboard loaded successfully');
+        } catch (error) {
+            console.error('AdminPageUI initialization error:', error);
+            const contentArea = document.getElementById('admin-content');
+            if (contentArea) {
+                contentArea.innerHTML = `<div class="error-message"><i class="fas fa-exclamation-triangle"></i> Lỗi: ${error.message}</div>`;
+            }
+        }
     },
 
     /**
      * Check if user is authorized to view admin page
      */
     async checkAuthorization() {
-        return new Promise((resolve) => {
+        return new Promise((resolve, reject) => {
+            let attempts = 0;
+            const maxAttempts = 100; // 10 second timeout (100 * 100ms)
+            
             const checkAuth = setInterval(() => {
+                attempts++;
+                console.log(`Auth check attempt ${attempts}/${maxAttempts}: RoleManager=${!!window.RoleManager}, firebaseAuth=${!!window.firebaseAuth}`);
+                
+                if (attempts > maxAttempts) {
+                    clearInterval(checkAuth);
+                    console.error('Timeout waiting for authentication initialization');
+                    // Still proceed - don't block on auth if it takes too long
+                    resolve(true);
+                    return;
+                }
+                
                 if (window.RoleManager && window.firebaseAuth) {
                     clearInterval(checkAuth);
+                    console.log('Auth components ready, checking user...');
                     
-                    window.firebaseAuth.onAuthStateChanged(async (firebaseUser) => {
-                        if (!firebaseUser || !window.RoleManager.canAccessAdmin()) {
-                            alert('Bạn không có quyền truy cập trang này!');
-                            window.location.href = 'index.html';
+                    window.firebaseAuth.onAuthStateChanged((firebaseUser) => {
+                        if (!firebaseUser) {
+                            console.log('User not logged in, redirecting...');
+                            alert('Bạn cần đăng nhập để truy cập trang này!');
+                            setTimeout(() => window.location.href = 'index.html', 100);
                             return;
                         }
-                        this.currentUser = window.Auth?.getCurrentUser() || {};
+                        
+                        // Check if user is admin or reviewer (both have admin access)
+                        const currentRole = window.Auth?.getCurrentUser()?.role || firebaseUser.customClaims?.role || 'user';
+                        console.log('Current user role:', currentRole);
+                        
+                        if (!window.RoleManager.canAccessAdmin()) {
+                            console.log('User does not have admin access');
+                            alert('Bạn không có quyền truy cập trang này!');
+                            setTimeout(() => window.location.href = 'index.html', 100);
+                            return;
+                        }
+                        
+                        this.currentUser = window.Auth?.getCurrentUser() || { 
+                            uid: firebaseUser.uid,
+                            email: firebaseUser.email 
+                        };
+                        console.log('User authorized:', this.currentUser);
                         resolve(true);
                     });
                 }
@@ -53,19 +100,35 @@ const AdminPageUI = {
      * Load admin data from Firestore
      */
     async loadAdminData() {
-        try {
-            const usersSnap = await window.firebaseDb.collection('users').get();
-            this.allUsers = [];
-            
-            usersSnap.forEach(doc => {
-                this.allUsers.push({
-                    id: doc.id,
-                    ...doc.data()
+        return new Promise(async (resolve, reject) => {
+            // Set a timeout of 5 seconds
+            const timeout = setTimeout(() => {
+                console.warn('Admin data loading timeout - using empty array');
+                this.allUsers = [];
+                resolve();
+            }, 5000);
+
+            try {
+                const usersSnap = await window.firebaseDb.collection('users').get();
+                clearTimeout(timeout);
+                this.allUsers = [];
+                
+                usersSnap.forEach(doc => {
+                    this.allUsers.push({
+                        id: doc.id,
+                        ...doc.data()
+                    });
                 });
-            });
-        } catch (error) {
-            console.error('Error loading admin data:', error);
-        }
+                console.log('Admin data loaded:', this.allUsers.length, 'users');
+                resolve();
+            } catch (error) {
+                clearTimeout(timeout);
+                console.error('Error loading admin data:', error);
+                // If Firestore fails, initialize with empty array and continue
+                this.allUsers = [];
+                resolve();
+            }
+        });
     },
 
     /**
@@ -73,15 +136,25 @@ const AdminPageUI = {
      */
     renderAdminInfo() {
         const user = this.currentUser;
+        const adminNameEl = document.getElementById('admin-name');
+        const adminRoleEl = document.getElementById('admin-role');
+        const avatarEl = document.getElementById('admin-avatar');
         
-        document.getElementById('admin-name').textContent = user.username || 'Admin';
-        document.getElementById('admin-role').textContent = window.RoleManager.ROLES[user.role]?.name || 'User';
+        if (adminNameEl) {
+            adminNameEl.textContent = user.username || user.email || 'Admin';
+        }
         
-        const avatar = document.getElementById('admin-avatar');
-        if (user.avatar) {
-            avatar.src = user.avatar;
-        } else {
-            avatar.src = 'https://via.placeholder.com/150';
+        if (adminRoleEl) {
+            const roleConfig = window.RoleManager?.ROLES?.[user.role];
+            adminRoleEl.textContent = roleConfig?.name || 'Người Dùng';
+        }
+        
+        if (avatarEl) {
+            if (user.avatar) {
+                avatarEl.src = user.avatar;
+            } else {
+                avatarEl.src = 'https://via.placeholder.com/150';
+            }
         }
     },
 
@@ -95,6 +168,7 @@ const AdminPageUI = {
         // Update page title
         const titleMap = {
             'dashboard': 'Dashboard',
+            'contests': 'Quản Lý Cuộc Thi',
             'users': 'Quản Lý Người Dùng',
             'roles': 'Quản Lý Vai Trò',
             'analytics': 'Thống Kê',
@@ -108,6 +182,9 @@ const AdminPageUI = {
         switch (tabName) {
             case 'dashboard':
                 await this.loadDashboard(contentArea);
+                break;
+            case 'contests':
+                await this.loadContestsTab(contentArea);
                 break;
             case 'users':
                 await this.loadUsersTab(contentArea);
@@ -191,6 +268,9 @@ const AdminPageUI = {
                     <div class="dashboard-actions">
                         <h3>Hành Động Nhanh</h3>
                         <div class="action-buttons">
+                            <button class="btn btn-primary" onclick="AdminPageUI.loadTab('contests')">
+                                <i class="fas fa-pencil-alt"></i> Quản Lý Cuộc Thi
+                            </button>
                             <button class="btn btn-primary" onclick="AdminPageUI.loadTab('users')">
                                 <i class="fas fa-user-edit"></i> Quản Lý Người Dùng
                             </button>
@@ -228,6 +308,101 @@ const AdminPageUI = {
             `;
         } catch (error) {
             console.error('Error loading dashboard:', error);
+            contentArea.innerHTML = `<p class="error-message">Lỗi: ${error.message}</p>`;
+        }
+    },
+
+    /**
+     * Load contests management tab
+     */
+    async loadContestsTab(contentArea) {
+        try {
+            // Initialize contest system if not already done
+            if (!window.ContestSystem) {
+                contentArea.innerHTML = `<p class="error-message">Hệ thống cuộc thi chưa được khởi tạo</p>`;
+                return;
+            }
+
+            await window.ContestSystem.init();
+            const contests = window.ContestSystem.contests || [];
+
+            let contestsHTML = `
+                <div class="admin-section">
+                    <div class="section-header">
+                        <div>
+                            <h2>Quản Lý Cuộc Thi</h2>
+                            <p class="section-subtitle">Tạo và quản lý các cuộc thi cho học sinh</p>
+                        </div>
+                        <button class="btn btn-primary" onclick="AdminPageUI.showContestModal()">
+                            <i class="fas fa-plus"></i> Tạo Cuộc Thi Mới
+                        </button>
+                    </div>
+
+                    <div class="contests-list">
+            `;
+
+            if (contests.length === 0) {
+                contestsHTML += `
+                    <div class="empty-state">
+                        <i class="fas fa-inbox"></i>
+                        <p>Chưa có cuộc thi nào</p>
+                        <button class="btn btn-primary" onclick="AdminPageUI.showContestModal()">
+                            <i class="fas fa-plus"></i> Tạo Cuộc Thi Đầu Tiên
+                        </button>
+                    </div>
+                `;
+            } else {
+                contests.forEach(contest => {
+                    const startDate = new Date(contest.startTime).toLocaleString('vi-VN');
+                    const endDate = new Date(contest.endTime).toLocaleString('vi-VN');
+                    const participantsCount = contest.participants ? contest.participants.length : 0;
+                    
+                    contestsHTML += `
+                        <div class="contest-card">
+                            <div class="contest-header">
+                                <h3>${contest.title}</h3>
+                                <span class="contest-status status-${contest.status}">${contest.status}</span>
+                            </div>
+                            <p class="contest-description">${contest.description}</p>
+                            <div class="contest-meta">
+                                <div class="meta-item">
+                                    <i class="fas fa-clock"></i> ${contest.duration} phút
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-question-circle"></i> ${contest.totalQuestions} câu
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-users"></i> ${participantsCount} tham gia
+                                </div>
+                            </div>
+                            <div class="contest-times">
+                                <p><strong>Bắt đầu:</strong> ${startDate}</p>
+                                <p><strong>Kết thúc:</strong> ${endDate}</p>
+                            </div>
+                            <div class="contest-actions">
+                                <button class="btn btn-sm btn-secondary" onclick="AdminPageUI.editContest('${contest.id}')">
+                                    <i class="fas fa-edit"></i> Chỉnh Sửa
+                                </button>
+                                <button class="btn btn-sm btn-secondary" onclick="AdminPageUI.viewContestResults('${contest.id}')">
+                                    <i class="fas fa-chart-bar"></i> Xem Kết Quả
+                                </button>
+                                <button class="btn btn-sm btn-danger" onclick="AdminPageUI.deleteContest('${contest.id}')">
+                                    <i class="fas fa-trash"></i> Xóa
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+
+            contestsHTML += `
+                    </div>
+                </div>
+            `;
+
+            contentArea.innerHTML = contestsHTML;
+        } catch (error) {
+            console.error('Error loading contests tab:', error);
             contentArea.innerHTML = `<p class="error-message">Lỗi: ${error.message}</p>`;
         }
     },
@@ -434,6 +609,211 @@ const AdminPageUI = {
     },
 
     /**
+     * Show contest creation modal
+     */
+    showContestModal(contestId = null) {
+        const modal = document.getElementById('contest-modal');
+        const title = document.getElementById('contest-modal-title');
+        
+        // Reset form
+        document.getElementById('contest-form').reset();
+        
+        if (contestId) {
+            // Edit mode
+            title.textContent = 'Chỉnh Sửa Cuộc Thi';
+            const contest = window.ContestSystem.getContestById(contestId);
+            if (contest) {
+                document.getElementById('contest-title').value = contest.title;
+                document.getElementById('contest-description').value = contest.description;
+                document.getElementById('contest-start-time').value = new Date(contest.startTime).toISOString().slice(0, 16);
+                document.getElementById('contest-end-time').value = new Date(contest.endTime).toISOString().slice(0, 16);
+                document.getElementById('contest-duration').value = contest.duration;
+                document.getElementById('contest-total-questions').value = contest.totalQuestions;
+                document.getElementById('contest-question-source').value = contest.questionSource || 'random';
+                document.getElementById('contest-reward-70').value = contest.reward70 || 5;
+                document.getElementById('contest-reward-80').value = contest.reward80 || 7;
+                document.getElementById('contest-reward-90').value = contest.reward90 || 10;
+                this.currentContestId = contestId;
+            }
+        } else {
+            // Create mode
+            title.textContent = 'Tạo Cuộc Thi Mới';
+            this.currentContestId = null;
+        }
+        
+        modal.style.display = 'flex';
+    },
+
+    /**
+     * Close contest modal
+     */
+    closeContestModal() {
+        document.getElementById('contest-modal').style.display = 'none';
+        this.currentContestId = null;
+    },
+
+    /**
+     * Save contest (create or update)
+     */
+    async saveContest() {
+        const form = document.getElementById('contest-form');
+        if (!form.checkValidity()) {
+            alert('Vui lòng điền đầy đủ tất cả các trường được đánh dấu *');
+            return;
+        }
+
+        const contestData = {
+            title: document.getElementById('contest-title').value,
+            description: document.getElementById('contest-description').value,
+            startTime: document.getElementById('contest-start-time').value,
+            endTime: document.getElementById('contest-end-time').value,
+            duration: parseInt(document.getElementById('contest-duration').value),
+            totalQuestions: parseInt(document.getElementById('contest-total-questions').value),
+            questionSource: document.getElementById('contest-question-source').value,
+            reward70: parseInt(document.getElementById('contest-reward-70').value),
+            reward80: parseInt(document.getElementById('contest-reward-80').value),
+            reward90: parseInt(document.getElementById('contest-reward-90').value)
+        };
+
+        try {
+            let result;
+            if (this.currentContestId) {
+                result = window.ContestSystem.updateContest(this.currentContestId, contestData);
+            } else {
+                result = window.ContestSystem.createContest(contestData);
+            }
+
+            if (result.success) {
+                alert(result.message);
+                this.closeContestModal();
+                await this.loadTab('contests');
+            } else {
+                alert('Lỗi: ' + result.message);
+            }
+        } catch (error) {
+            console.error('Error saving contest:', error);
+            alert('Lỗi: ' + error.message);
+        }
+    },
+
+    /**
+     * Edit contest
+     */
+    editContest(contestId) {
+        this.showContestModal(contestId);
+    },
+
+    /**
+     * Delete contest
+     */
+    async deleteContest(contestId) {
+        if (confirm('Bạn có chắc muốn xóa cuộc thi này?')) {
+            try {
+                const result = window.ContestSystem.deleteContest(contestId);
+                if (result.success) {
+                    alert(result.message);
+                    await this.loadTab('contests');
+                } else {
+                    alert('Lỗi: ' + result.message);
+                }
+            } catch (error) {
+                console.error('Error deleting contest:', error);
+                alert('Lỗi: ' + error.message);
+            }
+        }
+    },
+
+    /**
+     * View contest results (leaderboard)
+     */
+    async viewContestResults(contestId) {
+        const contest = window.ContestSystem.getContestById(contestId);
+        if (!contest) {
+            alert('Cuộc thi không tồn tại');
+            return;
+        }
+
+        try {
+            const results = contest.results || [];
+            const users = this.allUsers;
+
+            // Sort results by score (descending)
+            const sortedResults = results.sort((a, b) => b.score - a.score);
+
+            let leaderboardHTML = `
+                <div class="leaderboard-modal">
+                    <div class="modal-header">
+                        <h2>Kết Quả Cuộc Thi: ${contest.title}</h2>
+                        <button class="modal-close" onclick="AdminPageUI.closeLeaderboard()">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="leaderboard-table">
+                            <thead>
+                                <tr>
+                                    <th>Xếp Hạng</th>
+                                    <th>Học Sinh</th>
+                                    <th>Điểm (%)</th>
+                                    <th>Đúng/Tổng</th>
+                                    <th>Điểm SP</th>
+                                    <th>Thời Gian</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+            `;
+
+            sortedResults.forEach((result, index) => {
+                const user = users.find(u => u.id === result.userId);
+                const userName = user ? (user.username || user.email) : 'Unknown';
+                const completedTime = result.completedAt ? new Date(result.completedAt).toLocaleString('vi-VN') : 'N/A';
+                const pointsGained = result.pointsGained || 0;
+
+                leaderboardHTML += `
+                    <tr>
+                        <td><strong>#${index + 1}</strong></td>
+                        <td>${userName}</td>
+                        <td><strong>${result.score}%</strong></td>
+                        <td>${result.correctAnswers}/${result.totalQuestions}</td>
+                        <td><span class="badge-sp">+${pointsGained}</span></td>
+                        <td>${completedTime}</td>
+                    </tr>
+                `;
+            });
+
+            leaderboardHTML += `
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" onclick="AdminPageUI.closeLeaderboard()">Đóng</button>
+                    </div>
+                </div>
+            `;
+
+            // Display as a modal overlay
+            const leaderboardModal = document.createElement('div');
+            leaderboardModal.id = 'leaderboard-modal';
+            leaderboardModal.className = 'modal-overlay-full';
+            leaderboardModal.innerHTML = leaderboardHTML;
+            document.body.appendChild(leaderboardModal);
+        } catch (error) {
+            console.error('Error viewing contest results:', error);
+            alert('Lỗi: ' + error.message);
+        }
+    },
+
+    /**
+     * Close leaderboard
+     */
+    closeLeaderboard() {
+        const modal = document.getElementById('leaderboard-modal');
+        if (modal) {
+            modal.remove();
+        }
+    },
+
+    /**
      * Confirm and execute role change
      */
     async confirmChangeRole() {
@@ -534,14 +914,41 @@ const AdminPageUI = {
 };
 
 // Initialize admin page when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
-    AdminPageUI.init();
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        console.log('=== DOMContentLoaded ===');
+        console.log('Available globals:', {
+            Auth: !!window.Auth,
+            RoleManager: !!window.RoleManager,
+            firebaseAuth: !!window.firebaseAuth,
+            firebaseDb: !!window.firebaseDb,
+            ContestSystem: !!window.ContestSystem,
+            AdminPageUI: !!window.AdminPageUI
+        });
+        
+        console.log('DOMContentLoaded: Initializing Auth first...');
+        // Initialize Auth first
+        if (window.Auth && window.Auth.init) {
+            await window.Auth.init();
+            console.log('Auth initialized. Current user:', window.Auth.currentUser);
+        } else {
+            console.warn('Auth or Auth.init not available');
+        }
+        
+        // Then initialize Admin Page
+        console.log('Now initializing AdminPageUI...');
+        AdminPageUI.init();
+    } catch (error) {
+        console.error('Initialization error:', error);
+        alert('Lỗi khởi tạo: ' + error.message);
+    }
 });
 
 // Make available globally
 window.AdminPageUI = AdminPageUI;
 
-// ============= LEGACY CODE (KEEP FOR BACKWARD COMPATIBILITY) =============
+// ============= LEGACY CODE (COMMENTED OUT - USING ADMINPAGEUI INSTEAD) =============
+/*
 const AdminApp = {
     state: {
         currentSection: 'dashboard',
@@ -563,44 +970,44 @@ const AdminApp = {
             totalStudents: 250,
             totalReports: 15
         }
-    };
+    },
 
     // Initialize
-    function init() {
+    init() {
         setupDarkMode();
         attachEventListeners();
         loadData();
         renderSection('dashboard');
-    }
+    },
 
     // =============================================
     // DARK MODE
     // =============================================
 
-    function setupDarkMode() {
+    setupDarkMode() {
         if (state.isDarkMode) {
             document.body.classList.add('dark-mode');
-            updateThemeIcon();
+            this.updateThemeIcon();
         }
         // Update admin name in sidebar
         document.getElementById('admin-profile-name').textContent = state.currentUser.name.split(' ')[state.currentUser.name.split(' ').length - 1];
-    }
+    },
 
-    function toggleTheme() {
+    toggleTheme() {
         state.isDarkMode = !state.isDarkMode;
         localStorage.setItem('adminDarkMode', state.isDarkMode);
         document.body.classList.toggle('dark-mode');
-        updateThemeIcon();
-    }
+        this.updateThemeIcon();
+    },
 
-    function updateThemeIcon() {
+    updateThemeIcon() {
         const icon = document.getElementById('theme-toggle').querySelector('i');
         if (state.isDarkMode) {
             icon.className = 'fas fa-sun';
         } else {
             icon.className = 'fas fa-moon';
         }
-    }
+    },
 
     // =============================================
     // EVENT LISTENERS
@@ -1838,6 +2245,7 @@ const AdminApp = {
         closeStudentProfileModal
     };
 })();
+*/
 
-// Initialize when DOM is ready
-document.addEventListener('DOMContentLoaded', AdminApp.init);
+// Legacy code disabled - using AdminPageUI instead
+// document.addEventListener('DOMContentLoaded', AdminApp.init);

@@ -297,6 +297,360 @@ Có thể thêm sau:
 
 ---
 
-**Ngày tạo:** 28/03/2026  
+**Ngày tạo:** 28/03/2026
+
+---
+
+# 🎯 PHẦN 2: HỆ THỐNG CUỘC THI & LÀM BÀI TƯƠNG TÁCQUIZ (CONTESTS)
+
+## 📋 Tổng Quan 4 Task
+
+Đã hoàn thành 4 task chính cho hệ thống cuộc thi/bài thi:
+
+### ✅ Task 1: Cải Thiện UI Admin & Hoàn Thành Chức Năng Admin
+- Thêm tab "Quản Lý Cuộc Thi" vào sidebar admin
+- Hiển thị danh sách cuộc thi dưới dạng card
+- Cho phép tạo, sửa, xóa, và xem kết quả cuộc thi
+
+### ✅ Task 2: Tính Năng Tạo Cuộc Thi (Admin-Only)
+- Form tạo cuộc thi với 10 trường thông tin
+- Xác nhận dữ liệu (ngày, số câu, v.v.)
+- Hỗ trợ điểm thưởng theo mốc điểm (70%, 80%, 90%)
+
+### ✅ Task 3: Giao Diện Làm Bài với Timer & Trình Theo Dõi Câu Hỏi
+- Timer đếm ngược ở góc trên cùng bên phải
+- Trình theo dõi câu hỏi: 5 câu/hàng với 3 trạng thái màu
+- Kiểm tra tất cả câu được trả lời trước khi nộp
+
+### ✅ Task 4: Hệ Thống Kết Quả & Xếp Hạng
+- Hiển thị điểm số, số câu đúng, thời gian
+- Tính toán bonus point dựa trên điểm số
+- Bảng xếp hạng định dạng đẹp
+
+---
+
+## 📝 Task 2: Tính Năng Tạo Cuộc Thi
+
+### Form Fields
+
+| Trường | Loại | Bắt Buộc | Mô Tả |
+|--------|------|----------|-------|
+| Tên Cuộc Thi | Text | ✓ | Tiêu đề cuộc thi |
+| Mô Tả | Textarea | ✓ | Chi tiết về cuộc thi |
+| Thời Gian Bắt Đầu | DateTime | ✓ | Khi cuộc thi bắt đầu |
+| Thời Gian Kết Thúc | DateTime | ✓ | Khi cuộc thi kết thúc |
+| Thời Gian Làm Bài (Phút) | Number | ✓ | Thời lượng tối đa (phút) |
+| Số Câu Hỏi | Number | ✓ | Tổng số câu trong đề |
+| Nguồn Câu Hỏi | Select | | Random hoặc Chương 1-3 |
+| Điểm Thưởng 70%-79% | Number | ✓ | Bonus SP cho điểm 70-79% |
+| Điểm Thưởng 80%-89% | Number | ✓ | Bonus SP cho điểm 80-89% |
+| Điểm Thưởng 90%-100% | Number | ✓ | Bonus SP cho điểm 90-100% |
+
+### Hướng Dẫn Tạo Cuộc Thi
+
+1. Đăng nhập admin
+2. Vào "Quản Lý Cuộc Thi" từ sidebar
+3. Nhấn "Tạo Cuộc Thi Mới"
+4. Điền đầy đủ thông tin
+5. Nhấn "Lưu Cuộc Thi"
+
+### Dữ Liệu Cuộc Thi
+
+```javascript
+{
+  id: "contest_1711614000000",
+  title: "Kiểm Tra Toán Lớp 7",
+  description: "Bài kiểm tra giữa kỳ I",
+  createdBy: "admin_001",
+  startTime: "2026-04-15T14:00:00.000Z",
+  endTime: "2026-04-15T15:30:00.000Z",
+  duration: 90,                    // Phút
+  totalQuestions: 20,
+  questions: ["q1", "q2", ...],    // Array ID câu hỏi
+  questionSource: "random",
+  reward70: 5,                     // SP cho 70-79%
+  reward80: 7,                     // SP cho 80-89%
+  reward90: 10,                    // SP cho 90-100%
+  participants: ["user1", "user2"],
+  results: [{ result obj }, ...],
+  status: "upcoming|active|ended",
+  createdAt: "2026-03-28T10:00:00.000Z"
+}
+```
+
+---
+
+## 🎯 Task 3: Giao Diện Làm Bài
+
+### Cấu Trúc Layout
+
+```
+┌─────────────────────────────────────────────────────┐
+│ Tên Cuộc Thi              │ Timer: HH:MM:SS        │
+└─────────────────────────────────────────────────────┘
+┌──────────────────────┐ ┌─────────────────────────────┐
+│  Khu Vực Câu Hỏi    │ │ Trình Theo Dõi Câu Hỏi     │
+│  (Bên trái)         │ │ (Bên phải - 5 câu/hàng)    │
+│  - Câu hỏi          │ │                             │
+│  - Tùy chọn         │ │ 🟢 Đã trả lời               │
+│  - Nút Trước/Tiếp   │ │ 🔴 Chưa trả lời (scroll)    │
+│  - Nút Nộp Bài      │ │ 🟡 Chưa chọn                │
+└──────────────────────┘ └─────────────────────────────┘
+```
+
+### Chức Năng Timer
+
+- **Hiển Thị:** HH:MM:SS ở góc trên cùng bên phải
+- **Cập Nhật:** Mỗi 1 giây
+- **Cảnh Báo:** Chuyển màu đỏ khi còn < 1 phút
+- **Tự Động Nộp:** Hết thời gian tự động nộp bài
+
+### Trình Theo Dõi Câu Hỏi
+
+- **Bố Cục:** 5 câu hỏi trên một hàng
+- **Màu Sắc:**
+  - 🟢 **Xanh lá**: Đã trả lời (đã chọn đáp án)
+  - 🔴 **Đỏ**: Chưa trả lời nhưng đã cuộn qua
+  - 🟡 **Xám**: Chưa chọn/xem
+- **Tương Tác:** Click để nhảy đến câu hỏi đó
+
+### Kiểm Tra Trước Khi Nộp
+
+```javascript
+// System sẽ kiểm tra:
+for (let q of questions) {
+  if (!answers[q.id] || answers[q.id] === '') {
+    unanswered.push(q_number);
+  }
+}
+
+// Nếu có câu chưa trả lời:
+alert('Câu chưa trả lời: 3, 7, 15');
+// Không cho nộp
+```
+
+### Sử Dụng ContestTaking
+
+```javascript
+// Khởi động giao diện làm bài
+await ContestTaking.init(contestId);
+
+// Các method công khai:
+ContestTaking.goToQuestion(index)      // Jump to Q#N
+ContestTaking.saveAnswer(qId, answer)  // Lưu đáp án
+ContestTaking.previousQuestion()       // Câu trước
+ContestTaking.nextQuestion()           // Câu tiếp
+ContestTaking.submitContest()          // Nộp bài
+```
+
+---
+
+## 🏆 Task 4: Kết Quả & Xếp Hạng
+
+### Trang Kết Quả
+
+```
+┌──────────────────────────────────────┐
+│ Bài Làm Của Bạn Đã Được Nộp!        │
+│ Cảm ơn bạn đã tham gia: [Tên]       │
+├──────────────────────────────────────┤
+│                                      │
+│  ┌──────────────────┐                │
+│  │    Điểm Số       │  Số Câu Đúng  │
+│  │      85%         │  17/20         │
+│  │    Giỏi ⭐      │                 │
+│  └──────────────────┘  Thời Gian    │
+│                        12:45         │
+│     Tỷ Lệ Đúng                      │
+│     ███████████░░░░░░░░ 85%         │
+│     Điểm SP: +7                     │
+│                                      │
+│  [Xem Xếp Hạng]  [Về Trang Chủ]    │
+└──────────────────────────────────────┘
+```
+
+### Mốc Điểm & Thưởng
+
+| Khoảng Điểm | Đánh Giá | Emoji | SP Mặc Định |
+|-------------|---------|-------|------------|
+| 90-100% | Xuất Sắc | 🌟 | +10 |
+| 80-89% | Giỏi | ⭐ | +7 |
+| 70-79% | Khá | ✓ | +5 |
+| <70% | Cần Cố Gắng | 📚 | 0 |
+
+### Bảng Xếp Hạng
+
+```
+╔════════════════════════════════════════════════════════╗
+║              🏆 Xếp Hạng Cuộc Thi                    ║
+║            [Kiểm Tra Toán Lớp 7]                     ║
+╠════════════════════════════════════════════════════════╣
+║ Xếp │ Họ Tên        │ Điểm │ Đúng/Tổng │ SP │ Thời Gian ║
+╠════════════════════════════════════════════════════════╣
+║ 🥇 │ Nguyễn Văn A │ 95%  │ 19/20     │ +10│ 10:45   ║
+║ 🥈 │ Trần Thị B   │ 90%  │ 18/20     │ +10│ 11:20   ║
+║ 🥉 │ Lê Minh C    │ 85%  │ 17/20     │ +7 │ 12:15   ║
+║ #4 │ Phạm Hồng D  │ 75%  │ 15/20     │ +5 │ 14:00   ║
+║ #5 │ Vũ Quốc E    │ 70%  │ 14/20     │ +5 │ 15:30   ║
+╚════════════════════════════════════════════════════════╝
+```
+
+### Dữ Liệu Kết Quả
+
+```javascript
+{
+  userId: "user_123",
+  score: 85,                    // Phần trăm 0-100
+  correctAnswers: 17,          // Số câu đúng
+  totalQuestions: 20,          // Tổng số câu
+  pointsGained: 7,             // SP thưởng
+  oldPoints: 1000,             // SP trước
+  finalPoints: 1007,           // SP sau
+  timeTaken: 745,              // Giây
+  completedAt: "2026-03-28T10:30:00.000Z"
+}
+```
+
+---
+
+## 🔧 Các Tệp Được Tạo/Cập Nhật
+
+### Tệp Tạo Mới
+
+1. **JS/contest-taking.js** (500+ dòng)
+   - Khởi tạo cuộc thi
+   - Render giao diện
+   - Quản lý câu hỏi & đáp án
+   - Kiểm tra & nộp bài
+   - Hiển thị kết quả & xếp hạng
+
+2. **CSS/contest.css** (700+ dòng)
+   - Styling giao diện làm bài
+   - Timer & tracker styles
+   - Trang kết quả styles
+   - Bảng xếp hạng styles
+   - Responsive design
+
+### Tệp Cập Nhật
+
+1. **admin.html**
+   - Thêm contest-modal form
+   - Thêm contest management UI
+
+2. **admin.js**
+   - Method loadContestsTab()
+   - Method showContestModal()
+   - Method saveContest()
+   - Method editContest()
+   - Method deleteContest()
+   - Method viewContestResults()
+
+3. **JS/contests.js**
+   - Thêm reward70, reward80, reward90
+   - Cập nhật submitContest() với điểm thưởng
+   - Cập nhật createContest() & updateContest()
+
+4. **CSS/admin.css**
+   - Sport card styles
+   - Contest modal form styles
+   - Leaderboard modal styles
+
+5. **index.html**
+   - Thêm `<link rel="stylesheet" href="CSS/contest.css">`
+   - Thêm `<script src="JS/contest-taking.js"></script>`
+
+---
+
+## 🚀 Hướng Dẫn Sử Dụng
+
+### Cho Admin: Tạo Cuộc Thi
+
+1. Đăng nhập admin → Vào admin.html
+2. Click "Quản Lý Cuộc Thi" trên sidebar
+3. Click "Tạo Cuộc Thi Mới"
+4. Điền form (tất cả trường *)
+5. Click "Lưu Cuộc Thi"
+
+### Cho Học Sinh: Tham Gia Cuộc Thi
+
+1. Đăng nhập tài khoản
+2. Vào danh sách cuộc thi
+3. Click cuộc thi muốn làm
+4. Trả lời tất cả câu hỏi (theo tracker)
+5. Click "Nộp Bài"
+6. Xem kết quả & xếp hạng
+
+---
+
+## 🧪 Test Cases
+
+### Test 1: Tạo Cuộc Thi
+- [ ] Nhập đầy đủ thông tin
+- [ ] Xác nhận không cho tạo nếu ngày kết thúc < bắt đầu
+- [ ] Xác nhận cuộc thi được lưu vào localStorage
+
+### Test 2: Làm Bài
+- [ ] Timer hiển thị chính xác
+- [ ] Tracker cập nhật trạng thái câu hỏi
+- [ ] Không cho nộp nếu có câu chưa trả lời
+- [ ] Hết thời gian tự động nộp
+
+### Test 3: Kết Quả
+- [ ] Điểm percentage tính đúng
+- [ ] Bonus point đúng theo mốc
+- [ ] Xếp hạng sắp xếp theo điểm cao nhất
+
+### Test 4: Leaderboard
+- [ ] Hiển thị tất cả người tham gia
+- [ ] Top 3 có emoji medal
+- [ ] Sắp xếp theo điểm từ cao → thấp
+
+---
+
+## 📁 Package Structure
+
+```
+new_project/
+├── admin.html               [Cập nhật]
+├── index.html               [Cập nhật]
+├── CSS/
+│   ├── admin.css           [Cập nhật]
+│   ├── contest.css         [TẠO MỚI]
+│   └── ...
+├── JS/
+│   ├── admin.js            [Cập nhật]
+│   ├── contests.js         [Cập nhật]
+│   ├── contest-taking.js   [TẠO MỚI]
+│   └── ...
+└── DATA/
+    ├── contests.json
+    └── questions.json
+```
+
+---
+
+## 💡 Mẹo & Tricks
+
+### Kiểm Tra Dữ Liệu Cuộc Thi (F12 Console)
+```javascript
+console.log(window.ContestSystem.contests);
+console.log(window.ContestSystem.questions);
+```
+
+### Khởi Động Test Cuộc Thi
+```javascript
+await ContestTaking.init('contest_1711614000000');
+```
+
+### Xem Kết Quả Có Sẵn
+```javascript
+const contest = window.ContestSystem.getContestById('contest_id');
+console.log(contest.results);  // Mảng kết quả
+```
+
+---
+
+**Ngày hoàn thành:** 28/03/2026  
+**Phiên bản:** 2.0 (với Contest System)  
 **Version:** 1.0  
 **Status:** ✅ Ready for Deployment
