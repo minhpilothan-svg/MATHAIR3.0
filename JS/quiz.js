@@ -62,6 +62,9 @@ function saveCurrentAnswer() {
     } else if (currentQuestion.type === "text-input" || currentQuestion.type === "calculation") {
         const input = document.getElementById('text-answer');
         answer = input ? input.value.trim() : null;
+    } else if (currentQuestion.type === "essay") {
+        const textarea = document.getElementById('essay-answer');
+        answer = textarea ? textarea.value.trim() : null;
     }
     
     if (answer !== null) {
@@ -103,9 +106,17 @@ function submitQuiz() {
 function calculateResults() {
     const quiz = AppState.currentQuiz;
     let correct = 0;
+    let gradedQuestions = 0;
 
     quiz.questions.forEach((q) => {
+        // Skip essay questions - they are not auto-graded
+        if (q.type === "essay") {
+            return;
+        }
+        
+        gradedQuestions++;
         const userAnswer = quiz.answers[q.id];
+        
         if (q.type === "multiple-choice") {
             if (userAnswer === q.correctAnswer) correct++;
         } else {
@@ -114,11 +125,14 @@ function calculateResults() {
         }
     });
 
+    const total = gradedQuestions || 1; // Avoid division by zero
     return {
         correct,
-        total: quiz.questions.length,
-        percentage: ((correct / quiz.questions.length) * 100).toFixed(1),
-        score: ((correct / quiz.questions.length) * 10).toFixed(1),
+        total,
+        gradedQuestions,
+        essayCount: quiz.questions.filter(q => q.type === "essay").length,
+        percentage: ((correct / total) * 100).toFixed(1),
+        score: ((correct / total) * 10).toFixed(1),
     };
 }
 
@@ -175,6 +189,20 @@ function renderQuestion() {
                 >
             </div>
         `;
+    } else if (question.type === "essay") {
+        questionHTML += `
+            <div class="essay-input-group">
+                <textarea 
+                    id="essay-answer" 
+                    class="essay-textarea" 
+                    placeholder="Viết câu trả lời của bạn ở đây... (Không bắt buộc phải trả lời)"
+                    rows="8"
+                >${savedAnswer || ''}</textarea>
+                <div class="essay-char-count">
+                    <span id="char-count">0</span>/2000 ký tự
+                </div>
+            </div>
+        `;
     }
     
     questionHTML += `
@@ -194,6 +222,21 @@ function renderQuestion() {
     
     const main = document.getElementById('main-content');
     main.innerHTML = questionHTML;
+    
+    // Add character count listener for essay
+    if (question.type === "essay") {
+        const essayTextarea = document.getElementById('essay-answer');
+        const charCount = document.getElementById('char-count');
+        
+        if (essayTextarea && charCount) {
+            essayTextarea.addEventListener('input', (e) => {
+                charCount.textContent = e.target.value.length;
+            });
+            
+            // Set initial count
+            charCount.textContent = (savedAnswer || '').length;
+        }
+    }
 }
 
 function renderResultsPage(results) {
@@ -224,6 +267,27 @@ function renderResultsPage(results) {
     
     quiz.questions.forEach((question, index) => {
         const userAnswer = quiz.answers[question.id];
+        
+        // Special handling for essay questions
+        if (question.type === "essay") {
+            resultHTML += `
+                <div class="review-item essay">
+                    <div class="review-header">
+                        <span class="status essay">✏️ Câu Tự Luận</span>
+                        <span class="question-num">Câu ${index + 1}</span>
+                    </div>
+                    <p class="review-question"><strong>${question.question}</strong></p>
+                    <div class="essay-answer-box">
+                        <p><strong>Câu trả lời của bạn:</strong></p>
+                        <p class="essay-answer-text">${userAnswer || '<em>Bạn không trả lời câu này</em>'}</p>
+                    </div>
+                    ${question.explanation ? `<p class="review-explanation"><strong>Gợi ý:</strong> ${question.explanation}</p>` : ''}
+                </div>
+            `;
+            return;
+        }
+        
+        // Regular handling for multiple-choice and text-input
         let isCorrect = false;
         
         if (question.type === "multiple-choice") {

@@ -12,6 +12,13 @@
   border-radius: 16px;
   box-shadow: 0 4px 24px rgba(61,126,240,0.12);
   border: 1px solid var(--blue-100);
+  transition: background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+html.dark-mode .question-container {
+  background: #1a1f2e;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+  border-color: #2a3142;
 }
 
 .question-header {
@@ -21,7 +28,13 @@
   margin-bottom: 2.5rem;
   padding-bottom: 1.8rem;
   border-bottom: 2px solid var(--blue-50);
+  transition: border-color 0.3s ease;
 }
+
+html.dark-mode .question-header {
+  border-bottom-color: #2a3142;
+}
+
 .question-header h2 {
   font-family: var(--font-head);
   font-size: 2.4rem;
@@ -60,7 +73,15 @@
   position: relative;
   overflow: hidden;
   transition: border-color 0.15s, background 0.15s, transform 0.15s;
+  color: var(--text-dark);
 }
+
+html.dark-mode .answer-options label {
+  background: #2a3142;
+  border-color: #3a4456;
+  color: #E8E9EB;
+}
+
 .answer-options label::before {
   content: '';
   position: absolute; left: 0; top: 0;
@@ -74,6 +95,12 @@
   border-color: var(--blue-400);
   transform: translateX(3px);
 }
+
+html.dark-mode .answer-options label:hover {
+  background: #3a4456;
+  border-color: var(--blue-400);
+}
+
 .answer-options label:hover::before { transform: scaleY(1); }
 
 .answer-options input[type="radio"] {
@@ -90,13 +117,26 @@
   border: 1.5px solid var(--gray-200);
   border-radius: var(--radius);
   background: var(--gray-50);
+  color: var(--text-dark);
   outline: none;
-  transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+  transition: border-color 0.15s, box-shadow 0.15s, background 0.3s ease, color 0.3s ease;
 }
+
+html.dark-mode .answer-options input[type="text"] {
+  background: #2a3142;
+  border-color: #3a4456;
+  color: #E8E9EB;
+}
+
 .answer-options input[type="text"]:focus {
   border-color: var(--blue-400);
   background: white;
   box-shadow: 0 0 0 3px rgba(61,126,240,0.12);
+}
+
+html.dark-mode .answer-options input[type="text"]:focus {
+  background: #3a4456;
+  box-shadow: 0 0 0 3px rgba(61, 126, 240, 0.2);
 }
 
 /* ── Fraction ─ */
@@ -135,7 +175,15 @@
   border-radius: 16px; padding: 3.5rem;
   margin: 3rem auto; max-width: 1000px; gap: 4rem;
   border: 1px solid var(--blue-100);
+  transition: background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
+
+html.dark-mode .profile-container {
+  background: #1a1f2e;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+  border-color: #2a3142;
+}
+
 .profile-left { flex: 1; display: flex; justify-content: center; align-items: center; }
 .avatar { position: relative; }
 .avatar img {
@@ -161,7 +209,15 @@
   box-shadow: 0 4px 24px rgba(61,126,240,0.1);
   padding: 3.5rem; max-width: 1000px; margin: 3rem auto;
   border: 1px solid var(--blue-100);
+  transition: background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
+
+html.dark-mode .chart-container {
+  background: #1a1f2e;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+  border-color: #2a3142;
+}
+
 .chart-container h3 {
   font-family: var(--font-head);
   font-size: 2.2rem; font-weight: 800; margin-bottom: 2.5rem; color: var(--text-dark);
@@ -207,7 +263,15 @@
 
 .input-group { width: 100%; display: flex; flex-direction: column; }
 .signup-form .input-group { width: calc(50% - 1rem); }
-.input-group label { color: white; font-weight: 600; font-size: 1.3rem; margin-bottom: 0.8rem; }
+.input-group label {
+  color: white; font-weight: 600; font-size: 1.3rem; margin-bottom: 0.8rem;
+  background: rgba(16, 18, 30, 0.85);
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border-left: 3px solid var(--blue-400);
+  transition: all 0.2s ease;
+}
 .input-group input {
   width: 100%; height: 48px;
   border-radius: 10px; border: 1.5px solid rgba(255,255,255,0.2);
@@ -244,7 +308,16 @@
   text-align: center;
   border: 1px solid var(--blue-100);
   border-top: 4px solid var(--blue-400);
+  transition: background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
+
+html.dark-mode .result-box {
+  background: #1a1f2e;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+  border-color: #2a3142;
+  border-top-color: var(--blue-400);
+}
+
 .result-box h2 {
   font-family: var(--font-head);
   font-size: 3rem; font-weight: 800; letter-spacing: -0.02em;
@@ -273,8 +346,16 @@
   border: 1.5px solid var(--gray-200); border-radius: var(--radius);
   cursor: pointer; line-height: 1.55;
   position: relative; overflow: hidden;
-  transition: border-color 0.15s, background 0.15s, transform 0.15s;
+  transition: border-color 0.15s, background 0.15s, transform 0.15s, color 0.3s ease;
+  color: var(--text-dark);
 }
+
+html.dark-mode .option {
+  background: #2a3142;
+  border-color: #3a4456;
+  color: #E8E9EB;
+}
+
 .option::before {
   content: ''; position: absolute; left: 0; top: 0;
   width: 4px; height: 100%;
@@ -282,6 +363,12 @@
   transform: scaleY(0); transition: transform 0.2s ease;
 }
 .option:hover { background: var(--blue-50); border-color: var(--blue-400); transform: translateX(3px); }
+
+html.dark-mode .option:hover {
+  background: #3a4456;
+  border-color: var(--blue-400);
+}
+
 .option:hover::before { transform: scaleY(1); }
 .option:has(input[type="radio"]:checked) {
   background: var(--blue-400);
@@ -295,21 +382,96 @@
   font-family: var(--font-body); font-size: 1.5rem;
   border: 1.5px solid var(--gray-200); border-radius: var(--radius);
   outline: none; background: var(--gray-50);
-  transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+  color: var(--text-dark);
+  transition: border-color 0.15s, box-shadow 0.15s, background 0.3s ease, color 0.3s ease;
 }
+
+html.dark-mode .text-input {
+  background: #2a3142;
+  border-color: #3a4456;
+  color: #E8E9EB;
+}
+
 .text-input:focus {
   border-color: var(--blue-400);
   box-shadow: 0 0 0 3px rgba(61,126,240,0.12);
   background: white;
 }
 
-.progress-bar { width: 130px; height: 5px; background: var(--gray-200); border-radius: 10px; overflow: hidden; }
+html.dark-mode .text-input:focus {
+  background: #3a4456;
+  box-shadow: 0 0 0 3px rgba(61, 126, 240, 0.2);
+}
+
+/* ── Essay Input ─ */
+.essay-input-group { margin-bottom: 1.8rem; }
+.essay-textarea {
+  width: 100%; padding: 1.4rem 1.8rem;
+  font-family: var(--font-body); font-size: 1.5rem;
+  border: 1.5px solid var(--gray-200); border-radius: var(--radius);
+  outline: none; background: var(--gray-50);
+  color: var(--text-dark);
+  resize: vertical; min-height: 200px;
+  transition: border-color 0.15s, box-shadow 0.15s, background 0.3s ease, color 0.3s ease;
+}
+
+html.dark-mode .essay-textarea {
+  background: #2a3142;
+  border-color: #3a4456;
+  color: #E8E9EB;
+}
+
+.essay-textarea::placeholder {
+  color: var(--gray-400);
+}
+
+html.dark-mode .essay-textarea::placeholder {
+  color: #A0A5B0;
+}
+
+.essay-textarea:focus {
+  border-color: var(--blue-400);
+  box-shadow: 0 0 0 3px rgba(61,126,240,0.12);
+  background: white;
+}
+
+html.dark-mode .essay-textarea:focus {
+  background: #3a4456;
+  box-shadow: 0 0 0 3px rgba(61, 126, 240, 0.2);
+}
+
+.essay-char-count {
+  display: flex; justify-content: flex-end;
+  margin-top: 0.6rem; color: var(--gray-400);
+  font-size: 1.2rem; padding-right: 0.2rem;
+}
+
+html.dark-mode .essay-char-count {
+  color: #A0A5B0;
+}
+
+.essay-char-count span {
+  color: var(--blue-600); font-weight: 600;
+}
+
+.progress-bar { width: 130px; height: 5px; background: var(--gray-200); border-radius: 10px; overflow: hidden; transition: background 0.3s ease; }
+
+html.dark-mode .progress-bar {
+  background: #3a4456;
+}
+
 .progress { height: 100%; background: linear-gradient(90deg, var(--blue-400), var(--orange-400)); transition: width 0.3s ease; }
 
 .question-actions {
   display: flex; justify-content: space-between; gap: 1.5rem;
   padding-top: 1.8rem; border-top: 1px solid var(--blue-50);
+  transition: border-color 0.3s ease;
 }
+
+html.dark-mode .question-actions {
+  border-top-color: #2a3142;
+}
+
 .question-actions .btn { flex: 1; padding: 1.3rem 1.8rem; font-size: 1.5rem; }
 .btn-submit { background: var(--blue-400); color: white; }
 .btn-submit:hover { background: var(--blue-600); }
@@ -358,15 +520,33 @@
 }
 .review-item.correct  { border-left-color: var(--green-400); background: var(--green-50); }
 .review-item.incorrect{ border-left-color: var(--red-400);   background: var(--red-50); }
+.review-item.essay { border-left-color: var(--blue-400); background: var(--blue-50); }
 
 .review-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem; }
 .status { padding: 0.4rem 1rem; border-radius: 6px; font-size: 1.2rem; font-weight: 700; }
 .status.correct   { background: var(--green-400); color: white; }
 .status.incorrect { background: var(--red-400);   color: white; }
+.status.essay { background: var(--blue-400); color: white; }
 .question-num { font-size: 1.2rem; color: var(--gray-400); }
 
 .review-question { font-family: var(--font-head); font-size: 1.5rem; font-weight: 700; margin-bottom: 0.8rem; color: var(--text-dark); }
 .review-answer, .review-correct, .review-explanation { font-size: 1.4rem; margin-bottom: 0.6rem; color: var(--text-light); line-height: 1.6; }
+
+/* Essay Answer Box */
+.essay-answer-box {
+  background: white; padding: 1.5rem;
+  border-radius: 8px; margin: 1rem 0;
+  border: 1px solid var(--blue-200);
+}
+.essay-answer-box p:first-child {
+  margin-top: 0; font-weight: 700; color: var(--text-dark);
+}
+.essay-answer-text {
+  font-family: var(--font-body); font-size: 1.4rem;
+  color: var(--text-dark); line-height: 1.8;
+  white-space: pre-wrap; word-break: break-word;
+  margin: 0.8rem 0 0 0 !important;
+}
 
 .results-actions {
   display: flex; justify-content: center; gap: 1.5rem;

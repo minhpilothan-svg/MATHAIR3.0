@@ -36,6 +36,84 @@
         <p>&copy; 2026 MathAir. All rights reserved.</p>
     </footer>
 
+    <!-- Settings Sidebar Overlay -->
+    <div class="settings-overlay" id="settings-overlay" onclick="toggleSettingsSidebar()"></div>
+    
+    <!-- Settings Sidebar -->
+    <aside class="settings-sidebar" id="settings-sidebar">
+        <div class="settings-header">
+            <h3>Cài Đặt</h3>
+            <button class="settings-close" onclick="toggleSettingsSidebar()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="settings-body">
+            <!-- Theme Setting -->
+            <div class="settings-group">
+                <label class="settings-label">
+                    <i class="fas fa-moon"></i> Chế độ tối
+                </label>
+                <label class="switch">
+                    <input type="checkbox" id="theme-toggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <!-- Language Setting -->
+            <div class="settings-group">
+                <label class="settings-label">
+                    <i class="fas fa-globe"></i> Ngôn ngữ
+                </label>
+                <select id="language-select" class="settings-select">
+                    <option value="vi">Tiếng Việt</option>
+                    <option value="en">English</option>
+                    <option value="zh">中文</option>
+                </select>
+            </div>
+
+            <!-- Notification Setting -->
+            <div class="settings-group">
+                <label class="settings-label">
+                    <i class="fas fa-bell"></i> Thông báo
+                </label>
+                <label class="switch">
+                    <input type="checkbox" id="notifications-toggle" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <!-- Sound Setting -->
+            <div class="settings-group">
+                <label class="settings-label">
+                    <i class="fas fa-volume-up"></i> Âm thanh
+                </label>
+                <label class="switch">
+                    <input type="checkbox" id="sound-toggle" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <!-- Text Size Setting -->
+            <div class="settings-group">
+                <label class="settings-label">
+                    <i class="fas fa-text-height"></i> Kích thước chữ
+                </label>
+                <div class="text-size-controls">
+                    <button class="text-size-btn" onclick="changeFontSize('decrease')" title="Giảm">−</button>
+                    <span id="font-size-display">100%</span>
+                    <button class="text-size-btn" onclick="changeFontSize('increase')" title="Tăng">+</button>
+                </div>
+            </div>
+
+            <!-- Reset Setting -->
+            <div class="settings-group">
+                <button class="btn btn-secondary" onclick="resetSettings()">
+                    <i class="fas fa-redo"></i> Đặt lại cài đặt
+                </button>
+            </div>
+        </div>
+    </aside>
+
     <div id="calculator-modal" class="calculator-modal" style="display: none;">
     </div>
 
@@ -81,7 +159,6 @@
             </div>
         </div>
     </div>
-
     <script src="JS/firebase-config.js"></script>
     <script src="JS/role-management.js"></script>
     <script src="JS/auth.js"></script>

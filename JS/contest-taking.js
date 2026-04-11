@@ -184,6 +184,21 @@ const ContestTaking = {
                            onchange="ContestTaking.saveAnswer('${question.id}', this.value)">
                 </div>
             `;
+        } else if (question.type === 'essay') {
+            questionHTML += `
+                <div class="essay-input-group">
+                    <textarea 
+                        id="essay-answer" 
+                        class="essay-textarea" 
+                        placeholder="Viết câu trả lời của bạn ở đây... (Không bắt buộc phải trả lời)"
+                        rows="8"
+                        onchange="ContestTaking.saveAnswer('${question.id}', this.value)"
+                    >${answer || ''}</textarea>
+                    <div class="essay-char-count">
+                        <span id="char-count">${(answer || '').length}</span>/2000 ký tự
+                    </div>
+                </div>
+            `;
         }
         
         questionHTML += `
@@ -191,6 +206,18 @@ const ContestTaking = {
         `;
         
         questionArea.innerHTML = questionHTML;
+        
+        // Add character count listener for essay
+        if (question.type === 'essay') {
+            const essayTextarea = document.getElementById('essay-answer');
+            const charCount = document.getElementById('char-count');
+            
+            if (essayTextarea && charCount) {
+                essayTextarea.addEventListener('input', (e) => {
+                    charCount.textContent = e.target.value.length;
+                });
+            }
+        }
     },
     
     /**
@@ -347,6 +374,7 @@ const ContestTaking = {
         const timeString = this.formatSeconds(result.timeTaken || 0);
         const scorePercentage = result.score || 0;
         const spPoints = result.pointsGained || 0;
+        const essayCount = result.essayCount || 0;
         
         let scoreLevel = '';
         if (scorePercentage >= 90) {
@@ -357,6 +385,11 @@ const ContestTaking = {
             scoreLevel = '✓ Khá';
         } else {
             scoreLevel = 'Cần Cố Gắng';
+        }
+        
+        let totalQuestionsText = `${result.totalQuestions} câu`;
+        if (essayCount > 0) {
+            totalQuestionsText += ` (+ ${essayCount} câu tự luận)`;
         }
         
         mainContent.innerHTML = `
@@ -398,6 +431,15 @@ const ContestTaking = {
                                 </div>
                                 <div class="stat-value">${result.correctAnswers}/${result.totalQuestions}</div>
                             </div>
+                            ${essayCount > 0 ? `
+                            <div class="stat-bar">
+                                <div class="stat-label">Câu Tự Luận (Chờ Chấm)</div>
+                                <div class="stat-progress">
+                                    <div class="progress-bar essay" style="width: 50%"></div>
+                                </div>
+                                <div class="stat-value">${essayCount} câu</div>
+                            </div>
+                            ` : ''}
                         </div>
                     </div>
 

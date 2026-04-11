@@ -60,9 +60,6 @@ function renderHeader() {
             <nav class="nav">
                 <ul>
                     ${isLoggedIn ? `<li><a href="#" onclick="navigateTo('home'); return false;">Trang chủ</a></li>` : ''}
-                    ${isLoggedIn ? `
-                        <li><a href="#" onclick="navigateTo('profile'); return false;">Hồ sơ</a></li>
-                    ` : ''}
                 </ul>
             </nav>
         </div>
@@ -73,15 +70,17 @@ function renderHeader() {
                 <span class="hamburger-line"></span>
             </button>
             <div class="dropdown-menu" id="dropdown-menu">
-                <button class="calc-btn-menu" onclick="openCalculator()" title="Máy tính phân số">
-                    <img src="https://cdn1.iconfinder.com/data/icons/ios-11-glyphs/30/calculator-1024.png" alt="Calculator">
-                    Máy tính
-                </button>
                 ${isLoggedIn ? `
-                    <button class="logout-btn-menu" onclick="handleLogout()">
-                        Đăng xuất
+                    <button class="profile-btn-menu" onclick="navigateToProfile()">
+                        <i class="fas fa-user"></i> Hồ sơ
+                    </button>
+                    <button class="settings-btn-menu" onclick="toggleSettingsSidebar()">
+                        <i class="fas fa-cog"></i> Cài đặt
                     </button>
                 ` : ''}
+                <button class="logout-btn-menu" onclick="handleLogout()">
+                    <i class="fas fa-sign-out-alt"></i> Đăng xuất
+                </button>
             </div>
         </div>
     `;
@@ -90,6 +89,29 @@ function renderHeader() {
     attachHamburgerListener();
 }
 
+function navigateToProfile() {
+    navigateTo('profile');
+    closeDropdownMenu();
+}
+
+function closeDropdownMenu() {
+    const hamburgerBtn = document.getElementById('hamburger-menu');
+    const dropdownMenu = document.getElementById('dropdown-menu');
+    if (dropdownMenu) dropdownMenu.classList.remove('active');
+    if (hamburgerBtn) hamburgerBtn.classList.remove('active');
+}
+
+function toggleSettingsSidebar() {
+    const sidebar = document.getElementById('settings-sidebar');
+    const overlay = document.getElementById('settings-overlay');
+    if (sidebar) {
+        sidebar.classList.toggle('active');
+        if (overlay) {
+            overlay.classList.toggle('active');
+        }
+        closeDropdownMenu();
+    }
+}
 
 // Handle logout
 async function handleLogout() {
@@ -1307,6 +1329,9 @@ async function initApp() {
     // Load initial data
     await initializeData();
     
+    // Initialize settings
+    initializeSettings();
+    
     // Render header
     renderHeader();
     
@@ -1329,6 +1354,123 @@ async function initApp() {
     // Initialize router AFTER auth is ready
     Router.init();
 }
+// ==================== SETTINGS HANDLERS ====================
+
+function initializeSettings() {
+    // Load saved settings from localStorage
+    const savedTheme = localStorage.getItem('mathair_theme') || 'light';
+    const savedLanguage = localStorage.getItem('mathair_language') || 'vi';
+    const savedNotifications = localStorage.getItem('mathair_notifications') !== 'false';
+    const savedSound = localStorage.getItem('mathair_sound') !== 'false';
+    const savedFontSize = localStorage.getItem('mathair_fontSize') || '100';
+
+    // Apply settings
+    applyTheme(savedTheme);
+    applyLanguage(savedLanguage);
+    
+    // Update UI
+    const themeToggle = document.getElementById('theme-toggle');
+    const languageSelect = document.getElementById('language-select');
+    const notificationsToggle = document.getElementById('notifications-toggle');
+    const soundToggle = document.getElementById('sound-toggle');
+    
+    if (themeToggle) themeToggle.checked = savedTheme === 'dark';
+    if (languageSelect) languageSelect.value = savedLanguage;
+    if (notificationsToggle) notificationsToggle.checked = savedNotifications;
+    if (soundToggle) soundToggle.checked = savedSound;
+    
+    applyFontSize(parseInt(savedFontSize));
+    
+    // Attach event listeners
+    attachSettingsListeners();
+}
+
+function attachSettingsListeners() {
+    const themeToggle = document.getElementById('theme-toggle');
+    const languageSelect = document.getElementById('language-select');
+    const notificationsToggle = document.getElementById('notifications-toggle');
+    const soundToggle = document.getElementById('sound-toggle');
+    
+    if (themeToggle) {
+        themeToggle.addEventListener('change', (e) => {
+            const theme = e.target.checked ? 'dark' : 'light';
+            applyTheme(theme);
+            localStorage.setItem('mathair_theme', theme);
+        });
+    }
+    
+    if (languageSelect) {
+        languageSelect.addEventListener('change', (e) => {
+            applyLanguage(e.target.value);
+            localStorage.setItem('mathair_language', e.target.value);
+        });
+    }
+    
+    if (notificationsToggle) {
+        notificationsToggle.addEventListener('change', (e) => {
+            localStorage.setItem('mathair_notifications', e.target.checked);
+        });
+    }
+    
+    if (soundToggle) {
+        soundToggle.addEventListener('change', (e) => {
+            localStorage.setItem('mathair_sound', e.target.checked);
+        });
+    }
+}
+
+function applyTheme(theme) {
+    const html = document.documentElement;
+    if (theme === 'dark') {
+        html.classList.add('dark-mode');
+    } else {
+        html.classList.remove('dark-mode');
+    }
+}
+
+function applyLanguage(language) {
+    localStorage.setItem('mathair_language', language);
+    // For now, we'll just log it - full translation would need a translation file
+    console.log('Language changed to:', language);
+}
+
+function changeFontSize(action) {
+    const display = document.getElementById('font-size-display');
+    if (!display) return;
+    
+    let currentSize = parseInt(localStorage.getItem('mathair_fontSize') || '100');
+    
+    if (action === 'increase' && currentSize < 150) {
+        currentSize += 10;
+    } else if (action === 'decrease' && currentSize > 80) {
+        currentSize -= 10;
+    }
+    
+    applyFontSize(currentSize);
+    localStorage.setItem('mathair_fontSize', currentSize);
+}
+
+function applyFontSize(percentage) {
+    const display = document.getElementById('font-size-display');
+    if (display) display.textContent = percentage + '%';
+    
+    document.documentElement.style.fontSize = (16 * percentage / 100) + 'px';
+}
+
+function resetSettings() {
+    if (confirm('Bạn có chắc muốn đặt lại tất cả cài đặt?')) {
+        localStorage.removeItem('mathair_theme');
+        localStorage.removeItem('mathair_language');
+        localStorage.removeItem('mathair_notifications');
+        localStorage.removeItem('mathair_sound');
+        localStorage.removeItem('mathair_fontSize');
+        
+        // Reload to apply defaults
+        location.reload();
+    }
+}
+
+// ==================== INITIALIZATION ====================
 
 // Run when DOM is ready
 document.addEventListener('DOMContentLoaded', initApp);

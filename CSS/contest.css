@@ -21,6 +21,12 @@
     border-radius: var(--radius);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     border-left: 4px solid var(--blue-400);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+html.dark-mode .contest-header-bar {
+    background: #1a1f2e;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .contest-title h1 {
@@ -28,11 +34,21 @@
     font-weight: 700;
     color: var(--gray-900);
     margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+html.dark-mode .contest-title h1 {
+    color: #E8E9EB;
 }
 
 .contest-title p {
     color: var(--gray-500);
     font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+html.dark-mode .contest-title p {
+    color: #A0A5B0;
 }
 
 /* Timer Section */
@@ -56,6 +72,12 @@
     min-width: 200px;
     justify-content: center;
     transition: all 0.3s ease;
+}
+
+html.dark-mode #contest-timer {
+    background: linear-gradient(135deg, #2a3142, #3a4456);
+    border-color: #4a5668;
+    color: #3D7EF0;
 }
 
 #contest-timer.running-out {
@@ -98,6 +120,12 @@
     border-radius: var(--radius);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     overflow-y: auto;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+html.dark-mode .question-area {
+    background: #1a1f2e;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .question-container {
@@ -119,6 +147,11 @@
     font-weight: 500;
     color: var(--gray-900);
     line-height: 1.6;
+    transition: color 0.3s ease;
+}
+
+html.dark-mode .question-text {
+    color: #E8E9EB;
 }
 
 /* Question Options */
@@ -456,6 +489,10 @@
 
 .progress-bar.success {
     background: linear-gradient(90deg, var(--green-400), var(--green-600));
+}
+
+.progress-bar.essay {
+    background: linear-gradient(90deg, var(--amber-400), var(--amber-600));
 }
 
 .stat-value {

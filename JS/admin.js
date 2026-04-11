@@ -678,9 +678,9 @@ const AdminPageUI = {
         try {
             let result;
             if (this.currentContestId) {
-                result = window.ContestSystem.updateContest(this.currentContestId, contestData);
+                result = await window.ContestSystem.updateContest(this.currentContestId, contestData);
             } else {
-                result = window.ContestSystem.createContest(contestData);
+                result = await window.ContestSystem.createContest(contestData);
             }
 
             if (result.success) {
@@ -709,7 +709,7 @@ const AdminPageUI = {
     async deleteContest(contestId) {
         if (confirm('Bạn có chắc muốn xóa cuộc thi này?')) {
             try {
-                const result = window.ContestSystem.deleteContest(contestId);
+                const result = await window.ContestSystem.deleteContest(contestId);
                 if (result.success) {
                     alert(result.message);
                     await this.loadTab('contests');

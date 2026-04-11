@@ -47,6 +47,25 @@
       "results": [],
       "status": "upcoming",
       "createdAt": "2025-01-19T09:00:00Z"
+    },
+    {
+      "id": "contest_essay_test",
+      "title": "Cuộc Thi Câu Tự Luận - Kiểm Tra",
+      "description": "Cuộc thi kiểm tra chức năng câu tự luận. Gồm 3 câu trắc nghiệm và 3 câu tự luận để các em thể hiện suy luận của mình.",
+      "createdBy": "admin_001",
+      "startTime": "2026-04-04T08:00:00Z",
+      "endTime": "2026-04-04T09:00:00Z",
+      "duration": 60,
+      "totalQuestions": 6,
+      "questions": ["q1", "q2", "q3", "q-essay-1", "q-essay-2", "q-essay-3"],
+      "maxParticipants": 100,
+      "participants": [],
+      "results": [],
+      "status": "ongoing",
+      "reward90": 15,
+      "reward80": 10,
+      "reward70": 5,
+      "createdAt": "2026-04-04T07:00:00Z"
     }
   ]
 }

@@ -2186,6 +2186,27 @@
       ],
       "correctAnswer": 0,
       "explanation": "Cộng hai phương trình: 2x = 14 ⟹ x = 7. Thay vào: 7 + y = 10 ⟹ y = 3"
+    },
+    {
+      "id": "q-essay-1",
+      "chapterId": "chapter-7-1",
+      "type": "essay",
+      "question": "Giải thích tại sao mọi số hữu tỉ đều có thể biểu diễn dưới dạng phân số a/b?",
+      "explanation": "Gợi ý: Sau đó hãy cho ví dụ cụ thể và nêu rõ điều kiện của a, b."
+    },
+    {
+      "id": "q-essay-2",
+      "chapterId": "chapter-7-1",
+      "type": "essay",
+      "question": "Vì sao √2 là một số vô tỉ? Hãy chứng minh điều này.",
+      "explanation": "Gợi ý: Sử dụng phương pháp chứng minh phản chứng (giả sử √2 = a/b với a, b nguyên tố cùng nhau, rồi dẫn tới mâu thuẫn)."
+    },
+    {
+      "id": "q-essay-3",
+      "chapterId": "chapter-7-2",
+      "type": "essay",
+      "question": "So sánh hai cách cộng phân số: 1) Quy đồng mẫu số, 2) Sử dụng số thập phân. Cách nào chính xác hơn và tại sao?",
+      "explanation": "Hãy giải thích rõ về độ chính xác, khi nào nên dùng cách nào, và cho ví dụ minh họa."
     }
   ]
 }
