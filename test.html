@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chat App</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 520px;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+            padding: 24px;
+        }
+
+        h1 {
+            font-size: 22px;
+            color: #1f2937;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        input[type="text"]:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+            padding: 12px;
+            background-color: #3b82f6;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        button:hover {
+            background-color: #2563eb;
+        }
+
+        button:disabled {
+            background-color: #9ca3af;
+            cursor: not-allowed;
+        }
+
+        #result {
+            margin-top: 18px;
+            padding: 14px;
+            background-color: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            color: #374151;
+            font-size: 14px;
+            line-height: 1.6;
+            display: none;
+        }
+
+        #saveStatus {
+            margin-top: 8px;
+            font-size: 13px;
+            color: #16a34a;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+        <h1>AI Chat App</h1>
+
+        <input id="txtInput" type="text" placeholder="Nhập câu hỏi của bạn...">
+
+        <button id="btnSend" onclick="handleChat()">Gửi câu hỏi</button>
+
+        <div id="result"></div>
+        <p id="saveStatus">Đã lưu vào lịch sử</p>
+    </div>
+
+    <!-- FIREBASE SDK (ES Module) -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import {
+            getFirestore, collection, addDoc,
+            getDocs, query, orderBy, limit, serverTimestamp
+        } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyB1vxlVPDD33CkN2MmOTACwYslapFN9iJM",
+            authDomain: "mindx-c885c.firebaseapp.com",
+            projectId: "mindx-c885c",
+            storageBucket: "mindx-c885c.firebasestorage.app",
+            messagingSenderId: "896319817222",
+            appId: "1:896319817222:web:c3063b96f0f25ed77ae587",
+            measurementId: "G-GN5D1QFH3L"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        window.db = db;
+        window.addDoc = addDoc;
+        window.collection = collection;
+        window.getDocs = getDocs;
+        window.query = query;
+        window.orderBy = orderBy;
+        window.limit = limit;
+        window.serverTimestamp = serverTimestamp;
+
+        console.log("Firebase sẵn sàng!");
+    </script>
+
+    <!-- LOGIC CHÍNH -->
+    <script>
+        async function callGroq(prompt) {
+            const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer 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"
+                },
+                body: JSON.stringify({
+                    model: "llama-3.3-70b-versatile",
+                    messages: [{ role: "user", content: prompt }]
+                })
+            });
+            const data = await response.json();
+            return data.choices[0].message.content;
+        }
+
+        async function saveInteraction(question, answer) {
+            const colRef = window.collection(window.db, "chat_history");
+            await window.addDoc(colRef, {
+                user_ask: question,
+                ai_reply: answer,
+                time: window.serverTimestamp()
+            });
+        }
+
+        async function handleChat() {
+            const input = document.getElementById("txtInput").value;
+            if (!input.trim()) { alert("Vui lòng nhập câu hỏi!"); return; }
+
+            const resultBox = document.getElementById("result");
+            const btnSend = document.getElementById("btnSend");
+
+            resultBox.style.display = "block";
+            resultBox.innerText = "Đang suy nghĩ...";
+            btnSend.disabled = true;
+            btnSend.innerText = "Đang xử lý...";
+            document.getElementById("txtInput").value = "";
+
+            const answer = await callGroq(input);
+            resultBox.innerText = answer;
+            await saveInteraction(input, answer);
+
+            const saveStatus = document.getElementById("saveStatus");
+            saveStatus.style.display = "block";
+            setTimeout(() => { saveStatus.style.display = "none"; }, 2000);
+
+            btnSend.disabled = false;
+            btnSend.innerText = "Gửi câu hỏi";
+        }
+
+        document.getElementById("txtInput").addEventListener("keypress", function (e) {
+            if (e.key === "Enter") handleChat();
+        });
+    </script>
+
+</body>
+
+</html>

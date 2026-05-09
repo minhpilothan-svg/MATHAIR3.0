@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="CSS/components.css">
     <link rel="stylesheet" href="CSS/calculator.css">
     <link rel="stylesheet" href="CSS/contest.css">
+    <link rel="stylesheet" href="CSS/groq-ai.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.12.0/math.min.js"></script>
     
     <!-- Chart.js Library -->
@@ -159,6 +160,101 @@
             </div>
         </div>
     </div>
+
+    <!-- Groq AI Chat Modal -->
+    <div id="chat-modal" class="modal" style="display: none;">
+        <div class="modal-content modal-lg">
+            <div class="modal-header">
+                <h3><i class="fas fa-robot"></i> Trợ Lý AI - Groq</h3>
+                <button class="modal-close" id="chat-modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="chat-container">
+                <div class="chat-wrapper">
+                    <!-- Chat Display Area -->
+                    <div class="chat-messages" id="chat-messages">
+                        <div class="ai-intro">
+                            <h4>👋 Xin chào! Tôi là trợ lý AI Groq</h4>
+                            <p>Bạn có thể hỏi tôi bất kỳ câu hỏi nào về toán học, học tập hoặc bất cứ điều gì bạn muốn!</p>
+                        </div>
+                    </div>
+
+                    <!-- Input Area -->
+                    <div class="chat-input-area">
+                        <input type="text" id="txtInput" class="chat-input" placeholder="Hỏi gì đó...">
+                        <button id="btnSend" class="btn btn-primary chat-send-btn" onclick="handleChat()">
+                            <i class="fas fa-paper-plane"></i> Gửi
+                        </button>
+                    </div>
+
+                    <!-- Result Display -->
+                    <div id="result" class="chat-result" style="display: none;"></div>
+
+                    <!-- Save Status -->
+                    <div id="saveStatus" class="save-status" style="display: none;">
+                        <i class="fas fa-check-circle"></i> Đã lưu vào Firestore
+                    </div>
+
+                    <!-- Chat History Tabs -->
+                    <div class="chat-tabs">
+                        <button class="tab-btn active" onclick="switchTab('current')">Cuộc trò chuyện hiện tại</button>
+                        <button class="tab-btn" onclick="switchTab('history')">Lịch sử</button>
+                    </div>
+
+                    <!-- Chat History -->
+                    <div id="chat-history-list" class="chat-history" style="display: none;">
+                        <p style="text-align: center; color: #666;">Tải lịch sử...</p>
+                    </div>
+
+                    <!-- Clear History Button -->
+                    <div class="chat-actions">
+                        <button class="btn btn-secondary btn-sm" onclick="clearChatHistory()">
+                            <i class="fas fa-trash"></i> Xóa lịch sử
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat Floating Button -->
+    <button id="chat-float-btn" class="chat-float-btn" onclick="openChatModal()" title="Mở trợ lý AI">
+        <i class="fas fa-robot"></i>
+    </button>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import {
+            getFirestore, collection, addDoc,
+            getDocs, query, orderBy, limit, serverTimestamp
+        } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyB1vxlVPDD33CkN2MmOTACwYslapFN9iJM",
+            authDomain: "mindx-c885c.firebaseapp.com",
+            projectId: "mindx-c885c",
+            storageBucket: "mindx-c885c.firebasestorage.app",
+            messagingSenderId: "896319817222",
+            appId: "1:896319817222:web:c3063b96f0f25ed77ae587",
+            measurementId: "G-GN5D1QFH3L"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Expose to global scope for Groq AI module
+        window.db = db;
+        window.addDoc = addDoc;
+        window.collection = collection;
+        window.getDocs = getDocs;
+        window.query = query;
+        window.orderBy = orderBy;
+        window.limit = limit;
+        window.serverTimestamp = serverTimestamp;
+
+        console.log("✓ Firebase Module sẵn sàng!");
+    </script>
+
     <script src="JS/firebase-config.js"></script>
     <script src="JS/role-management.js"></script>
     <script src="JS/auth.js"></script>
@@ -166,6 +262,7 @@
     <script src="JS/contest-taking.js"></script>
     <script src="JS/calculator.js"></script>
     <script src="JS/quiz.js"></script>
+    <script src="JS/groq-ai.js"></script>
     <script src="JS/app.js"></script>
     <script src="JS/router.js"></script>   
 </body>

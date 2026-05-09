@@ -325,6 +325,7 @@ html.dark-mode .header {
   box-shadow: var(--shadow-hover);
 }
 .grade-card h3 {
+  color: #000000;
   font-family: var(--font-head);
   font-size: 2.2rem; font-weight: 700;
   margin-bottom: 1.2rem; color: var(--text-dark);
@@ -1053,7 +1054,6 @@ html.dark-mode .text-size-btn {
   background-color: #2a3142;
   border-color: #3a4456;
   color: #3D7EF0;
-}
   transition: all 0.2s;
   display: flex;
   align-items: center;
@@ -1203,13 +1203,7 @@ body.dark-mode {
 }
 
 /* Responsive for large font sizes (>100%) */
-html[style*="font-size: 17.6px"],
-html[style*="font-size: 19.2px"],
-html[style*="font-size: 20.8px"],
-html[style*="font-size: 22.4px"],
-html[style*="font-size: 24px"] {
-  /* When font size is large, make cards take up more space */
-}
+/* Font size customization is handled via inline styles on html element */
 
 @media (min-width: 1400px) {
   .contests-grid {
