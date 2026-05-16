@@ -166,13 +166,16 @@
         <div class="modal-content modal-lg">
             <div class="modal-header">
                 <h3><i class="fas fa-robot"></i> Trợ Lý AI - Groq</h3>
+                <button class="chat-history-toggle" id="chat-history-toggle" title="Lịch sử chat">
+                    <i class="fas fa-history"></i>
+                </button>
                 <button class="modal-close" id="chat-modal-close">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
             <div class="modal-body" id="chat-container">
                 <div class="chat-wrapper">
-                    <!-- Chat Display Area -->
+                    <!-- Chat Messages Area -->
                     <div class="chat-messages" id="chat-messages">
                         <div class="ai-intro">
                             <h4>👋 Xin chào! Tôi là trợ lý AI Groq</h4>
@@ -194,24 +197,6 @@
                     <!-- Save Status -->
                     <div id="saveStatus" class="save-status" style="display: none;">
                         <i class="fas fa-check-circle"></i> Đã lưu vào Firestore
-                    </div>
-
-                    <!-- Chat History Tabs -->
-                    <div class="chat-tabs">
-                        <button class="tab-btn active" onclick="switchTab('current')">Cuộc trò chuyện hiện tại</button>
-                        <button class="tab-btn" onclick="switchTab('history')">Lịch sử</button>
-                    </div>
-
-                    <!-- Chat History -->
-                    <div id="chat-history-list" class="chat-history" style="display: none;">
-                        <p style="text-align: center; color: #666;">Tải lịch sử...</p>
-                    </div>
-
-                    <!-- Clear History Button -->
-                    <div class="chat-actions">
-                        <button class="btn btn-secondary btn-sm" onclick="clearChatHistory()">
-                            <i class="fas fa-trash"></i> Xóa lịch sử
-                        </button>
                     </div>
                 </div>
             </div>

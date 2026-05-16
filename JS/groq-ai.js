@@ -258,35 +258,6 @@ function closeChatModal() {
     }
 }
 
-/**
- * Chuyển giữa các tab
- */
-function switchTab(tabName) {
-    const chatMessages = document.getElementById("chat-messages");
-    const chatHistoryList = document.getElementById("chat-history-list");
-    const tabBtns = document.querySelectorAll(".tab-btn");
-    
-    if (tabName === "current") {
-        chatMessages.style.display = "flex";
-        chatHistoryList.style.display = "none";
-        tabBtns.forEach(btn => {
-            btn.classList.remove("active");
-            if (btn.textContent.includes("hiện tại")) {
-                btn.classList.add("active");
-            }
-        });
-    } else if (tabName === "history") {
-        chatMessages.style.display = "none";
-        chatHistoryList.style.display = "block";
-        loadChatHistory();
-        tabBtns.forEach(btn => {
-            btn.classList.remove("active");
-            if (btn.textContent.includes("Lịch sử")) {
-                btn.classList.add("active");
-            }
-        });
-    }
-}
 
 /**
  * Attach event listeners cho chat modal

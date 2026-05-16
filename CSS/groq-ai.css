@@ -44,10 +44,12 @@
     overflow-y: auto;
     padding: 20px;
     background: #f8f9fa;
-    border-radius: 8px;
-    margin-bottom: 15px;
+    border-radius: 8px 8px 0 0;
+    margin-bottom: 0;
     display: flex;
     flex-direction: column;
+    border: 1px solid #dee2e6;
+    border-bottom: none;
 }
 
 .chat-messages::-webkit-scrollbar {
@@ -139,15 +141,20 @@
 /* Input Area */
 .chat-input-area {
     display: flex;
-    gap: 10px;
-    margin-bottom: 15px;
+    gap: 5px;
+    margin-bottom: 0;
+    padding: 10px;
+    background: white;
+    border: 1px solid #dee2e6;
+    border-radius: 0 0 8px 8px;
+    border-top: none;
 }
 
 .chat-input {
-    flex: 1;
+    flex: 0 1 90%;
     padding: 12px 15px;
     border: 1px solid #dee2e6;
-    border-radius: 8px;
+    border-radius: 6px;
     font-size: 14px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     transition: all 0.3s ease;
@@ -164,9 +171,12 @@
 }
 
 .chat-send-btn {
-    padding: 12px 20px;
+    flex: 0 1 10%;
+    padding: 12px 15px;
     white-space: nowrap;
     transition: all 0.3s ease;
+    border-radius: 6px;
+    min-width: fit-content;
 }
 
 .chat-send-btn:hover {
@@ -287,6 +297,29 @@
 .btn-sm {
     padding: 8px 12px !important;
     font-size: 13px !important;
+}
+
+/* Chat History Toggle Button */
+.chat-history-toggle {
+    background: none;
+    border: none;
+    color: #667eea;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 8px 12px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chat-history-toggle:hover {
+    color: #764ba2;
+    transform: scale(1.1);
+}
+
+.chat-history-toggle:active {
+    transform: scale(0.95);
 }
 
 /* Responsive Design */

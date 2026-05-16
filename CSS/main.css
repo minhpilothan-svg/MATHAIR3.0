@@ -256,7 +256,7 @@ html.dark-mode .header {
   border: none; background: none; text-align: left; cursor: pointer;
   font-family: var(--font-body);
   font-size: 1.3rem; font-weight: 500;
-  color: var(--text-dark);
+  color: #000000;
   transition: background 0.15s, color 0.15s;
 }
 .profile-btn-menu:hover { background: var(--blue-50); color: var(--blue-600); }
@@ -328,10 +328,10 @@ html.dark-mode .header {
   color: #000000;
   font-family: var(--font-head);
   font-size: 2.2rem; font-weight: 700;
-  margin-bottom: 1.2rem; color: var(--text-dark);
+  margin-bottom: 1.2rem;
   letter-spacing: -0.01em;
 }
-.grade-card p { font-size: 1.4rem; color: var(--text-light); margin-bottom: 0.8rem; line-height: 1.6; }
+.grade-card p { font-size: 1.4rem; color: #000000; margin-bottom: 0.8rem; line-height: 1.6; }
 .exercise-count { font-weight: 700; font-size: 1.5rem; margin-bottom: 1.8rem; }
 
 /* Lớp 7 — Xanh lá (Dễ) */
@@ -393,9 +393,9 @@ html.dark-mode .header {
 .chapter-card h2 {
   font-family: var(--font-head);
   font-size: 1.8rem; font-weight: 700;
-  margin-bottom: 1rem; color: var(--text-dark);
+  margin-bottom: 1rem; color: #000000;
 }
-.chapter-card h3 { font-size: 1.3rem; color: var(--text-light); margin-bottom: 1.8rem; font-weight: 400; }
+.chapter-card h3 { font-size: 1.3rem; color: #000000; margin-bottom: 1.8rem; font-weight: 400; }
 
 /* ── Buttons ─────────────────────────────────────────────── */
 .btn {
@@ -486,9 +486,9 @@ html.dark-mode .header {
   font-family: var(--font-head);
   font-size: 2.8rem; font-weight: 800;
   letter-spacing: -0.02em;
-  color: var(--text-dark); margin-bottom: 0.8rem;
+  color: #000000; margin-bottom: 0.8rem;
 }
-.grade-header h3, .grade-header p { font-size: 1.5rem; color: var(--text-light); }
+.grade-header h3, .grade-header p { font-size: 1.5rem; color: #000000; }
 
 /* ── Footer ─ */
 .footer {
@@ -557,15 +557,15 @@ html.dark-mode .footer {
 .contest-status.active   { background: var(--green-50);   color: var(--green-600); }
 .contest-status.upcoming { background: var(--orange-50);  color: var(--orange-600); }
 
-.contest-description { font-size: 1.25rem; color: var(--text-light); margin: 0.8rem 0; line-height: 1.6; flex-grow: 1; }
+.contest-description { font-size: 1.25rem; color: #000000; margin: 0.8rem 0; line-height: 1.6; flex-grow: 1; }
 
 .contest-info { display: flex; gap: 1.2rem; margin: 1.2rem 0; padding: 1.2rem 0; border-top: 1px solid var(--gray-100); border-bottom: 1px solid var(--gray-100); flex-wrap: wrap; }
-.info-item { display: flex; align-items: center; gap: 0.5rem; font-size: 1.2rem; color: var(--text-light); min-width: fit-content; }
+.info-item { display: flex; align-items: center; gap: 0.5rem; font-size: 1.2rem; color: #000000; min-width: fit-content; }
 .info-item i { color: var(--blue-400); font-size: 1.4rem; }
 .info-item strong { color: var(--text-dark); font-weight: 700; }
 
 .contest-details { background: var(--gray-50); padding: 1rem; border-radius: 8px; margin: 1.2rem 0; font-size: 1.15rem; }
-.detail-row { display: flex; justify-content: space-between; padding: 0.4rem 0; color: var(--text-light); }
+.detail-row { display: flex; justify-content: space-between; padding: 0.4rem 0; color: #000000; }
 .detail-label { font-weight: 600; color: var(--text-dark); min-width: 110px; }
 .detail-value { color: var(--blue-600); font-weight: 600; }
 
@@ -623,7 +623,7 @@ html.dark-mode .modal-header {
   border-bottom-color: #2a3142;
 }
 
-.modal-header h3 { font-family: var(--font-head); font-size: 1.7rem; font-weight: 700; color: var(--text-dark); margin: 0; }
+.modal-header h3 { font-family: var(--font-head); font-size: 1.7rem; font-weight: 700; color: #000000; margin: 0; }
 .modal-close {
   background: none; border: none; font-size: 1.6rem;
   cursor: pointer; color: var(--gray-400);
@@ -654,13 +654,13 @@ html.dark-mode .modal-footer {
 .profile-header { display: flex; gap: 2rem; align-items: center; margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 2px solid var(--blue-100); }
 .profile-avatar { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; border: 3px solid var(--blue-400); }
 .profile-info h2 { font-family: var(--font-head); font-size: 2rem; font-weight: 700; color: var(--text-dark); }
-.profile-info p  { margin: 0.4rem 0 0; color: var(--text-light); font-size: 1.3rem; }
+.profile-info p  { margin: 0.4rem 0 0; color: #000000; font-size: 1.3rem; }
 .profile-info .email { color: var(--blue-600); font-weight: 600; }
 
 .profile-details { margin: 2rem 0; }
 .detail-item { display: flex; justify-content: space-between; padding: 0.9rem 0; border-bottom: 1px solid var(--gray-100); font-size: 1.3rem; }
 .detail-item label { font-weight: 600; color: var(--text-dark); }
-.detail-item span  { color: var(--text-light); }
+.detail-item span  { color: #000000; }
 
 .sp-badge {
   background: linear-gradient(135deg, var(--blue-400), var(--orange-400));
@@ -682,9 +682,9 @@ html.dark-mode .modal-footer {
 .contest-quiz-container { max-width: 880px; margin: 0 auto; padding: 2rem; }
 .contest-quiz-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 2px solid var(--blue-100); }
 .quiz-title h2 { font-family: var(--font-head); font-size: 2rem; font-weight: 700; margin: 0 0 0.4rem; color: var(--text-dark); }
-.quiz-title p  { margin: 0; color: var(--text-light); font-size: 1.3rem; }
+.quiz-title p  { margin: 0; color: #000000; font-size: 1.3rem; }
 .timer-display { font-family: 'Courier New', monospace; font-size: 3.4rem; font-weight: 700; color: var(--blue-600); transition: color 0.3s ease; }
-.quiz-timer p  { margin: 0.4rem 0 0; color: var(--text-light); font-size: 1.2rem; }
+.quiz-timer p  { margin: 0.4rem 0 0; color: #000000; font-size: 1.2rem; }
 .progress-container { width: 100%; height: 5px; background: var(--gray-100); border-radius: 3px; margin-bottom: 2rem; overflow: hidden; }
 .progress-bar { height: 100%; background: linear-gradient(90deg, var(--blue-400), var(--orange-400)); transition: width 0.3s ease; }
 
@@ -708,11 +708,11 @@ html.dark-mode .modal-footer {
 .contest-result-container { max-width: 580px; margin: 2rem auto; padding: 2rem; }
 .result-header { text-align: center; margin-bottom: 3rem; }
 .result-header h2 { font-family: var(--font-head); font-size: 2.6rem; font-weight: 800; color: var(--text-dark); }
-.result-header p  { margin: 0.8rem 0 0; color: var(--text-light); }
+.result-header p  { margin: 0.8rem 0 0; color: #000000; }
 .result-content { background: white; border-radius: var(--radius); padding: 2rem; box-shadow: var(--shadow); border: 1px solid var(--blue-100); }
 .result-card { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
 .result-item { text-align: center; }
-.result-item label { display: block; font-size: 1.2rem; color: var(--text-light); margin-bottom: 0.6rem; font-weight: 600; }
+.result-item label { display: block; font-size: 1.2rem; color: #000000; margin-bottom: 0.6rem; font-weight: 600; }
 .result-value { font-family: var(--font-head); font-size: 1.9rem; font-weight: 800; color: var(--text-dark); }
 .result-divider { grid-column: 1/-1; height: 1px; background: var(--gray-100); margin: 0.5rem 0; }
 .elo-positive { color: var(--green-600); font-size: 2.2rem; }
@@ -880,7 +880,7 @@ html.dark-mode .settings-header {
   margin: 0;
   font-size: 1.3rem;
   font-weight: 600;
-  color: var(--text-dark);
+  color: #000000;
 }
 
 .settings-close {
